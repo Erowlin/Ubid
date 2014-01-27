@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+  <head>
+    <title>Ubid</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/flat-ui.css" rel="stylesheet">
+    <link href="css/perso.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav navbar-default navbar-inverse" role="navigation">
+         <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Ubid</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Acheter</a></li>
+            <li><a href="#">Vendre</a></li>
+            <li><a href="#">Mes ench&egrave;res</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Mon paniet</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="voletAction" class="container">  
+        <div class="row">
+          <div class="col-md-7 col-md-offset-1 hidden-xs hidden-sm hidden-md">
+            <p class="infoArchitecture"> Zone contenant une action principale </p>
+          </div>
+          <div class="col-md-3 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+            <button id="btnOpenVolet" type="button" class="btn btn-default btn-openAction btn-lg">
+              <span class="glyphicon glyphicon-plus"></span>  Recherche avanc&eacute;e
+            </button>
+            <button id="btnCloseVolet" type="button" class="btn btn-default btn-openAction btn-lg init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span>  Fermer la recherche avanc&eacute;e
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 boxAction alignCenter">
+            <p class="infoArchitecture"> Zone contenant action box1 </p>
+          </div>
+          <div class="col-md-4 boxAction alignCenter">
+            <p class="infoArchitecture"> Zone contenant action box2 </p>
+          </div>
+          <div class="col-md-4 boxAction alignCenter">
+            <p class="infoArchitecture"> Zone contenant action box3 </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+  
+  <div class="wrap"> 
+    <div class="container"><!-- Main container -->
+      <div class="row template">
+        <div class="col-md-9">
+              <h4> Template Home/rechercher/acheter </h4>
+              <p class="infoArchitecture"> Coder ici :  filtre de recherche + affichage résultat recherche </p>
+        </div>
+        <div class="col-md-3">
+              <h4> Template facultatif </h4>
+              <p class="infoArchitecture"> Coder ici :  info/stats lié à la page d'acceuil </p>
+        </div>
+      </div>
+
+      <div class="row template">
+        <div class="col-md-9">
+              <h4> Template Vendre / table des produits en vente </h4>
+              <p class="infoArchitecture"> Coder ici :  la tableau qui permet de consulter et de modifier ses produits en ventes. </p>
+        </div>
+        <div class="col-md-3">
+              <h4> Template facultatif </h4>
+              <p class="infoArchitecture"> Coder ici : stats de l'user en tant que vendeur </p>
+        </div>
+      </div>
+
+      <div class="row template">
+        <div class="col-md-9">
+              <h4> Template Mon espace </h4>
+              <p class="infoArchitecture"> Coder ici :  Le tableau qui permet de consulter et de gérer les enchères sur lequel je me suis positionné </p>
+        </div>
+        <div class="col-md-3">
+              <h4> Template facultatif </h4>
+              <p class="infoArchitecture"> Coder ici :  info/stats lié à "Mon profil" </p>
+        </div>
+      </div>
+
+    </div>
+  </div> 
+
+  <div id="footer" class="hidden-xs">
+    <div class="container">
+      <p class="infoArchitecture"> Zone contenant le footer </p>
+    </div>
+  </div> 
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/perso.js"></script>
+  </body>
+</html>

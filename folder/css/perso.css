@@ -1,0 +1,74 @@
+@media screen and (max-width: 768px) { 
+	.voletActionOpen, .voletAction:hover{
+		height: 100% !important;
+	}
+}
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+html, body{
+	height: 100%;
+}
+header{
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+}
+.header{
+	width: 100% !important;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+}
+.alignCenter{
+	text-align: center;
+}
+.init-displayNone{
+	display: none;
+}
+.wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 105px auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: rgba(52,73,94,0.2);
+}
+#voletAction{
+	width: 100% !important;
+	background-color: #1ABC9C;
+	height: 50px;
+	overflow: hidden;
+	z-index: 99 !important;
+}
+.btn-openAction{
+	background-color: #1ABC9C !important;
+}
+.mainContainer2{
+	background-color: #ddd;
+	padding: 30px;
+	min-height: 500px;
+}
+.infoContainer{
+	padding: 30px;
+	background-color: #ccc;
+	min-height: 500px;
+}
+.boxProduit{
+	background-color: #eee;
+}
+.infoArchitecture{
+	font-style: italic;
+	font-size: 15px;
+}
+.template{
+	min-height: 700px;
+	background-color: #eee;
+	margin-bottom: 30px;
+}
