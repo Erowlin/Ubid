@@ -13,8 +13,8 @@
 }
 
 .bid_content {
-	width: 40%;
-	min-width: 300px;
+	width: 60%;
+	min-width: 330px;
 	display: block;
 	height:70px;
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -102,12 +102,25 @@
 }
 
 #legende {
-	position: absolute;
+	/*position: absolute;
 	right: 0;
-	top: 20px;
+	top: 20px;*/
 }
 
-#legende span {
+#legende {
+	position: absolute;
+	top:15px;
+	right: 15px;
+	border-bottom: 1px solid;
+	cursor: pointer;
+}
+
+#content_legende {
+	display: none;
+	margin-bottom: 5px;
+}
+
+span.legende {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
@@ -115,15 +128,15 @@
 	margin: 0px 5px;
 }
 
-#legende span.challenged {
+span.legende.challenged {
 	background-color: #e67e22 ;
 }
 
-#legende span.won {
+span.legende.won {
 	background-color: #34495e ;
 }
 
-#legende span.paid {
+span.legende.paid {
 	background-color: #2ecc71 ;
 }
 
