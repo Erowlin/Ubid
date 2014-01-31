@@ -1,9 +1,8 @@
-
 $('.bid_content').hover(
 	function(){
 		$(this).find('.action_box').on('click', function(event){
 			event.preventDefault();
-			$(this).closest('.main').css('marginTop', '-300px');
+			$(this).closest('.main').css('marginTop', '-400px');
 			return false;
 		});
 	},
