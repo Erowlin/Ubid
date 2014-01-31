@@ -48,31 +48,35 @@
         </div><!-- /.navbar-collapse -->
       </nav>
 
-      <div id="voletAction" class="container">  
-        <div class="row">
-          <div class="col-md-7 col-md-offset-1 hidden-xs hidden-sm hidden-md">
-            <p class="infoArchitecture"> Bienvenue sur votre page personnelle. Vous retrouverez ici toutes les informations concernant votre compte (votre profil et la possibilité de modifier les informations vous concernant) et également visualiser et gérer les enchères où vous êtes présents.</p>
+
+      <div id="voletAction" class="container">
+          <div class="rowEspacePerso">
+              <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
+                  <button id="btnOpenVoletEspacePerso" type="button" class="btn btn-default btn-openAction btn-lg">
+                      <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                  <button id="btnCloseVoletEspacePerso" type="button" class="btn btn-default btn-openAction btn-lg init-displayNone">
+                      <span class="glyphicon glyphicon-minus"></span>
+                  </button>
+              </div>
+              <div class="col-md-4 boxAction alignCenter">
+                  <h4> Mes informations </h4>
+                  <div class="infoPerso">
+                      <img src="http://placehold.it/100x100$text=MaPhoto">
+                      <p>Pseudo</p>
+                      <p>Couriel</p>
+                  </div>
+                  <div class="infoPersoPassword">
+                      <p>Mot de passe</p>
+                  </div>
+              </div>
+              <div class="col-md-4 boxAction alignCenter">
+                  <h4> Mon adresse </h4>
+              </div>
+              <div class="col-md-4 boxAction alignCenter">
+                  <h4> Mon moyen de payement </h4>
+              </div>
           </div>
-          <div class="col-md-3 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
-            <button id="btnOpenVolet" type="button" class="btn btn-default btn-openAction btn-lg">
-              <span class="glyphicon glyphicon-plus"></span>  Voir mes informations personnelles
-            </button>
-            <button id="btnCloseVolet" type="button" class="btn btn-default btn-openAction btn-lg init-displayNone">
-              <span class="glyphicon glyphicon-minus"></span>  Fermer le panneau d'information
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4 boxAction alignCenter">
-            <p class="infoArchitecture"> Zone contenant action box1 </p>
-          </div>
-          <div class="col-md-4 boxAction alignCenter">
-            <p class="infoArchitecture"> Zone contenant action box2 </p>
-          </div>
-          <div class="col-md-4 boxAction alignCenter">
-            <p class="infoArchitecture"> Zone contenant action box3 </p>
-          </div>
-        </div>
       </div>
     </header>
 

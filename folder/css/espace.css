@@ -99,3 +99,27 @@
 	margin: 0px 5px;
 }
 
+
+.rowEspacePerso h4{
+    font-size: 20px;
+    margin-top: -32px;
+    z-index: 90;
+}
+
+.btn-openAction{
+
+    position: relative;
+    z-index: 100;
+}
+
+.infoPerso{
+    display: block;
+    text-align: left;
+}
+
+.infoPerso img{
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin: 0 20px;
+}
