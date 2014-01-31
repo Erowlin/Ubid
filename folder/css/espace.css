@@ -5,11 +5,12 @@
 	position: relative;
 	margin-bottom: 2px;
 	clear: both;
+	background-color: #ddd;
 }
 
 .bid_content {
 	width: 40%;
-	min-width: 250px;
+	min-width: 300px;
 	display: block;
 	height:70px;
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -23,9 +24,9 @@
 	width: 100%;
 	height: 100%;
 	display: block;
-	background-color: black;
+	background-color: #ffef97;
 	padding:5px;
-	transition: margin 1s;
+	transition: margin 2s ease-in-out;
 }
 
 .bid_content .main img {
@@ -33,20 +34,20 @@
 	margin-right: 5px;
 }
 
-.bid_content .main span {
+.bid_content .main a.action_box {
 	position: absolute;
 	right: 10px;
-	top:10px;
+	bottom:10px;
+	color:white;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: bold;
 }
 
 .bid_content h5 {
 	padding: 0;
 	margin :5px 0; 
 	font-size: 20px;
-}
-
-.bid_content:hover .main {
-	margin-top:-70px;
 }
 
 .bid_challenged {
@@ -60,14 +61,28 @@
 
 .bid_paid .hover {
 	text-align: center;
-	padding-top: 10px;
+	line-height: 70px;
+}
+
+.bid_paid .hover .star {
+	font-size: 50px;
+	color: #2ecc71;
+	cursor: pointer;
+}
+
+.bid_paid .hover .star:hover {
+	color:#f39c12;
 }
 
 .bid_paid {
-	float:right;
-	background-color: yellow;
+	margin-left:auto; margin-right:0px;
+	background-color: #27ae60;
 	clear: both;
 	margin-bottom: 2px;
+}
+
+.bid_paid .main {
+	background-color: #2ecc71;
 }
 
 #legende {
