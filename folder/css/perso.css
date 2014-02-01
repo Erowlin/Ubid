@@ -70,12 +70,24 @@ header{
 	}
 }
 
+.boxMargin {
+	border-left: 1px solid;
+	border-right: 1px solid;
+    border-color: #c5c5c5;
+}
+
 #searchBar {
 	margin-top: 5px;
 }
 
-#searchButtonPrimary {
-	margin-top: 50px;
+#searchButtonPrimary>.btn-default {
+	margin-top: 5px;
+	background-color: #005869;
+}
+
+.checkbox.checked .second-icon, .radio.checked .second-icon, .checkbox.checked, .radio.checked {
+	color: #005869;
+	31797D
 }
 
 .btn-openAction{
