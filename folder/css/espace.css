@@ -321,6 +321,32 @@ span.legende.paid {
     cursor: pointer;
 }
 
+#photo_content {
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	position: relative;
+	cursor: pointer;
+}
+
+#photo_content span {
+	position: absolute;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding:10px;
+	display: block;
+	width: 100%;
+	text-align: center;
+	transition: margin 0.5s ease-in-out;
+}
+
+#photo_content:hover span {
+	margin-top: -95px;
+}
+
+
 @media screen and (max-width: 768px) {
 
     .rowEspacePerso h4{

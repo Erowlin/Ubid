@@ -42,7 +42,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon espace<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Messages</a></li>
-                <li><a href="#">Mon paniet</a></li>
+                <li><a href="#">Mon panier</a></li>
               </ul>
             </li>
           </ul>
@@ -64,7 +64,10 @@
                   <h4 class="first-title"> Mes informations </h4>
                   <div class="infoPerso">
                       <div class=" row-infoPerso-right col-md-4 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
-                          <img  class="infoPersoPhoto" src="http://placehold.it/120x120$text=MaPhoto">
+                          <div id="photo_content">
+	                          <img  class="infoPersoPhoto" src="http://placehold.it/120x120$text=MaPhoto">
+	                          <span>Modifier</span>
+                          </div>
                           <button class=" infoPersoPassword btn btn-inverse btn-wide">
                               Mot de passe&nbsp
                               <span class="glyphicon glyphicon-pencil"></span>
@@ -116,47 +119,49 @@
                   <h4> Mon adresse </h4>
                   <div class="infoAdresse">
                       <select name="adresselist" class="infoAdresseAjout btn-group select select-block">
-                          <option selected="selected" value="0"> Choix de l'adresse utilisée</option>
-                          <option value="1">Adresse 1</option>
-                          <option value="2">Adresse 2</option>
-                          <option value="3">Adresse 3</option>
-                          <option value="4">Ajouter une nouvelle adresse</option>
+                          <option value="0" disabled>Mes différentes adresses</option>
+                          <option value="1" selected="selected">Adresse Hugo Perso</option>
+                          <option value="2">Adresse Steve Perso</option>
+                          <option value="3">Ajouter une nouvelle adresse</option>
                       </select>
-                      <div class="infoAdresseRue">
-                          <p>Rue</p>
-                          <p data-type="text" data-pk="5" data-title="Entrez une nouvelle rue">
-
-                          </p>
-                      </div>
-                      <div class="infoAdresseVille">
-                          <p>Ville:</p>
-                          <p data-type="text" data-pk="6" data-title="Entrer une nouvelle rue">
-
-                          </p>
-                      </div>
-                      <div class="infoAdresseCodePostal">
-                          <P>Code Postal:</P>
-                          <p data-type="text" data-pk="7" data-title="Entrer un nouveau code Postal">
-
-                          </p>
-                      </div>
-                      <div class="infoAdressePays">
-                          <P>Pays:</P>
-                          <p data-type="text" data-pk="8" data-title="Entrer un nouveau Pays">
-
-                          </p>
-                      </div>
+                      <div id="donnees_adresse">
+	                      <div class="infoAdresseRue">
+	                          <p>Adresse :</p>
+	                          <p data-type="text" data-pk="5" data-title="Entrez une nouvelle rue">
+								54 rue de la gare
+	                          </p>
+	                      </div>
+	                      <div class="infoAdresseVille">
+	                          <p>Ville:</p>
+	                          <p data-type="text" data-pk="6" data-title="Entrer une nouvelle rue">
+								Strasbourg
+	                          </p>
+	                      </div>
+	                      <div class="infoAdresseCodePostal">
+	                          <P>Code Postal:</P>
+	                          <p data-type="text" data-pk="7" data-title="Entrer un nouveau code Postal">
+								67000
+	                          </p>
+	                      </div>
+	                      <div class="infoAdressePays">
+	                          <P>Pays:</P>
+	                          <p data-type="text" data-pk="8" data-title="Entrer un nouveau Pays">
+								France
+	                          </p>
+	                      </div>
+	                    </div>
                   </div>
               </div>
               <div class="col-md-4 boxAction alignCenter">
                   <h4> Méthodes de paiement </h4>
                     <div class="infoPayement">
                       <select name="payementlist" class=" infoPayementAjout btn-group select select-block">
-                          <option value="0">Choix du moyen de payement</option>
+                          <option value="0" disabled>Mes différents moyen de paiement</option>
                           <option selected="selected" value="1">Carte Visa 1</option>
                           <option value="2">Carte MasterCard 1</option>
                           <option value="3">Ajouter un moyen de payement</option>
                       </select>
+                      <div id="donnees_bancaires">
                         <div class="infoPayementNumero">
                             <p>Numero carte: </p>
                             <p data-type="text" data-pk="9" data-title="Entrez un nouveau numero de carte">
@@ -166,19 +171,20 @@
                         <div class="infoPayementNom">
                             <p>Nom titulaire: </p>
                             <p data-type="text" data-pk="10" data-title="Entrer un nouveau nom">
-                                Girardot
+                                Steve Benedick
                             </p>
                         </div>
                         <div class="infoPayementDateExpiration">
                             <p>Date d'expiration: </p>
-                            <p data-template="MM / YY" data-viewformat="MM/YY" data-format="YY-MM" data-value="14-05" data-type="combodate" data-title="Entrer une nouvelle date d'expiration"
+                            <p data-template="MM / YY" data-viewformat="MM/YY" data-format="YY-MM" data-value="14-05" data-type="combodate" data-title="Entrer une nouvelle date d'expiration">
                             </p>
                         </div>
                         <div class="infoPayementCrypto">
                             <p>Cryptogramme: </p>
                             <p data-type="text" data-pk="12" data-title="Entrer un nouveau cryptogramme">
-
+								***
                             </p>
+                        </div>
                         </div>
                     </div>            
               </div>
@@ -298,7 +304,6 @@
 	              			</a>
 	              		</div>
 	              		<div class="hover">
-	              		<!-- A retravailler avec un plugin js par exemple -->
 	              			<span>Merci, votre vote (3/5) a été pris en compte !</span>
 	              		</div>
               		</div>

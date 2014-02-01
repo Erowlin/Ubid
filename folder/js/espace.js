@@ -2,7 +2,9 @@ $(document).ready(function(){
 
     $.fn.editable.defaults.mode = 'inline';
 
+    // Permet l'action du clic sur les liens des blocs objets dans la vue mes enchères.
     $('.bid_content').hover(
+        // lorsqu'on hover et qu'on clique sur le lien, on change le margin pour faire apparaitre la deuxieme partie
         function(){
             $(this).find('.action_box').on('click', function(event){
                 event.preventDefault();
@@ -10,10 +12,12 @@ $(document).ready(function(){
                 return false;
             });
         },
+        // lorsqu'on hover plus, le margin revient à 0
         function(){
             $(this).find('.main').css('marginTop', '0px');
         });
 
+    // slideToggle pour faire apparaitre les légendes pour le bloc des enchères avec changement du + en -
     $('#legende').on('click', function(){
         $('#content_legende').slideToggle();
         if($('#legende').html() == "+ Légende")
@@ -26,8 +30,10 @@ $(document).ready(function(){
         }
     });
 
+    // bete animation pour cacher les messages qu'on ne souhaite plus voir.
     $('.messagerie .close_message').on('click', function(){
         $(this).parent().slideToggle();
+        // penser à implémenter une méthode pour supprimer le fil dans la bdd
     });
 
 
@@ -69,8 +75,63 @@ $(document).ready(function(){
     $("select[name='adresselist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[name='payementlist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
 
+    // Pour le moment en dur, à modifier plus tard pour de l'affichage dynamique
+    // Change les infos du formulaire des paiements en fonction du choix du dropdown
     $('.infoPayementAjout').find("li a").click(function(){
-        alert($(this).html());
+        //alert($(this).html());
+        //console.log($(this).parent().attr('rel'));
+        if($(this).parent().attr('rel') == 1)
+        {
+            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**45');
+            $('#donnees_bancaires .infoPayementNom p:last-child').html('Steve Benedick');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-05');
+            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***');
+
+            startEditable();
+        }
+        else if ($(this).parent().attr('rel') == 2)
+        {
+            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**71');
+            $('#donnees_bancaires .infoPayementNom p:last-child').html('Hugo Zilliox');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-12');
+            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***');
+
+            startEditable();
+        }
+        else
+        {
+            alert('Une modal s\'ouvre pour ajouter une nouvelle carte');
+        }
+    });
+
+    // Pour le moment en dur, à modifier plus tard pour de l'affichage dynamique
+    // Change les infos du formulaire des paiements en fonction du choix du dropdown
+    $('.infoAdresseAjout').find("li a").click(function(){
+        //alert($(this).html());
+        console.log($(this).parent().attr('rel'));
+        if($(this).parent().attr('rel') == 1)
+        {
+            console.log($('#donnees_adresse .infoAdresseRue p:last-child').html());
+            $('#donnees_adresse .infoAdresseRue p:last-child').html('54 rue de la gare');
+            $('#donnees_adresse .infoAdresseVille p:last-child').html('Strasbourg');
+            $('#donnees_adresse .infoAdressePays p:last-child').html('France');
+            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('67000');
+
+            startEditable();
+        }
+        else if ($(this).parent().attr('rel') == 2)
+        {
+            $('#donnees_adresse .infoAdresseRue p:last-child').html('28 rue de la mairie');
+            $('#donnees_adresse .infoAdresseVille p:last-child').html('Colmar');
+            $('#donnees_adresse .infoAdressePays p:last-child').html('France');
+            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('68000');
+
+            startEditable();
+        }
+        else
+        {
+            alert('Une modal s\'ouvre pour ajouter une nouvelle adresse');
+        }
     });
 
     $('.infoAdresseAjout').find("li:last-child a").append("<span class=\"pull-right glyphicon glyphicon-plus\"></span>");
@@ -83,52 +144,62 @@ $(document).ready(function(){
         /* ouverture modale ajout moyen de payement */
     });
 
-    $('.infoPersoPseudo p').editable({
-        highlight:  'invisible'
+    $('#photo_content').on('click',function(){
+        //alert(':)')
     });
 
-    $('.infoPersoCouriel p').editable({
-        highlight:  'invisible'
-    });
+    function startEditable(){
+        $('.infoPersoPseudo p').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoPersoNumDomicile p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoPersoCouriel p').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoPersoNumMobile p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoPersoNumDomicile p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoAdresseRue p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoPersoNumMobile p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoAdresseVille p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoAdresseRue p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoAdresseCodePostal p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoAdresseVille p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoAdressePays p:last-child').editable({
-        highlight:  'invisible'
-    });
+        $('.infoAdresseCodePostal p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoPayementNumero p:last-child').editable({
-        highlight: 'invisible'
-    });
+        $('.infoAdressePays p:last-child').editable({
+            highlight:  'invisible'
+        });
 
-    $('.infoPayementNom p:last-child').editable({
-        highlight: 'invisible'
-    });
+        $('.infoPayementNumero p:last-child').editable({
+            highlight: 'invisible'
+        });
 
-    $('.infoPayementDateExpiration p:last-child').editable({
-        highlight: 'invisible'
-    });
+        $('.infoPayementNom p:last-child').editable({
+            highlight: 'invisible'
+        });
 
-    $('.infoPayementCrypto p:last-child').editable({
-        highlight: 'invisible'
-    });
+        $('.infoPayementDateExpiration p:last-child').editable({
+            highlight: 'invisible',
+            combodate: {
+                    minYear: 2014,
+                    maxYear: 2020
+                }
+        });
 
+        $('.infoPayementCrypto p:last-child').editable({
+            highlight: 'invisible'
+        });
+    };
+   startEditable();
 });
