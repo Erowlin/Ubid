@@ -62,6 +62,22 @@ header{
 	overflow: hidden;
 	z-index: 99 !important;
 }
+
+/* Trick for the hidden for inline elements, the default one only work with block on Bootstrap...*/
+@media (max-width: 768px) {
+	.hidden-xs-inline {
+		display: none;
+	}
+}
+
+#searchBar {
+	margin-top: 5px;
+}
+
+#searchButtonPrimary {
+	margin-top: 50px;
+}
+
 .btn-openAction{
 	background-color: #1ABC9C !important;
 }

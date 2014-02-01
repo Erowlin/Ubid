@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var btnCloseVolet = document.getElementById('btnCloseVolet');
 	var timerAnim = 0.5;
 
+
 	$('#btnOpenVolet').click(function(){
 		if( document.body.clientWidth < 768 ){
 			TweenMax.to("#voletAction", timerAnim, {height:"100%"});
@@ -21,4 +22,8 @@ $(document).ready(function(){
 	return false;  
 	});
 	
+
+	// Supprimer quand travail terminé
+	btnOpenVolet.click();
+
 });
