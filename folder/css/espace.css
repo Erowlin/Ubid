@@ -131,6 +131,43 @@
 	margin-bottom: 5px;
 }
 
+.messagerie .avatar {
+	width: 60px;
+	float: left;
+	margin-right: 15px;
+	margin-top: -5px;
+}
+
+.messagerie article {
+	display: block;
+	border-bottom: 1px solid #ddd;
+	clear: both;
+	padding: 20px 0;
+	cursor: pointer;
+}
+
+.messagerie article:last-child {
+	border-bottom: 0px solid black;
+}
+
+.messagerie h3 {
+	font-size: 22px;
+	line-height: 1;
+	margin: 0;
+}
+
+.messagerie .status_container {
+	position: relative;
+	display: inline-block;
+	margin-right: 5px;
+	width: 16px;
+}
+
+.messagerie .status_container .status {
+	position: absolute;
+	margin-top: -16px;
+}
+
 span.icon_bckgrd {
 	background-color: #F39C12 ;
 }
