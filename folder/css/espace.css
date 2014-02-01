@@ -141,9 +141,13 @@ span.legende.paid {
 }
 
 .rowEspacePerso h4{
-    font-size: 20px;
+    font-size: 18px;
     margin-top: -32px;
-    z-index: 90;
+}
+
+.rowEspacePerso p{
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .btn-openAction{
@@ -157,9 +161,32 @@ span.legende.paid {
     text-align: left;
 }
 
+.infoAdresse{
+    text-align: left;
+}
+
+.infoAdresse p{
+    margin-left: 10px;
+}
+
+.select .btn .filter-option {
+    left: 10px;
+}
 .infoPerso img{
     width: 100px;
     height: 100px;
     float: left;
-    margin: 0 20px;
+    margin: 10px 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .rowEspacePerso h4{
+        margin-top: 0px;
+    }
+
+    h4.first-title{
+        margin-top: -32px;
+    }
 }
