@@ -70,6 +70,13 @@ header{
 	}
 }
 
+#map {
+	height: 150px;
+	width: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
 .boxMargin {
 	border-left: 1px solid;
 	border-right: 1px solid;
@@ -81,7 +88,7 @@ header{
 }
 
 #searchButtonPrimary>.btn-default {
-	margin-top: 5px;
+	margin-top: 15px;
 	background-color: #005869;
 }
 

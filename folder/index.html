@@ -9,6 +9,7 @@
   <link href="css/flat-ui.css" rel="stylesheet">
   <link href="css/perso.css" rel="stylesheet">
   <link href="css/produitCss.css" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -20,6 +21,8 @@
       <![endif]-->
     </head>
     <body>
+
+
       <header class="header">
         <nav class="nav navbar-default navbar-inverse" role="navigation">
          <!-- Brand and toggle get grouped for better mobile display -->
@@ -78,7 +81,7 @@
             <div class="col-xs-12">
               <div class="row">
                 <div class="col-sm-4  ">
-                  <h5>Prix</h5>
+                  <h5>Par prix</h5>
                   <div class="row">
                     <div class="col-md-4">Enchère</div>
                     <div class="col-md-4"> 
@@ -102,7 +105,7 @@
                   </div>
                 </div>
                 <div class="col-sm-4 boxMargin">
-                  <h5>Catégories</h5>
+                  <h5>Par catégories</h5>
                   <div class="row">
                     <div class="col-xs-6">
                       <label class="checkbox" for="checkbox1">
@@ -175,7 +178,10 @@
                   </div>
                 </div>
                 <div class="col-sm-4 boxAction alignCenter">
-                  <p class="infoArchitecture"> Zone contenant action box3 </p>
+                  <h5>Par lieu</h5>                          
+                  <div id='map'></div>
+
+                                
                 </div>
               </div>
             </div>
@@ -191,6 +197,7 @@
   <div class="wrap"> 
     <div class="container"><!-- Main container -->
       <div class="row template">
+
         <div class="col-md-12">
 
           <div class="colonneProduit col-xs-12 col-sm-6 col-md-4 col-lg-3"><!-- COLONE DE PRODUIT 1 -->
@@ -548,9 +555,9 @@
 
     </div>
   </div> 
-
   <div id="footer" class="hidden-xs">
     <div class="container">
+
       <p class="infoArchitecture"> Zone contenant le footer </p>
     </div>
   </div> 
@@ -571,5 +578,9 @@
   <script src="js/jquery.placeholder.js"></script>
   <script src="js/TweenMax.min.js"></script>
   <script src="js/perso.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+  <script src="js/map.js"></script>
+
+
 </body>
 </html>
