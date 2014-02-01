@@ -9,6 +9,7 @@
     <link href="css/flat-ui.css" rel="stylesheet">
     <link href="css/perso.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/espace.css">
+    <link href="css/bootstrap-editable.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,22 +63,64 @@
               <div class="col-md-4 boxAction alignCenter">
                   <h4 class="first-title"> Mes informations </h4>
                   <div class="infoPerso">
-                      <img src="http://placehold.it/100x100$text=MaPhoto">
-                      <p class="infoPersoPseudo">Pseudo</p>
-                      <p class="infoPersoCouriel">Couriel</p>
-                      <p class="infoPersoNumDomicile">Numero de telephone du domicile</p>
-                      <p class="infoPersoNumMobile">Numero de telephon du mobile</p>
-                      <p class="infoPersoPassword">Mot de passe</p>
-				   </div>
+                      <div class=" row-infoPerso-right col-md-4 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+                          <img  class="infoPersoPhoto" src="http://placehold.it/100x100$text=MaPhoto">
+                          <button class=" infoPersoPassword btn btn-inverse btn-wide">
+                              Mot de passe&nbsp
+                              <span class="glyphicon glyphicon-pencil"></span>
+                          </button>
+                          <button class=" infoPersoPassword btn btn-inverse btn-wide">
+                              Mes favoris&nbsp
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </button>
+                      </div>
+                      <div class=" row-infoPerso-left col-md-8 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+
+                          <div class="infoPersoPseudo">
+                              <p  data-type="text" data-pk="1" data-title="Entrer un nouveau pseudo" >
+                                  Heisenberg
+                              </p>
+                          </div>
+                          <div class="infoPersoCouriel">
+                              <p data-type="email" data-pk="2" data-title="Entrer une nouvelle adresse">
+                                   monadresse@gmail.com
+                              </p>
+                          </div>
+                          <div class="infoPersoNote">
+                              <p>Ma note: 4.2</p>
+                              <span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733</span></span></span></span>
+                          </div>
+                          <div class="infoPersoComplementaire">
+                              <div class="infoPersoNumDomicile ">
+                                  <p>
+                                      N° domicile:
+                                  </p>
+                                  <p data-type="text" data-pk="3" data-title="Entrer un nouveau numero">
+                                      470 xxx xxxx
+                                  </p>
+                              </div>
+
+                              <div class="infoPersoNumMobile">
+                                  <p>
+                                      N° cellulaire:
+                                  </p>
+                                  <p data-type="text" data-pk="4" data-title="Entrer un nouveau numero de cellulaire">
+                                      450 760 xxxx
+                                  </p>
+                              </div>
+                        </div>
+                      </div>
+				  </div>
               </div>
               <div class="col-md-4 boxAction alignCenter">
                   <h4> Mon adresse </h4>
                   <div class="infoAdresse">
-                      <select name="adresselist" class="infoAdressetAjout btn-group select select-block">
-                          <option value="0"> Choix de l'adresse utilisée</option>
+                      <select name="adresselist" class="infoAdresseAjout btn-group select select-block">
+                          <option selected="selected" value="0"> Choix de l'adresse utilisée</option>
                           <option value="1">Adresse 1</option>
                           <option value="2">Adresse 2</option>
                           <option value="3">Adresse 3</option>
+                          <option value="4">Ajouter une nouvelle adresse</option>
                       </select>
                       <p class="infoAdresseRue">Rue de l'adresse</p>
                       <p class="infoAdresseVille">Ville de l'adresse</p>
@@ -249,6 +292,7 @@
     <script src="js/jquery.tagsinput.js"></script>
     <script src="js/jquery.placeholder.js"></script>
     <script src="js/TweenMax.min.js"></script>
+    <script src="js/bootstrap-editable.js"></script>
     <script src="js/perso.js"></script>
     <script src="js/espace.js"></script>
   </body>

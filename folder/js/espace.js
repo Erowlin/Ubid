@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    $.fn.editable.defaults.mode = 'inline';
+
     $('.bid_content').hover(
         function(){
             $(this).find('.action_box').on('click', function(event){
@@ -38,7 +40,7 @@ $(document).ready(function(){
 
     });
     $('#btnCloseVoletEspacePerso').click(function(){
-        TweenMax.to("#voletAction", timerAnim, {height:"45px"});
+        TweenMax.to("#voletAction", timerAnim, {height:"50px"});
         btnCloseVoletEspacePerso.style.display = "none";
         btnOpenVoletEspacePerso.style.display = "block";
         $('#voletAction').css('overflow', 'hidden');
@@ -54,13 +56,33 @@ $(document).ready(function(){
     $("select[name='adresselist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[name='payementlist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
 
+    $('.infoPayementAjout').find("li a").click(function(){
+        alert($(this).html());
+    });
+
     $('.infoAdresseAjout').find("li:last-child a").append("<span class=\"pull-right glyphicon glyphicon-plus\"></span>");
-    $('.infoAdressetAjout').find("li:last-child a").click(function(){
-        /* ouverture modale ajout adresse */
+    $('.infoAdresseAjout').find("li:last-child a").click(function(){
+        /* ouverture modale ajout moyen de payement */
     });
 
     $('.infoPayementAjout').find("li:last-child a").append("<span class=\"pull-right glyphicon glyphicon-plus\"></span>");
     $('.infoPayementAjout').find("li:last-child a").click(function(){
         /* ouverture modale ajout moyen de payement */
+    });
+
+    $('.infoPersoPseudo p').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoPersoCouriel p').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoPersoNumDomicile p:last-child').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoPersoNumMobile p:last-child').editable({
+        highlight:  'invisible'
     });
 });

@@ -150,33 +150,63 @@ span.legende.paid {
     color: #ffffff;
 }
 
-.btn-openAction{
+.row-infoPerso-right{
+   text-align: center;
+    display: block;
+}
 
+.infoPersoPhoto{
+    margin: 10px;
+}
+
+.infoPersoPassword{
+    max-width: 120px !important;
+    min-width: 120px;
+    font-size: 14px;
+    padding: 0 4px;
+    white-space: normal;
+}
+
+.btn-openAction{
     position: relative;
     z-index: 100;
 }
 
-.infoPerso{
-    display: block;
+.infoPerso, .infoAdresse, .infoPayement{
     text-align: left;
+    padding-top: 5px;
 }
 
-.infoAdresse{
-    text-align: left;
-}
-
-.infoAdresse p{
+.infoAdresse p, .infoPayement p{
     margin-left: 10px;
 }
 
 .select .btn .filter-option {
     left: 10px;
 }
-.infoPerso img{
-    width: 100px;
-    height: 100px;
-    float: left;
-    margin: 10px 20px;
+
+.infoPersoNote p{
+    margin-right: 20px;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+.infoPersoComplementaire{
+    margin-bottom: 20px;
+
+}
+
+.infoPersoComplementaire div p{
+    display: inline-block;
+}
+
+.editableform{
+    padding-top: 5px;
+}
+
+.editable-click,a.editable-click,a.editable-click:hover
+{
+    cursor: pointer;
 }
 
 
