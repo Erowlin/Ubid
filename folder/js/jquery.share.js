@@ -137,7 +137,10 @@
 })(jQuery, window);
 
 $(document).ready(function(){
- $('#mydiv').share({
-        networks: ['facebook','twitter','googleplus','email']
+     $('#mydiv3').share({
+        networks: ['twitter','facebook','tumblr','googleplus','email'],
+        orientation: 'vertical',
+        urlToShare: 'http://www.in1.com',
+        affix: 'right center'
     });
 });
