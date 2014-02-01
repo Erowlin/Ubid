@@ -248,20 +248,36 @@ span.legende.paid {
 }
 
 .row-infoPerso-right{
-   text-align: center;
-    display: block;
+   display: block;
 }
 
 .infoPersoPhoto{
-    margin: 10px;
+    max-width: 120px;
+    max-height: 160px;
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 .infoPersoPassword{
     max-width: 120px !important;
     min-width: 120px;
     font-size: 14px;
+    margin: auto;
+    margin-bottom: 10px;
     padding: 0 4px;
     white-space: normal;
+    display: block;
+}
+
+.infoPersoFavoris{
+    min-width: 120px;
+    font-size: 14px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 0 4px;
+    white-space: normal;
+    display: block;
 }
 
 .btn-openAction{
@@ -272,6 +288,11 @@ span.legende.paid {
 .infoPerso, .infoAdresse, .infoPayement{
     text-align: left;
     padding-top: 5px;
+}
+
+
+.infoPerso p, .infoAdresse p, .infoPayement p{
+    display: inline-block;
 }
 
 .infoAdresse p, .infoPayement p{
@@ -285,16 +306,10 @@ span.legende.paid {
 .infoPersoNote p{
     margin-right: 20px;
     padding: 5px 0;
-    display: inline-block;
 }
 
 .infoPersoComplementaire{
     margin-bottom: 20px;
-
-}
-
-.infoPersoComplementaire div p{
-    display: inline-block;
 }
 
 .editableform{
@@ -306,7 +321,6 @@ span.legende.paid {
     cursor: pointer;
 }
 
-
 @media screen and (max-width: 768px) {
 
     .rowEspacePerso h4{
@@ -314,6 +328,6 @@ span.legende.paid {
     }
 
     h4.first-title{
-        margin-top: -32px;
+        margin-top: 10px;
     }
 }
