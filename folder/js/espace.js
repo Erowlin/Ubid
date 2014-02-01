@@ -38,10 +38,14 @@ $(document).ready(function(){
 
     $('#btnOpenVoletEspacePerso').click(function(){
        TweenMax.to("#voletAction", timerAnim, {height:"100%"});
-       $('#voletAction').css('overflow', 'visible');
         btnOpenVoletEspacePerso.style.display = "none";
         btnCloseVoletEspacePerso.style.display = "block";
 
+        if( document.body.clientWidth < 768 ){
+            $('#voletAction').css('overflow', 'auto');
+        }else{
+            $('#voletAction').css('overflow', 'visible');
+        }
     });
     $('#btnCloseVoletEspacePerso').click(function(){
         TweenMax.to("#voletAction", timerAnim, {height:"50px"});
@@ -52,9 +56,14 @@ $(document).ready(function(){
     });
     $('.rowEspacePerso').click(function(){
         TweenMax.to("#voletAction", timerAnim, {height:"100%"});
-        $('#voletAction').css('overflow', 'visible');
         btnOpenVoletEspacePerso.style.display = "none";
         btnCloseVoletEspacePerso.style.display = "block";
+
+        if( document.body.clientWidth < 768 ){
+            $('#voletAction').css('overflow', 'auto');
+        }else{
+            $('#voletAction').css('overflow', 'visible');
+        }
     });
 
     $("select[name='adresselist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
@@ -89,4 +98,37 @@ $(document).ready(function(){
     $('.infoPersoNumMobile p:last-child').editable({
         highlight:  'invisible'
     });
+
+    $('.infoAdresseRue p:last-child').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoAdresseVille p:last-child').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoAdresseCodePostal p:last-child').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoAdressePays p:last-child').editable({
+        highlight:  'invisible'
+    });
+
+    $('.infoPayementNumero p:last-child').editable({
+        highlight: 'invisible'
+    });
+
+    $('.infoPayementNom p:last-child').editable({
+        highlight: 'invisible'
+    });
+
+    $('.infoPayementDateExpiration p:last-child').editable({
+        highlight: 'invisible'
+    });
+
+    $('.infoPayementCrypto p:last-child').editable({
+        highlight: 'invisible'
+    });
+
 });
