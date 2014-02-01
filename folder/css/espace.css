@@ -1,16 +1,20 @@
 .box_bid {
-	/*border-bottom: 2px dashed lightgrey;*/
+	border-bottom: 2px dashed lightgrey;
 	width: 100%;
 	display: block;
 	position: relative;
-	margin-bottom: 2px;
+	padding: 1px 0;
 	clear: both;
-	background-color: #ddd;
+	/* background-color: #ddd; */
+}
+
+.box_bid:first-child {
+	border-top: 2px dashed lightgrey;
 }
 
 .bid_content {
-	width: 40%;
-	min-width: 300px;
+	width: 60%;
+	min-width: 330px;
 	display: block;
 	height:70px;
 	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
@@ -51,12 +55,25 @@
 }
 
 .bid_challenged {
-	background-color: red;
+	background-color: #d35400;
+}
+
+.bid_challenged .main {
+	background-color: #e67e22;
 }
 
 .bid_won {
 	margin: 0 auto;
-	background-color: green;
+	background-color: #2c3e50;
+	color:#bdc3c7;
+}
+
+.bid_won .main {
+	background-color: #34495e;
+}
+
+.bid_won .hover {
+	padding: 10px;
 }
 
 .bid_paid .hover {
@@ -78,7 +95,6 @@
 	margin-left:auto; margin-right:0px;
 	background-color: #27ae60;
 	clear: both;
-	margin-bottom: 2px;
 }
 
 .bid_paid .main {
@@ -86,17 +102,42 @@
 }
 
 #legende {
-	position: absolute;
+	/*position: absolute;
 	right: 0;
-	top: 20px;
+	top: 20px;*/
 }
 
-#legende span {
+#legende {
+	position: absolute;
+	top:15px;
+	right: 15px;
+	border-bottom: 1px solid;
+	cursor: pointer;
+}
+
+#content_legende {
+	display: none;
+	margin-bottom: 5px;
+}
+
+span.legende {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	background-color: black;
+	border:3px solid white;
 	margin: 0px 5px;
+}
+
+span.legende.challenged {
+	background-color: #e67e22 ;
+}
+
+span.legende.won {
+	background-color: #34495e ;
+}
+
+span.legende.paid {
+	background-color: #2ecc71 ;
 }
 
 .rowEspacePerso h4{

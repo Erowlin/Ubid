@@ -1,17 +1,29 @@
-
-$('.bid_content').hover(
-	function(){
-		$(this).find('.action_box').on('click', function(event){
-			event.preventDefault();
-			$(this).closest('.main').css('marginTop', '-300px');
-			return false;
-		});
-	},
-	function(){
-		$(this).find('.main').css('marginTop', '0px');
-	});
-
 $(document).ready(function(){
+
+    $('.bid_content').hover(
+        function(){
+            $(this).find('.action_box').on('click', function(event){
+                event.preventDefault();
+                $(this).closest('.main').css('marginTop', '-400px');
+                return false;
+            });
+        },
+        function(){
+            $(this).find('.main').css('marginTop', '0px');
+        });
+
+    $('#legende').on('click', function(){
+        $('#content_legende').slideToggle();
+        if($('#legende').html() == "+ Légende")
+        {
+            $('#legende').html('&mdash; Légende');
+        }
+        else
+        {
+            $('#legende').html('+ Légende');
+        }
+    });
+
 
     var btnOpenVoletEspacePerso = document.getElementById('btnOpenVoletEspacePerso');
     var btnCloseVoletEspacePerso = document.getElementById('btnCloseVoletEspacePerso');
@@ -52,4 +64,3 @@ $(document).ready(function(){
         /* ouverture modale ajout moyen de payement */
     });
 });
-
