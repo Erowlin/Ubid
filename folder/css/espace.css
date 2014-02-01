@@ -138,12 +138,34 @@
 	margin-top: -5px;
 }
 
+.messagerie .new_message {
+	display: block;
+	width: 100%;
+	padding:10px;
+	text-align: center;
+	color:#ecf0f1;
+	background-color: #2f4154;
+	cursor: pointer;
+}
+
+.messagerie .new_message:hover {
+	background-color: #34495e;
+}
+
 .messagerie article {
 	display: block;
 	border-bottom: 1px solid #ddd;
 	clear: both;
-	padding: 20px 0;
+	padding: 20px 5px;
 	cursor: pointer;
+}
+
+.messagerie article span {
+	font-size: 16px;
+}
+
+.messagerie article:hover {
+	background-color: #ecf0f1;
 }
 
 .messagerie article:last-child {
@@ -165,7 +187,7 @@
 
 .messagerie .status_container .status {
 	position: absolute;
-	margin-top: -16px;
+	margin-top: -14px;
 }
 
 span.icon_bckgrd {
