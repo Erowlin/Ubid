@@ -50,31 +50,51 @@
 
 
       <div id="voletAction" class="container">
-          <div class="rowEspacePerso">
+          <div class=" row rowEspacePerso">
               <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
-                  <button id="btnOpenVoletEspacePerso" type="button" class="btn btn-default btn-openAction btn-lg">
+                  <button id="btnOpenVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg">
                       <span class="glyphicon glyphicon-plus"></span>
                   </button>
-                  <button id="btnCloseVoletEspacePerso" type="button" class="btn btn-default btn-openAction btn-lg init-displayNone">
+                  <button id="btnCloseVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg init-displayNone">
                       <span class="glyphicon glyphicon-minus"></span>
                   </button>
               </div>
               <div class="col-md-4 boxAction alignCenter">
-                  <h4> Mes informations </h4>
+                  <h4 class="first-title"> Mes informations </h4>
                   <div class="infoPerso">
                       <img src="http://placehold.it/100x100$text=MaPhoto">
-                      <p>Pseudo</p>
-                      <p>Courriel</p>
-                  </div>
-                  <div class="infoPersoPassword">
-                      <p>Mot de passe</p>
-                  </div>
+                      <p class="infoPersoPseudo">Pseudo</p>
+                      <p class="infoPersoCouriel">Couriel</p>
+                      <p class="infoPersoNumDomicile">Numero de telephone du domicile</p>
+                      <p class="infoPersoNumMobile">Numero de telephon du mobile</p>
+                      <p class="infoPersoPassword">Mot de passe</p>
+				   </div>
               </div>
               <div class="col-md-4 boxAction alignCenter">
                   <h4> Mon adresse </h4>
+                  <div class="infoAdresse">
+                      <select name="adresselist" class="infoAdressetAjout btn-group select select-block">
+                          <option value="0"> Choix de l'adresse utilisée</option>
+                          <option value="1">Adresse 1</option>
+                          <option value="2">Adresse 2</option>
+                          <option value="3">Adresse 3</option>
+                      </select>
+                      <p class="infoAdresseRue">Rue de l'adresse</p>
+                      <p class="infoAdresseVille">Ville de l'adresse</p>
+                      <p class="infoAdresseCodePostal">Code Postal de l'adresse</p>
+                      <p class="infoAdressePays">Pays de l'adresse</p>
+                  </div>
               </div>
               <div class="col-md-4 boxAction alignCenter">
                   <h4> Méthodes de paiement </h4>
+                    <div class="infoPayement">
+                      <select name="payementlist" class=" infoPayementAjout btn-group select select-block">
+                          <option value="0">Choix du moyen de payement</option>
+                          <option selected="selected" value="1">Carte Visa</option>
+                          <option value="2">Compte Paypal</option>
+                          <option value="3">Ajouter un moyen de payement</option>
+                      </select>
+                    </div>            
               </div>
           </div>
       </div>
