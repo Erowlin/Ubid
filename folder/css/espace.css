@@ -205,6 +205,16 @@
 
 span.icon_bckgrd {
 	background-color: #F39C12 ;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+}
+
+#content_legende .icon_bckgrd img {
+	position: absolute;
+	left: -3px;
+	top: 3px;
 }
 
 span.legende {
