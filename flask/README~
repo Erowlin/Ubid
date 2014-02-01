@@ -1,0 +1,5 @@
+Installation de Flask : 
+
+1- Installer Python
+2- Dans un terminal : pip install Flask
+3- Lancer le serveur : python hello.py
