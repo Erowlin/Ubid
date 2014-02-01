@@ -158,6 +158,19 @@
 	clear: both;
 	padding: 20px 5px;
 	cursor: pointer;
+	position: relative;
+}
+
+.messagerie .close_message {
+	position: absolute;
+	right:5px;
+	top: 5px;
+	color: #ddd;
+	font-weight: bold;
+}
+
+.messagerie .close_message:hover {
+	color: #c0392b;
 }
 
 .messagerie article span {
