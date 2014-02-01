@@ -62,6 +62,41 @@ header{
 	overflow: hidden;
 	z-index: 99 !important;
 }
+
+/* Trick for the hidden for inline elements, the default one only work with block on Bootstrap...*/
+@media (max-width: 768px) {
+	.hidden-xs-inline {
+		display: none;
+	}
+}
+
+#map {
+	height: 150px;
+	width: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+.boxMargin {
+	border-left: 1px solid;
+	border-right: 1px solid;
+    border-color: #c5c5c5;
+}
+
+#searchBar {
+	margin-top: 5px;
+}
+
+#searchButtonPrimary>.btn-default {
+	margin-top: 15px;
+	background-color: #005869;
+}
+
+.checkbox.checked .second-icon, .radio.checked .second-icon, .checkbox.checked, .radio.checked {
+	color: #005869;
+	31797D
+}
+
 .btn-openAction{
 	background-color: #1ABC9C !important;
 }

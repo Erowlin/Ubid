@@ -26,6 +26,10 @@ $(document).ready(function(){
         }
     });
 
+    $('.messagerie .close_message').on('click', function(){
+        $(this).parent().slideToggle();
+    });
+
 
     var btnOpenVoletEspacePerso = document.getElementById('btnOpenVoletEspacePerso');
     var btnCloseVoletEspacePerso = document.getElementById('btnCloseVoletEspacePerso');

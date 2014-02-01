@@ -1,5 +1,5 @@
 .box_bid {
-	border-bottom: 2px dashed lightgrey;
+	border-bottom: 2px dashed #ecf0f1;
 	width: 100%;
 	display: block;
 	position: relative;
@@ -9,7 +9,7 @@
 }
 
 .box_bid:first-child {
-	border-top: 2px dashed lightgrey;
+	border-top: 2px dashed #ecf0f1;
 }
 
 .bid_content {
@@ -21,6 +21,7 @@
 	position: relative;
 	font-size: 14px;
 	overflow: hidden;
+	border-radius: 5px;
 }
 
 .bid_content .main {
@@ -55,11 +56,21 @@
 }
 
 .bid_challenged {
-	background-color: #d35400;
+	background-color: #e67e22;
 }
 
 .bid_challenged .main {
-	background-color: #e67e22;
+	background-color: #F39C12;
+}
+
+.bid_challenged .hover {
+	text-align: center;
+	line-height: 1;
+	padding: 5px;
+}
+
+.bid_challenged .hover a {
+	margin-top: -10px;
 }
 
 .bid_won {
@@ -120,16 +131,92 @@
 	margin-bottom: 5px;
 }
 
+.messagerie .avatar {
+	width: 60px;
+	float: left;
+	margin-right: 15px;
+	margin-top: -5px;
+}
+
+.messagerie .new_message {
+	display: block;
+	width: 100%;
+	padding:10px;
+	text-align: center;
+	color:#ecf0f1;
+	background-color: #2f4154;
+	cursor: pointer;
+}
+
+.messagerie .new_message:hover {
+	background-color: #34495e;
+}
+
+.messagerie article {
+	display: block;
+	border-bottom: 1px solid #ddd;
+	clear: both;
+	padding: 20px 5px;
+	cursor: pointer;
+	position: relative;
+}
+
+.messagerie .close_message {
+	position: absolute;
+	right:5px;
+	top: 5px;
+	color: #ddd;
+	font-weight: bold;
+}
+
+.messagerie .close_message:hover {
+	color: #c0392b;
+}
+
+.messagerie article span {
+	font-size: 16px;
+}
+
+.messagerie article:hover {
+	background-color: #ecf0f1;
+}
+
+.messagerie article:last-child {
+	border-bottom: 0px solid black;
+}
+
+.messagerie h3 {
+	font-size: 22px;
+	line-height: 1;
+	margin: 0;
+}
+
+.messagerie .status_container {
+	position: relative;
+	display: inline-block;
+	margin-right: 5px;
+	width: 16px;
+}
+
+.messagerie .status_container .status {
+	position: absolute;
+	margin-top: -14px;
+}
+
+span.icon_bckgrd {
+	background-color: #F39C12 ;
+}
+
 span.legende {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	border:3px solid white;
+	border:3px solid #ecf0f1;
 	margin: 0px 5px;
 }
 
 span.legende.challenged {
-	background-color: #e67e22 ;
+	background-color: #F39C12 ;
 }
 
 span.legende.won {
