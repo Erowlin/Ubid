@@ -1,5 +1,5 @@
 .box_bid {
-	border-bottom: 2px dashed lightgrey;
+	border-bottom: 2px dashed #ecf0f1;
 	width: 100%;
 	display: block;
 	position: relative;
@@ -9,7 +9,7 @@
 }
 
 .box_bid:first-child {
-	border-top: 2px dashed lightgrey;
+	border-top: 2px dashed #ecf0f1;
 }
 
 .bid_content {
@@ -124,7 +124,7 @@ span.legende {
 	display: inline-block;
 	width: 16px;
 	height: 16px;
-	border:3px solid white;
+	border:3px solid #ecf0f1;
 	margin: 0px 5px;
 }
 
