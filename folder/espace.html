@@ -269,7 +269,7 @@
    </a>
  </div>
  <div class="hover">
-  <a href="#" class="btn btn-info pull-right" style="margin-top:5px;">Valider la livraison</a>
+  <a href="#" class="btn btn-info pull-right" style="margin-top:5px;" data-toggle="modal" data-target="#modalSendBid">Valider la livraison</a>
   Payé avec : MasterCard <br/><img src="http://www.cartes-bancaires-gratuites.fr/wp-content/uploads/icons/credit-cards.png" alt="CB" style="margin-right:5px;"/>  <strong>****.****.**45</strong>
 </div>
 </div>
@@ -372,6 +372,34 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
         <button type="submit" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalSendBid" tabindex="-1" role="dialog" aria-labelledby="modalSendBid" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title" id="modaleSendBid">Valider l'envoi de l'objet</h5>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified" id="tabSendBid">
+          <li class="active"><a href="#valider_adresse" data-toggle="tab">Valider l'adresse</a></li>
+          <li><a href="#valider_resume" data-toggle="tab">Résumé</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane in active" id="valider_adresse">Adresse</div>
+          <div class="tab-pane" id="valider_resume">Resumé</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Suivant</button>
       </div>
     </div>
   </div>
