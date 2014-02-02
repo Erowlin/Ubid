@@ -84,7 +84,7 @@ $(document).ready(function(){
         {
             $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**45').editable('setValue', '****.****.**45');
             $('#donnees_bancaires .infoPayementNom p:last-child').html('Steve Benedick').editable('setValue', 'Steve Benedick');
-            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-05').editable('setValue', '14-05');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').html('O5/14').attr('data-value', '14-05').editable('setValue', '14-05');
             $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***').editable('setValue', '***');
 
         }
@@ -92,7 +92,7 @@ $(document).ready(function(){
         {
             $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**71').editable('setValue', '****.****.**71');
             $('#donnees_bancaires .infoPayementNom p:last-child').html('Hugo Zilliox').editable('setValue', 'Hugo Zilliox');
-            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-12').editable('setValue', '14-12');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').html('12/14').attr('data-value', '14-12').editable('setValue', '14-12');
             $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***').editable('setValue', '***');
 
         }
