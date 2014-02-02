@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-    $.fn.editable.defaults.mode = 'inline';
-
     // Permet l'action du clic sur les liens des blocs objets dans la vue mes enchères.
     $('.bid_content').hover(
         // lorsqu'on hover et qu'on clique sur le lien, on change le margin pour faire apparaitre la deuxieme partie
@@ -36,12 +34,13 @@ $(document).ready(function(){
         // penser à implémenter une méthode pour supprimer le fil dans la bdd
     });
 
-
+    // variable utilisé pour l'ouverture et la fermeture du volet d'action
     var btnOpenVoletEspacePerso = document.getElementById('btnOpenVoletEspacePerso');
     var btnCloseVoletEspacePerso = document.getElementById('btnCloseVoletEspacePerso');
     var espacePerso = document.getElementById('rowEspacePerso');
     var timerAnim = 0.5;
 
+    //ouverture de volet d'action lors du clic sur le bouton '+'
     $('#btnOpenVoletEspacePerso').click(function(){
        TweenMax.to("#voletAction", timerAnim, {height:"100%"});
         btnOpenVoletEspacePerso.style.display = "none";
@@ -53,6 +52,8 @@ $(document).ready(function(){
             $('#voletAction').css('overflow', 'visible');
         }
     });
+
+    //fermeture du volet d'action lors du clic sur le bouton '-'
     $('#btnCloseVoletEspacePerso').click(function(){
         TweenMax.to("#voletAction", timerAnim, {height:"50px"});
         btnCloseVoletEspacePerso.style.display = "none";
@@ -60,6 +61,8 @@ $(document).ready(function(){
         $('#voletAction').css('overflow', 'hidden');
         return false;
     });
+
+    //ouverture du volet action lors du clic sur le volet d'action
     $('.rowEspacePerso').click(function(){
         TweenMax.to("#voletAction", timerAnim, {height:"100%"});
         btnOpenVoletEspacePerso.style.display = "none";
@@ -72,6 +75,7 @@ $(document).ready(function(){
         }
     });
 
+    // Creation des deux dropdown (choix moyen de payement et choix adresse)
     $("select[name='adresselist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
     $("select[name='payementlist']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
 
@@ -127,6 +131,7 @@ $(document).ready(function(){
         }
     });
 
+    // ajout d'une icon '+' au dernier element de la liste correspondant a l'ajout d'une adresse ou l'ajout d'un moyen de payement
     $('.infoAdresseAjout').find("li:last-child a").append("<span class=\"pull-right glyphicon glyphicon-plus\"></span>");
     $('.infoAdresseAjout').find("li:last-child a").click(function(){
         /* ouverture modale ajout moyen de payement */
@@ -137,61 +142,66 @@ $(document).ready(function(){
         /* ouverture modale ajout moyen de payement */
     });
 
+    // modification de la photo de profil
     $('#photo_content').on('click',function(){
+        /* ouverture modale modification de photo */
         //alert(':)')
     });
 
+    // definition du style pour la modification des variables
+    $.fn.editable.defaults.mode = 'inline';
 
-        $('.infoPersoPseudo p').editable({
-            highlight:  'invisible'
-        });
+    // Déclaration de différentes valeures modifiables
+    $('.infoPersoPseudo p').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoPersoCouriel p').editable({
-            highlight:  'invisible'
-        });
+    $('.infoPersoCouriel p').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoPersoNumDomicile p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoPersoNumDomicile p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoPersoNumMobile p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoPersoNumMobile p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoAdresseRue p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoAdresseRue p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoAdresseVille p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoAdresseVille p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoAdresseCodePostal p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoAdresseCodePostal p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoAdressePays p:last-child').editable({
-            highlight:  'invisible'
-        });
+    $('.infoAdressePays p:last-child').editable({
+        highlight:  'invisible'
+    });
 
-        $('.infoPayementNumero p:last-child').editable({
-            highlight: 'invisible'
-        });
+    $('.infoPayementNumero p:last-child').editable({
+        highlight: 'invisible'
+    });
 
-        $('.infoPayementNom p:last-child').editable({
-            highlight: 'invisible'
-        });
+    $('.infoPayementNom p:last-child').editable({
+        highlight: 'invisible'
+    });
 
-        $('.infoPayementDateExpiration p:last-child').editable({
-            highlight: 'invisible',
-            combodate: {
-                    minYear: 2014,
-                    maxYear: 2020
-                }
-        });
+    $('.infoPayementDateExpiration p:last-child').editable({
+        highlight: 'invisible',
+        combodate: {
+            minYear: 2014,
+            maxYear: 2020
+        }
+    });
 
-        $('.infoPayementCrypto p:last-child').editable({
-            highlight: 'invisible'
-        });
+    $('.infoPayementCrypto p:last-child').editable({
+        highlight: 'invisible'
+    });
 
 });
