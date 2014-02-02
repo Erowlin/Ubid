@@ -82,21 +82,19 @@ $(document).ready(function(){
         //console.log($(this).parent().attr('rel'));
         if($(this).parent().attr('rel') == 1)
         {
-            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**45');
-            $('#donnees_bancaires .infoPayementNom p:last-child').html('Steve Benedick');
-            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-05');
-            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***');
+            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**45').editable('setValue', '****.****.**45');
+            $('#donnees_bancaires .infoPayementNom p:last-child').html('Steve Benedick').editable('setValue', 'Steve Benedick');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-05').editable('setValue', '14-05');
+            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***').editable('setValue', '***');
 
-            startEditable();
         }
         else if ($(this).parent().attr('rel') == 2)
         {
-            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**71');
-            $('#donnees_bancaires .infoPayementNom p:last-child').html('Hugo Zilliox');
-            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-12');
-            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***');
+            $('#donnees_bancaires .infoPayementNumero p:last-child').html('****.****.**71').editable('setValue', '****.****.**71');
+            $('#donnees_bancaires .infoPayementNom p:last-child').html('Hugo Zilliox').editable('setValue', 'Hugo Zilliox');
+            $('#donnees_bancaires .infoPayementDateExpiration p:last-child').attr('data-value', '14-12').editable('setValue', '14-12');
+            $('#donnees_bancaires .infoPayementCrypto p:last-child').html('***').editable('setValue', '***');
 
-            startEditable();
         }
         else
         {
@@ -111,22 +109,17 @@ $(document).ready(function(){
         console.log($(this).parent().attr('rel'));
         if($(this).parent().attr('rel') == 1)
         {
-            console.log($('#donnees_adresse .infoAdresseRue p:last-child').html());
-            $('#donnees_adresse .infoAdresseRue p:last-child').html('54 rue de la gare');
-            $('#donnees_adresse .infoAdresseVille p:last-child').html('Strasbourg');
-            $('#donnees_adresse .infoAdressePays p:last-child').html('France');
-            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('67000');
-
-            startEditable();
+            $('#donnees_adresse .infoAdresseRue p:last-child').html('54 rue de la gare').editable('setValue', '54 rue de la gare');
+            $('#donnees_adresse .infoAdresseVille p:last-child').html('Strasbourg').editable('setValue', 'Strasbourg');
+            $('#donnees_adresse .infoAdressePays p:last-child').html('France').editable('setValue', 'France');
+            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('67000').editable('setValue', '67000');
         }
         else if ($(this).parent().attr('rel') == 2)
         {
-            $('#donnees_adresse .infoAdresseRue p:last-child').html('28 rue de la mairie');
-            $('#donnees_adresse .infoAdresseVille p:last-child').html('Colmar');
-            $('#donnees_adresse .infoAdressePays p:last-child').html('France');
-            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('68000');
-
-            startEditable();
+            $('#donnees_adresse .infoAdresseRue p:last-child').html('28 rue de la mairie').editable('setValue', '28 rue de la mairie');
+            $('#donnees_adresse .infoAdresseVille p:last-child').html('Colmar').editable('setValue', 'Colmar');
+            $('#donnees_adresse .infoAdressePays p:last-child').html('France').editable('setValue', 'France');
+            $('#donnees_adresse .infoAdresseCodePostal p:last-child').html('68000').editable('setValue', '68000');
         }
         else
         {
@@ -148,7 +141,7 @@ $(document).ready(function(){
         //alert(':)')
     });
 
-    function startEditable(){
+
         $('.infoPersoPseudo p').editable({
             highlight:  'invisible'
         });
@@ -200,6 +193,5 @@ $(document).ready(function(){
         $('.infoPayementCrypto p:last-child').editable({
             highlight: 'invisible'
         });
-    };
-   startEditable();
+
 });
