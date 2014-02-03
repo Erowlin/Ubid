@@ -1,6 +1,19 @@
 @media screen and (max-width: 768px) { 
 	.voletActionOpen, .voletAction:hover{
 		height: 100% !important;
+		position: absolute;
+		top: 50px;
+	}
+	header{
+		position: absolute !important;
+		top: 53px !important;
+		z-index: 98 !important;
+	}
+	.nav{
+		position: fixed !important;
+		top: 0px !important;
+		width: 100% !important;
+		z-index: 99 !important;
 	}
 }
 /*@media screen and (min-width: 741px) and (max-width: 977px) { 
@@ -22,7 +35,7 @@
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
 @media (min-width: @screen-lg-min) { ... }
 html, body{
-	height: 100%;
+
 }
 header{
 	width: 100%;
@@ -54,6 +67,9 @@ header{
 #footer {
   height: 60px;
   background-color: rgba(52,73,94,0.2);
+}
+.wrap_volet{
+
 }
 #voletAction{
 	width: 100% !important;
