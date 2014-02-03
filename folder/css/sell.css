@@ -1,0 +1,17 @@
+.contentAction {
+	margin-top: 20px;
+}
+.sellButton.btn {
+	margin-top: 20px;
+	background-color: rgb(0, 88, 105);
+	color:white;
+}
+
+.boxMargin {
+	border-left: 1px solid;
+	border-right: 1px solid;
+    border-color: #c5c5c5;
+}
+
+table td, table tr {
+}

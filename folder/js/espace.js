@@ -5,6 +5,12 @@ $(document).ready(function(){
       $('#tabSendBid').tab('show');
     })
 
+    // Cache l'enchère qu'on annule
+    $('.deleteBid').on('click',function(e){
+        $(this).closest('article').slideToggle();
+        // action a ajouter pour modifier la bdd
+    });
+
     // Permet l'action du clic sur les liens des blocs objets dans la vue mes enchères.
     $('.bid_content').hover(
         // lorsqu'on hover et qu'on clique sur le lien, on change le margin pour faire apparaitre la deuxieme partie
