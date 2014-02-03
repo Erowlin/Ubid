@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+    $('#tabSendBid a').click(function (e) {
+      e.preventDefault();
+      $('#tabSendBid').tab('show');
+    })
+
     // Permet l'action du clic sur les liens des blocs objets dans la vue mes enchères.
     $('.bid_content').hover(
         // lorsqu'on hover et qu'on clique sur le lien, on change le margin pour faire apparaitre la deuxieme partie
