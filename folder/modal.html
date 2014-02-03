@@ -117,11 +117,115 @@
       </div>
 
 
+      <button id="btn-vendre" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalNewProduct">
+        Vendre mon produit
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modalNewProduct" tabindex="-1" role="dialog" aria-labelledby="modalNNewProductLavel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h5 class="modal-title" id="modalNewProductLabel">Vendre un nouveau produit</h5>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                <label for="inputTitre" class="col-sm-3 control-label">Titre</label>
+                  <div class="col-sm-9">
+                    <input type="text" class=" inputeee form-control" id="inputTitre" placeholder="Titre" autofocus>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputCatégorie" class="col-sm-3 control-label">Catégorie</label>
+                  <div class="col-sm-9">
+                    <div class="btn-group select select-block">
+                      <button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
+                        <span class="filter-option pull-left">Choose a category</span>
+                        &nbsp;
+                        <span class="caret"></span>
+                      </button>
+                      <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                      <ul class="dropdown-menu dropdown-inverse" role="menu" >
+                        <li rel="0" class="selected">
+                          <a tabindex="-1" href="#" class="">
+                            <span class="pull-left">Choose a category</span>
+                          </a>
+                        </li>
+                        <li rel="1"><a tabindex="-1" href="#"><span class="pull-left">Mode</span></a></li>
+                        <li rel="2"><a tabindex="-1" href="#"><span class="pull-left">Produits Électroniques</span></a></li>
+                        <li rel="3"><a tabindex="-1" href="#"><span class="pull-left">Maison, Bricolage, Jardin</span></a></li>
+                        <li rel="4"><a tabindex="-1" href="#"><span class="pull-left">Sport</span></a></li>
+                        <li rel="5"><a tabindex="-1" href="#"><span class="pull-left">Livres, Musiques, Vidéos</span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPricingAuction" class="col-sm-3 control-label">Prix de départ</label>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input type="text" class="form-control" id="pricing-min-auction" placeholder="39,99">
+                      </div>
+                      <div class="col-xs-1">$</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPricingAuction" class="col-sm-3 control-label">Achat immédiat</label>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <input type="text" class="form-control" id="pricing-min-auction" placeholder="159,99">
+                      </div>
+                      <div class="col-xs-1">$</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="description" class="col-sm-3 control-label">Description</label>
+                  <div class="col-sm-9">
+                    <textarea name="description" id="productDesctiption" class="form-control" cols="30" rows="5" placeholder="Une courte description de votre produit"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="duration" class="col-sm-3 control-label">Durée</label>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-xs-6 col-md-5 col-sm-5">
+                        <input type="text" class="form-control" placeholder="mm/dd/yy">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="photo" class="col-sm-3 control-label">Photo</label>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-xs-5">
+                        <button class="btn btn-primary">Envoyer une photo</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">Créer mon produit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://code.jquery.com/jquery.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js"></script>
       <script src="js/jquery-1.8.3.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
       <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
       <script src="js/jquery.ui.touch-punch.min.js"></script>
       <script src="js/bootstrap-select.js"></script>
@@ -131,6 +235,7 @@
       <script src="js/jquery.tagsinput.js"></script>
       <script src="js/jquery.placeholder.js"></script>
       <script src="js/jquery.share.js"></script>
+      <script src="js/modal.js"></script>
 
     </body>
     </html>
