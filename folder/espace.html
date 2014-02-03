@@ -204,9 +204,14 @@
 
     <div class="row template">
       <div class="col-md-9">
-        <h4> Mes enchères</h4>
+        <h4> Mes enchères </h4>
         <div id="legende">+ Légende</div>
-        <div id="content_legende"><span class="icon_bckgrd"><img src="img/icons/warning.png" style="margin:0 5px;"/></span> Vous <u>n'êtes pas</u> le meilleur enchérisseur<br/><span class="icon_bckgrd"><img src="img/icons/crown.png" style="margin:0 5px;"/></span> Vous êtes le meilleur enchérisseur<br/><span class="challenged legende"></span>En cours <span class="won legende"></span> Gagnée <span class="paid legende"></span> Livrée</div>
+        <div id="content_legende">
+           <p class="texteLegende"><span class="glyphicon glyphicon-ok btn-md"></span>Vous ête la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-exclamation-sign btn-md"></span>Vous n'etes pas la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-shopping-cart btn-md"></span>Enchère remporté, passez au paiement</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-star btn-md"></span>Le produit à été envoyé, notez le vendeur</p>
+        </div>
         <section>
          <article class="box_bid">
           <div class="bid_challenged bid_content">
@@ -256,7 +261,7 @@
        <p class="texteEnchere">Gagné le 15/01/14</p>
     </div>
     <a class="action_box">
-      <span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
+      <span class="glyphicon glyphicon-ok btn-xs">
      Valider l'objet
    </a>
  </div>
@@ -294,7 +299,7 @@
     </div>
     <a class="action_box">
       <span class="glyphicon glyphicon-star btn-xs"></span>
-     Noter l'objet
+     Noter le vendeur
    </a>
  </div>
  <div class="hover">
@@ -313,7 +318,7 @@
     </div>
     <a class="action_box">
       <span class="glyphicon glyphicon-star btn-xs"></span>
-     Noter l'objet
+     Noter le vendeur
     </a>
  </div>
  <div class="hover">
