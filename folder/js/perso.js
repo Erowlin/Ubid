@@ -9,7 +9,7 @@ $(document).ready(function(){
 		if( document.body.clientWidth < 768 ){
 			TweenMax.to("#voletAction", timerAnim, {height:"100%"});
 		}else{
-			TweenMax.to("#voletAction", timerAnim, {height:"320px"});
+			TweenMax.to("#voletAction", timerAnim, {height:"100%"});
 		}
 		btnOpenVolet.style.display = "none";
 		btnCloseVolet.style.display = "block";

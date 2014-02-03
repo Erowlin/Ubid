@@ -68,9 +68,6 @@ header{
   height: 60px;
   background-color: rgba(52,73,94,0.2);
 }
-.wrap_volet{
-
-}
 #voletAction{
 	width: 100% !important;
 	background-color: #1ABC9C;
@@ -136,4 +133,8 @@ header{
 .template{
 	min-height: 700px;
 	margin-bottom: 30px;
+}
+.nav .glyphicon{
+	color: #fafafa;
+	font-size: 16px;
 }
