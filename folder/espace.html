@@ -11,6 +11,8 @@
   <link rel="stylesheet" type="text/css" href="css/espace.css">
   <link href="css/bootstrap-editable.css" rel="stylesheet">
   <link href="css/jquery.share.css" rel="stylesheet">
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,20 +34,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ubid</a>
+          <a class="navbar-brand" href="index.html">Ubid</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Acheter</a></li>
+            <li><a href="index.html">Acheter</a></li>
             <li><a href="#">Vendre</a></li>
-            <li><a href="#">Mes ench&egrave;res</a></li>
-            <li class="dropdown active">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mon espace<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Mon panier</a></li>
-              </ul>
-            </li>
+            <li class="active"><a href="#">Mon espace</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
@@ -53,14 +48,24 @@
 
       <div id="voletAction" class="container">
         <div class=" row rowEspacePerso">
-          <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
+          <!-- <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
             <button id="btnOpenVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg">
               <span class="glyphicon glyphicon-plus"></span>
             </button>
             <button id="btnCloseVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg init-displayNone">
               <span class="glyphicon glyphicon-minus"></span>
             </button>
+          </div> -->
+          <div class="col-md-4 col-md-offset-8 col-xs-12 adjustBtnOpenVolet">
+            <div id="btnOpenVolet">
+              <span class="glyphicon glyphicon-plus"></span>  <span class="hidden-xs-inline"> Gérer mon profil</span>
+            </div>
+            <div id="btnCloseVolet" class="init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span><span class="hidden-xs-inline"> Fermer la gestion du profil</span>
+            </div>
           </div>
+        </div>
+          <div class="row">
           <div class="col-md-4 boxAction alignCenter">
             <h4 class="first-title"> Mes informations </h4>
             <div class="infoPerso">
@@ -209,10 +214,11 @@
             <img src="http://cdn2.wmf.de/shop/media/catalog/product/cache/10/thumbnail/60x/9df78eab33525d08d6e5fb8d27136e95/TuK/WMF/jpg/12/12_88/12_8803_6046_100.jpg"/>
             <div>
               <h5>Lot de 1000 cuillères</h5>
-              3 jrs restants
+              <p class="texteEnchere">3 jrs restants</p>
             </div>
             <a class="action_box">
-             <acronym title="Vous n'êtes pas le meilleur enchérisseur. Ajoutez 12€ pour passer en tête !"><img src="img/icons/warning.png" style="position:absolute; margin-left:-20px; margin-top:4px;"/></acronym>Enchérir
+             <acronym title="Vous n'êtes pas le meilleur enchérisseur. Ajoutez 12€ pour passer en tête !">  <span class="glyphicon glyphicon-exclamation-sign btn-xs"></span>
+             </acronym>Enchérir
            </a>
          </div>
          <div class="hover">
@@ -227,10 +233,12 @@
         <img src="http://ecx.images-amazon.com/images/I/51RZXZKHKHL._AA60_.jpg"/>
         <div>
           <h5>Extreme Programming</h5>
-          2 hrs restantes
+           <p class="texteEnchere">2 hrs restantes</p>
         </div>
         <a class="action_box">
-         <acronym title="Vous êtes le meilleur enchérisseur"><img src="img/icons/crown.png" style="position:absolute; margin-left:-20px; margin-top:4px;"/></acronym> Enchérir
+         <acronym title="Vous êtes le meilleur enchérisseur">
+            <span class="glyphicon glyphicon-ok btn-xs"></span>
+         </acronym> Enchérir
        </a>
      </div>
      <div class="hover">
@@ -245,9 +253,10 @@
     <img src="http://craigsyardsale.com/thumbs3/sbc25141352_weDollar.jpg"/>
     <div>
       <h5>$10K Trillion Zimbabwe</h5>
-      Gagné le 15/01/14
+       <p class="texteEnchere">Gagné le 15/01/14</p>
     </div>
     <a class="action_box">
+      <span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
      Valider l'objet
    </a>
  </div>
@@ -262,11 +271,12 @@
     <img src="http://www.eurekamamaison.com/Data_Desamais/downloads/CatProduit/mini60_616565z.jpg"/>
     <div>
       <h5>Lot de 20 sacs de litière</h5>
-      Gagné le 31/01/14
+       <p class="texteEnchere">Gagné le 31/01/14</p>
     </div>
     <a class="action_box">
+      <span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
      Valider l'objet
-   </a>
+    </a>
  </div>
  <div class="hover">
   <a href="#" class="btn btn-info pull-right" style="margin-top:5px;" data-toggle="modal" data-target="#modalSendBid">Valider la livraison</a>
@@ -280,9 +290,10 @@
     <img src="http://i.lbdn.com/IMGPRMIN/SAM03520.jpg"/>
     <div>
       <h5>TV HD 50" Samsung</h5>
-      Reçu le 20/01/14
+       <p class="texteEnchere">Reçu le 20/01/14</p>
     </div>
     <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
      Noter l'objet
    </a>
  </div>
@@ -298,11 +309,12 @@
     <img src="http://www.king-technologies.net/237-653-medium/housse-k7-vintage-silicone-iphone-4-et-4s.jpg"/>
     <div>
       <h5>Coque iPhone 4S</h5>
-      Reçu le 27/01/14
+       <p class="texteEnchere">Reçu le 27/01/14</p>
     </div>
     <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
      Noter l'objet
-   </a>
+    </a>
  </div>
  <div class="hover">
   <span>Merci, votre vote (3/5) a été pris en compte !</span>
@@ -342,8 +354,6 @@
 </div>
 </div> 
 
-<!-- div pour les boutons share -->
-<div  id="mydiv3"></div>
 
 <!-- Modal -->
 <div class="modal fade" id="modalWriteMessage" tabindex="-1" role="dialog" aria-labelledby="modalWriteMessageLabel" aria-hidden="true">

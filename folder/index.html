@@ -11,6 +11,8 @@
   <link href="css/produitCss.css" rel="stylesheet">
   <link href="css/jquery.share.css" rel="stylesheet">
   <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,20 +36,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Ubid</a>
+          <a class="navbar-brand" href="index.html">Ubid</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Acheter</a></li>
+            <li class="active"><a href="index.html">Acheter</a></li>
             <li><a href="#">Vendre</a></li>
-            <li><a href="#">Mes ench&egrave;res</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Profil<b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Messages</a></li>
-                <li><a href="#">Mon paniet</a></li>
-              </ul>
-            </li>
+            <li><a href="espace.html">Mon espace</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </nav>
@@ -68,13 +63,13 @@
               </div><!-- /.col-lg-6 -->
             </div>
           </div>
-          <div class="col-md-4 col-xs-4">
-            <button id="btnOpenVolet" type="button" class="btn btn-default btn-openAction btn-lg">
+          <div class="col-md-4 col-xs-4 adjustBtnOpenVolet">
+            <div id="btnOpenVolet">
               <span class="glyphicon glyphicon-plus"></span>  <span class="hidden-xs-inline"> Recherche avanc&eacute;e</span>
-            </button>
-            <button id="btnCloseVolet" type="button" class="btn btn-default btn-openAction btn-lg init-displayNone">
+            </div>
+            <div id="btnCloseVolet" class="init-displayNone">
               <span class="glyphicon glyphicon-minus"></span><span class="hidden-xs-inline"> Fermer la recherche avanc&eacute;e</span>
-            </button>
+            </div>
           </div>
         </div>
 
@@ -532,32 +527,9 @@
         </div>
       </div>
 
-      <div class="row template">
-        <div class="col-md-9">
-          <h4> Template Vendre / table des produits en vente </h4>
-          <p class="infoArchitecture"> Coder ici :  la tableau qui permet de consulter et de modifier ses produits en ventes. </p>
-        </div>
-        <div class="col-md-3 hidden-xs">
-          <h4> Template facultatif </h4>
-          <p class="infoArchitecture"> Coder ici : stats de l'user en tant que vendeur </p>
-        </div>
-      </div>
-
-      <div class="row template">
-        <div class="col-md-9">
-          <h4> Template Mon espace </h4>
-          <p class="infoArchitecture"> Coder ici :  Le tableau qui permet de consulter et de gérer les enchères sur lequel je me suis positionné </p>
-        </div>
-        <div class="col-md-3 hidden-xs">
-          <h4> Template facultatif </h4>
-          <p class="infoArchitecture"> Coder ici :  info/stats lié à "Mon profil" </p>
-        </div>
-      </div>
-
     </div>
   </div> 
-  <!-- div pour les boutons share -->
-  <div  id="mydiv3"></div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="modalInfosProduit" tabindex="-1" role="dialog" aria-labelledby="modalInfosProduitLabel" aria-hidden="true">

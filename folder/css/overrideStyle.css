@@ -1,0 +1,53 @@
+.nav li a{
+	font-weight: 400;
+}
+#voletAction{
+	background-color: #ddd;
+}
+.adjustBtnOpenVolet{
+	margin-top: 7px;
+	cursor: pointer;
+}
+.bid_challenged .main {
+	background-color: rgba(92,113,134, 1);
+}
+.bid_won .main{
+	background-color: rgba(72,93,114, 1);
+}
+.bid_paid .main{
+	background-color: rgba(52,73,94, 1);
+}
+.bid_challenged, .bid_won, .bid_paid {
+	background-color: #1abc9c;
+}
+.main h5{
+	color: #fafafa;
+	font-weight: 400;
+}
+.bid_content {
+	border-radius: 0px;
+}
+h4{
+	font-size: 20px;
+	font-weight: 600;
+}
+#content_legende {
+	display: none;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: #ddd;
+	padding: 10px;
+}
+.texteEnchere{
+	color: #eee;
+	font-size: 15px;
+}
+.bid_content .main a.action_box{
+	color: white;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 400;
+}
+.main .glyphicon{
+	margin-right: 8px;
+}
