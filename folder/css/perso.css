@@ -67,6 +67,13 @@ header{
 #footer {
   height: 60px;
   background-color: rgba(52,73,94,0.2);
+  text-align: center;
+}
+#footer a{
+	margin: 10px;
+	text-decoration: underline;
+	color: rgba(52,73,94,1);
+	font-size: 12px;
 }
 #voletAction{
 	width: 100% !important;
