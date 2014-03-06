@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Ubid</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flat-ui.css" rel="stylesheet">
+  <link href="css/perso.css" rel="stylesheet">
+  <link href="css/produitCss.css" rel="stylesheet">
+  <link href="css/jquery.share.css" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div id="voletAction" class="container">
+        <div class=" row rowEspacePerso">
+          <!-- <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
+            <button id="btnOpenVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button id="btnCloseVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </div> -->
+          <div class="col-md-4 col-md-offset-8 col-xs-12 adjustBtnOpenVolet">
+            <div id="btnOpenVolet">
+              <span class="glyphicon glyphicon-plus"></span>  <span class="hidden-xs-inline"> Gérer mon profil</span>
+            </div>
+            <div id="btnCloseVolet" class="init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span><span class="hidden-xs-inline"> Fermer la gestion du profil</span>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col-md-4 boxAction alignCenter">
+            <h4 class="first-title"> Mes informations </h4>
+            <div class="infoPerso">
+              <div class=" row-infoPerso-right col-md-4 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+                <div id="photo_content">
+                 <img  class="infoPersoPhoto" src="http://placehold.it/120x120$text=MaPhoto">
+                 <span>Modifier</span>
+               </div>
+               <button class=" infoPersoPassword btn btn-inverse btn-wide">
+                Mot de passe&nbsp
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+              <button class=" infoPersoFavoris btn btn-inverse btn-wide">
+                Mes favoris&nbsp
+                <span class="glyphicon glyphicon-eye-open"></span>
+              </button>
+            </div>
+            <div class=" row-infoPerso-left col-md-8 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+
+              <div class="infoPersoPseudo">
+                <p  data-type="text" data-pk="1" data-title="Entrez un nouveau pseudo" >
+                  Heisenberg
+                </p>
+              </div>
+              <div class="infoPersoCouriel">
+                <p data-type="email" data-pk="2" data-title="Entrez une nouvelle adresse">
+                 monadresse@gmail.com
+               </p>
+             </div>
+             <div class="infoPersoNote">
+              <p>Ma note: 4.2</p>
+              <span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733</span></span></span></span>
+            </div>
+            <div class="infoPersoComplementaire">
+              <div class="infoPersoNumDomicile ">
+                <p>
+                  N° domicile:
+                </p>
+                <p data-type="text" data-pk="3" data-title="Entrez un nouveau numero">
+                  470 xxx xxxx
+                </p>
+              </div>
+
+              <div class="infoPersoNumMobile">
+                <p>
+                  N° cellulaire:
+                </p>
+                <p data-type="text" data-pk="4" data-title="Entrez un nouveau numero de cellulaire">
+                  450 760 xxxx
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 boxAction alignCenter">
+        <h4> Mon adresse </h4>
+        <div class="infoAdresse">
+          <select name="adresselist" class="infoAdresseAjout btn-group select select-block">
+            <option value="0" disabled>Mes différentes adresses</option>
+            <option value="1" selected="selected">Adresse Hugo Perso</option>
+            <option value="2">Adresse Steve Perso</option>
+            <option value="3">Ajouter une nouvelle adresse</option>
+          </select>
+          <div id="donnees_adresse">
+           <div class="infoAdresseRue">
+             <p>Adresse :</p>
+             <p data-type="text" data-pk="5" data-title="Entrez une nouvelle rue">
+              54 rue de la gare
+            </p>
+          </div>
+          <div class="infoAdresseVille">
+           <p>Ville:</p>
+           <p data-type="text" data-pk="6" data-title="Entrer une nouvelle rue">
+            Strasbourg
+          </p>
+        </div>
+        <div class="infoAdresseCodePostal">
+         <P>Code Postal:</P>
+         <p data-type="text" data-pk="7" data-title="Entrer un nouveau code Postal">
+          67000
+        </p>
+      </div>
+      <div class="infoAdressePays">
+       <P>Pays:</P>
+       <p data-type="text" data-pk="8" data-title="Entrer un nouveau Pays">
+        France
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-md-4 boxAction alignCenter">
+  <h4> Méthodes de paiement </h4>
+  <div class="infoPayement">
+    <select name="payementlist" class=" infoPayementAjout btn-group select select-block">
+      <option value="0" disabled>Mes différents moyen de paiement</option>
+      <option selected="selected" value="1">Carte Visa 1</option>
+      <option value="2">Carte MasterCard 1</option>
+      <option value="3">Ajouter un moyen de payement</option>
+    </select>
+    <div id="donnees_bancaires">
+      <div class="infoPayementNumero">
+        <p>Numero carte: </p>
+        <p data-type="text" data-pk="9" data-title="Entrez un nouveau numero de carte">
+          ****.****.**45
+        </p>
+      </div>
+      <div class="infoPayementNom">
+        <p>Nom titulaire: </p>
+        <p data-type="text" data-pk="10" data-title="Entrer un nouveau nom">
+          Steve Benedick
+        </p>
+      </div>
+      <div class="infoPayementDateExpiration">
+        <p>Date d'expiration: </p>
+        <p data-template="MM / YY" data-viewformat="MM/YY" data-format="YY-MM" data-value="14-05" data-type="combodate" data-title="Entrer une nouvelle date d'expiration">
+        </p>
+      </div>
+      <div class="infoPayementCrypto">
+        <p>Cryptogramme: </p>
+        <p data-type="text" data-pk="12" data-title="Entrer un nouveau cryptogramme">
+          ***
+        </p>
+      </div>
+    </div>
+  </div>            
+</div>
+</div>
+</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/bootstrap-switch.js"></script>
+  <script src="js/flatui-checkbox.js"></script>
+  <script src="js/flatui-radio.js"></script>
+  <script src="js/jquery.tagsinput.js"></script>
+  <script src="js/jquery.placeholder.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/perso.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/jquery.share.js"></script>
+</body>

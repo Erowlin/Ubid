@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Ubid</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flat-ui.css" rel="stylesheet">
+  <link href="css/perso.css" rel="stylesheet">
+  <link href="css/produitCss.css" rel="stylesheet">
+  <link href="css/jquery.share.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/espace.css">
+  <link href="css/bootstrap-editable.css" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="wrap"> 
+  <div class="container"><!-- Main container -->
+
+    <div class="row template">
+      <div class="col-md-9">
+        <h4> Mes enchères </h4>
+        <div id="legende">+ Légende</div>
+        <div id="content_legende">
+           <p class="texteLegende"><span class="glyphicon glyphicon-ok btn-md"></span>Vous ête la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-exclamation-sign btn-md"></span>Vous n'etes pas la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-shopping-cart btn-md"></span>Enchère remporté, passez au paiement</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-star btn-md"></span>Le produit à été envoyé, notez le vendeur</p>
+        </div>
+        <section>
+         <article class="box_bid">
+          <div class="bid_challenged bid_content">
+           <div class="main">
+            <img src="http://cdn2.wmf.de/shop/media/catalog/product/cache/10/thumbnail/60x/9df78eab33525d08d6e5fb8d27136e95/TuK/WMF/jpg/12/12_88/12_8803_6046_100.jpg"/>
+            <div>
+              <h5>Lot de 1000 cuillères</h5>
+              <p class="texteEnchere">3 jrs restants</p>
+            </div>
+            <a class="action_box">
+             <acronym title="Vous n'êtes pas le meilleur enchérisseur. Ajoutez 12€ pour passer en tête !">  <span class="glyphicon glyphicon-exclamation-sign btn-xs"></span>
+             </acronym>Enchérir
+           </a>
+         </div>
+         <div class="hover">
+          Une personne a misé 12€ de plus que vous :<br/>
+          <a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+        </div>
+      </div>
+    </article>
+    <article class="box_bid">
+      <div class="bid_challenged bid_content">
+       <div class="main">
+        <img src="http://ecx.images-amazon.com/images/I/51RZXZKHKHL._AA60_.jpg"/>
+        <div>
+          <h5>Extreme Programming</h5>
+           <p class="texteEnchere">2 hrs restantes</p>
+        </div>
+        <a class="action_box">
+         <acronym title="Vous êtes le meilleur enchérisseur">
+            <span class="glyphicon glyphicon-ok btn-xs"></span>
+         </acronym> Enchérir
+       </a>
+     </div>
+     <div class="hover">
+      Vous êtes le meilleur enchérisseur :<br/>
+      <a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+    </div>
+  </div>
+</article>
+<article class="box_bid">
+  <div class="bid_won bid_content">
+   <div class="main">
+    <img src="http://craigsyardsale.com/thumbs3/sbc25141352_weDollar.jpg"/>
+    <div>
+      <h5>$10K Trillion Zimbabwe</h5>
+       <p class="texteEnchere">Gagné le 15/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-ok btn-xs"></span>
+     Valider l'objet
+   </a>
+ </div>
+ <div class="hover">
+  Objet envoyé à l'adresse : <i>"Hugo Adresse perso"</i><br/>Suivez votre colissimo avec le code : <i>A45JNEIK43C</i>
+</div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_won bid_content">
+   <div class="main">
+    <img src="http://www.eurekamamaison.com/Data_Desamais/downloads/CatProduit/mini60_616565z.jpg"/>
+    <div>
+      <h5>Lot de 20 sacs de litière</h5>
+       <p class="texteEnchere">Gagné le 31/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
+     Valider l'objet
+    </a>
+ </div>
+ <div class="hover">
+  <a href="#" class="btn btn-inverse pull-right" style="margin-top:5px;" data-toggle="modal" data-target="#modalSendBid">Valider la livraison</a>
+  Payé avec : MasterCard <br/><img src="http://www.cartes-bancaires-gratuites.fr/wp-content/uploads/icons/credit-cards.png" alt="CB" style="margin-right:5px;"/>  <strong>****.****.**45</strong>
+</div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_paid bid_content">
+   <div class="main">
+    <img src="http://i.lbdn.com/IMGPRMIN/SAM03520.jpg"/>
+    <div>
+      <h5>TV HD 50" Samsung</h5>
+       <p class="texteEnchere">Reçu le 20/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
+     Noter le vendeur
+   </a>
+ </div>
+ <div class="hover">
+   <!-- A retravailler avec un plugin js par exemple -->
+   <span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;</span></span></span></span></span>
+ </div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_paid bid_content">
+   <div class="main">
+    <img src="http://www.king-technologies.net/237-653-medium/housse-k7-vintage-silicone-iphone-4-et-4s.jpg"/>
+    <div>
+      <h5>Coque iPhone 4S</h5>
+       <p class="texteEnchere">Reçu le 27/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
+     Noter le vendeur
+    </a>
+ </div>
+ <div class="hover">
+  <span>Merci, votre vote (3/5) a été pris en compte !</span>
+</div>
+</div>
+</article>
+</section>
+</div>
+</div>
+
+</div>
+</div> 
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/bootstrap-select.js"></script>
+  <script src="js/bootstrap-switch.js"></script>
+  <script src="js/flatui-checkbox.js"></script>
+  <script src="js/flatui-radio.js"></script>
+  <script src="js/jquery.tagsinput.js"></script>
+  <script src="js/jquery.placeholder.js"></script>
+  <script src="js/TweenMax.min.js"></script>
+  <script src="js/perso.js"></script>
+  <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/jquery.share.js"></script>
+  <script src="js/espace.js"></script>
+  <script src="js/moment.min.js"></script>
+</body>
+</html>
