@@ -1,11 +1,13 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, session
 import myjson
 
+import json
 import decorator
 
 import glob
 import base64
 import copy
+import pprint
 
 import helpers
 
@@ -14,13 +16,17 @@ usr = Blueprint('usr', __name__, '')
 
 users_path = 'files/users.json'
 
-@usr.route('/login', methods=['POST'])
+@usr.route('/login', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def login():
+    print 'toto'
+    # return jsonify(toto=' tamere')
     mandatory_fields = ["username", "password"]
+    print base64.b64encode('tata')
     helpers.verify_mandatory_field_form(mandatory_fields, request)
-    username = request.form['username']
-    password = request.form['password']
+    username = request.json['username']
+    print username
+    password = request.json['password']
     usersMatch = filter(lambda u: u['username'] == username, glob.users)
     if len(usersMatch) == 0:
         return 'No such username', 401	
@@ -35,10 +41,11 @@ def logout():
 	return 'Logout successful', 201
 
 @usr.route('/', methods=['POST'])
+@decorator.crossdomain(origin='*')
 def register():
-    if len(request.form['password']) < 6:
+    if len(request.json['password']) < 6:
     	return 'password too short', 406
-    usersMatch = filter(lambda u: u['username'] == request.form['username'], glob.users)
+    usersMatch = filter(lambda u: u['username'] == request.json['username'], glob.users)
     if len(usersMatch) != 0 :
     	return 'Username already taken', 409
     allowed_fields = ['username', 'password', 'email', 'address1', 'address2', 'city', 'firstname', 'lastname', 'postalcode', 'country']

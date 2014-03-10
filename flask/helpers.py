@@ -13,12 +13,12 @@ def verify_mandatory_field_form(fields, request):
 	missing_fields = ''
 	provided_fields = ''
 	value_fields = ''
-
-	for param in request.form:
+	print request.json
+	for param in request.json:
 		provided_fields += ' ' + param
-		value_fields += ' ' + request.form[param]
+		value_fields += ' ' + request.json[param]
 	for param in fields:
-		if param not in request.form or request.form[param] == '':
+		if param not in request.json or request.json[param] == '':
 			missing_fields += (' ' + param)			
 	if len(missing_fields):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
@@ -56,16 +56,16 @@ def update_object(model, value_model, request, save_path, exclude_fields=None, n
 		new_model = {}
 		if mandatory_fields:
 			verify_mandatory_field_form(mandatory_fields, request)
-		for param in request.form:
+		for param in request.json:
 			can_set = 1
 			if exclude_fields and param in exclude_fields:
 				can_set = 0
-			if null_fields and param in null_fields and request.form[param] is not None:
+			if null_fields and param in null_fields and request.json[param] is not None:
 				if param == 'password' :
-					new_model[param] = base64.b64encode(request.form[param])
+					new_model[param] = base64.b64encode(request.json[param])
 				can_set = 0
 			if can_set == 1 and param in model_entry:
-				new_model[param] = request.form[param]
+				new_model[param] = request.json[param]
 	
 		for param in new_model:
 			if param in model_entry:
@@ -90,12 +90,12 @@ def new_object(model, request, save_path, allowed_fields, mandatory_fields=None,
 		verify_mandatory_field_form(mandatory_fields, request)
 
 	for param in allowed_fields:
-		if special_fields and param in special_fields and param in request.form:
+		if special_fields and param in special_fields and param in request.json:
 			if param == 'password' :
-				new_model[param] = base64.b64encode(request.form[param])
+				new_model[param] = base64.b64encode(request.json[param])
 		else:
-			if param in request.form:
-				new_model[param] = request.form[param]
+			if param in request.json:
+				new_model[param] = request.json[param]
 			else: 
 				new_model[param] = ''
 	if association:
@@ -106,7 +106,7 @@ def new_object(model, request, save_path, allowed_fields, mandatory_fields=None,
 	myjson.save_json(model, save_path)
 
 def delete_object(model, request, save_path):
-	model_entry = get_by(model, request.form['id'])
+	model_entry = get_by(model, request.json['id'])
 	if model_entry is None:
 		abort(make_response('Object not found', 400))
 	model.delete(model_entry)
