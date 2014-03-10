@@ -23,14 +23,13 @@ def verify_mandatory_field_form(fields, resp):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
 def get_by(model, value_to_match, field_to_search="id", public_fields=None, test=""):
-	model_entry = filter(lambda u: u[field_to_search] == value_to_match, model)
-	if model_entry:
+	model_entry = filter(lambda u: u[field_to_search] == int(value_to_match), model)
+	if len(model_entry):
 		if public_fields:
 			model_copy_entry = copy.deepcopy(model_entry)
 			for public_field in public_fields:
 				model_copy_entry[public_field] = model_entry[0][public_field]
 		return model_entry[0]
-	print "Return None from " + test
 	return None
 
 
@@ -91,10 +90,11 @@ def new_object(model, resp, save_path, allowed_fields, mandatory_fields=None, sp
 				new_model[param] = ''
 	if associations:
 		for association in associations:
-			new_model[association['association_name']] = association['association_field']
+			new_model[association['association_name']] = association['association_value']
 	new_model['id'] = len(model) + 1
 	model.append(new_model)
 	myjson.save_json(model, save_path)
+	return new_model
 
 def delete_object(model, request, save_path):
 	model_entry = get_by(model, request.json['id'])
@@ -104,9 +104,13 @@ def delete_object(model, request, save_path):
 	myjson.save(model, save_path)
 
 def get_response(request):
+	print vars(request)
+	print request.args
 	if len(request.form) > 0:
         		resp = request.form
-    	else:
+    	elif request.json is not None and len(request.json) > 0:
         		resp = request.json
-	print resp
+	else:
+		print 'rentre la'
+		resp = request.args
     	return resp
