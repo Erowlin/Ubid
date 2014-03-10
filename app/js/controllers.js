@@ -43,7 +43,8 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 			error(function(status, response){
 				console.log("Raté!");
 			});
-}]);
+		};
+	}]);
 
 ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
