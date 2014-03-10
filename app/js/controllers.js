@@ -102,6 +102,8 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',
 	function($scope, $routeParams) {
 		$scope.userId = $routeParams.userId;
+		$scope.test = { user: { username: "Kiki", city: "Le Mans",  firstname: "Jean-Michel"} };
+		$scope.user = $scope.test.user;
 	}]);
 
 ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams',
