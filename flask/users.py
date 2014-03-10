@@ -58,7 +58,6 @@ def update(user_id):
 
 @usr.route('/<int:user_id>', methods=['GET'])
 def show(user_id):
-	has_right(user_id)
 	user = get_user_by_id(user_id)
 	if (len(user) != 0):
                 u = copy.deepcopy(user[0])
@@ -78,6 +77,12 @@ def loge():
 		return str(session["id"])
 	return '0'
 
+@usr.route('/test', methods=['GET'])
+def testee():
+    public_fields = ['assoc_user_id']
+    helpers.test_regexp("assoc_user_id")
+    return '', 200
+
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
 def has_right_abort(user_id):
@@ -93,10 +98,12 @@ def has_right(user_id):
     else:
         return 0
 
+
+
 ## Utilities.
 def is_authenticated():
 	if 'id' not in session or helpers.get_by(glob.users, session['id'], test="User Authentification") is  None:
-		abort(401)
+		return 0
 	return 1
 def get_user_by_id(id):
     user = filter(lambda u:u['id'] == id, glob.users)

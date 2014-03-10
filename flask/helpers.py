@@ -23,15 +23,19 @@ def verify_mandatory_field_form(fields, request):
 	if len(missing_fields):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
+def test_regexp(value):
+	r = re.compile('(assoc_)a-z(_)_(a-z)')
+	result = r.search(value)
+	if result:
+		print result
+
+
 def get_by(model, value_to_match, field_to_search="id", public_fields=None, test=""):
 	model_entry = filter(lambda u: u[field_to_search] == value_to_match, model)
 	if model_entry:
 		if public_fields:
 			model_copy_entry = copy.deepcopy(model_entry)
 			for public_field in public_fields:
-				r = re.search('(assoc_)a-z(_)_(a-z)')
-				if r:
-					print r
 				model_copy_entry[public_field] = model_entry[0][public_field]
 		return model_entry[0]
 	print "Return None from " + test
