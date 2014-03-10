@@ -4,6 +4,7 @@
 
 var ubidApp = angular.module('ubidApp', [
   'ngRoute',
+  'ngCookies',
   'ubid.controllers',
   'ubid.directives',
   'ubid.services'
