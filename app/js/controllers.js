@@ -55,7 +55,8 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
 		$scope.register = function() {
-			var data = $scope.user;
+			console.log("->>>>"+ $scope.user.username);
+			console.log($scope.user.address1);
 			$http({ method:'POST',
 				url:'http://localhost:5000/user',
 				data: {
