@@ -51,22 +51,22 @@ def get_by(model, value_to_match, field_to_search="id", public_fields=None, test
 # exclude_fields : Exclude fields, even if they are in the form
 # null_fields : Don't set fields if they are empty
 # mandatory_fields : Check if all fields are presents
-def update_object(model, value_model, request, save_path, exclude_fields=None, null_fields=None, mandatory_fields=None):
+def update_object(model, value_model, resp, save_path, exclude_fields=None, null_fields=None, mandatory_fields=None):
 	model_entry = get_by(model, value_model, test="update_object")
 	if model_entry: # If the model_entry exist
 		new_model = {}
 		if mandatory_fields:
-			verify_mandatory_field_form(mandatory_fields, request)
-		for param in request.json:
+			verify_mandatory_field_form(mandatory_fields, resp)
+		for param in resp:
 			can_set = 1
 			if exclude_fields and param in exclude_fields:
 				can_set = 0
-			if null_fields and param in null_fields and request.json[param] is not None:
+			if null_fields and param in null_fields and resp[param] is not None:
 				if param == 'password' :
-					new_model[param] = base64.b64encode(request.json[param])
+					new_model[param] = base64.b64encode(resp[param])
 				can_set = 0
 			if can_set == 1 and param in model_entry:
-				new_model[param] = request.json[param]
+				new_model[param] = resp[param]
 	
 		for param in new_model:
 			if param in model_entry:
