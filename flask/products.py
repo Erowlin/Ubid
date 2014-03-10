@@ -18,10 +18,15 @@ def add_product():
     resp = helpers.get_response(request)
     allowed_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice', 'buyoutPrice', 'reservePrice', 'imgUrl']
     mandatory_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice']
-    user = helpers.get_by(glob.users, session["id"])
+    user = helpers.get_by(glob.users, resp['user_id'])
     association_field = [{'association_name': 'user_id', 'association_value': user['id']}]
     product = helpers.new_object(glob.products, resp, products_path, allowed_fields, mandatory_fields, associations=association_field)
     return show(product['id'])
+
+@pdt.route('/', methods=['GET'])
+@decorator.crossdomain(origin="*")
+def list_products():
+    return jsonify({'products': glob.products}), 200
 
 @pdt.route('/<int:product_id>')
 @decorator.crossdomain(origin='*')
@@ -29,7 +34,7 @@ def show(product_id):
             product = helpers.get_by(glob.products, product_id)
             p = copy.deepcopy(product)
             iduser = p['user_id']
-            user = users.get_user_by_id(iduser)
+            user = users.get_user_by_id(int(iduser))
             print user
             p['user'] = user
             if not p:
@@ -39,8 +44,9 @@ def show(product_id):
 @pdt.route('/<int:product_id>', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def update(product_id):
+    resp = helpers.get_response(request) 
     product = helpers.get_by(glob.products, product_id)
-    users.has_right_abort(product['user_id'])
+    users.has_right_abort(resp)
     resp = helpers.get_response(request)
     exclude_field = ['reservePrice', 'startPrice', 'id', 'user_id', 'user']
     null_fields = ['title', 'description', 'buyoutPrice', 'dateLength', 'dateStart']

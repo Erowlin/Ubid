@@ -104,8 +104,6 @@ def delete_object(model, request, save_path):
 	myjson.save(model, save_path)
 
 def get_response(request):
-	print vars(request)
-	print request.args
 	if len(request.form) > 0:
         		resp = request.form
     	elif request.json is not None and len(request.json) > 0:
