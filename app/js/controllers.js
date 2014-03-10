@@ -36,50 +36,49 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 			// $rootScope.headerTemplate = 'partials/header.html';
 			// $location.path("/");
 			var data = $scope.info;
-			console.log(data);
-			// $http({method:'POST', url:'http://localhost:5000/user/login'}, data).
-			// success(function(data, status){
-			// 	console.log(status + ": " + data);
-			// }).
-			// error(function(data, status){
-			// 	console.log(status + ": " + data);
-			// });
-			$http({method:'GET', url:'http://localhost:5000/user/1'}).
-			success(function(data, status){
-				console.log(status + ": " + data);
+			$http({method:'POST', url:'http://localhost:5000/user/login'}, data).
+			success(function(status, response){
+				console.log("Recu!");
 			}).
-			error(function(data, status){
-				console.log(status + ": " + data);
+			error(function(status, response){
+				console.log("Raté!");
 			});
-		};
-	}]);
+}]);
 
 ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
-		// $scope.register = function() {
-		// 	var data = $scope.user;
-		// 	$http({method:'POST', url:'http://localhost:5000/user/'},data).
-		// 	success(function(status, response){
-		// 		console.log("Recu!");
-		// 	}).
-		// 	error(function(status, response){
-		// 		console.log("Raté!");
-		// 	});
-		// };
+		$scope.register = function() {
+			var data = $scope.user;
+			$http({method:'POST', url:'http://localhost:5000/user/'},data).
+			success(function(status, response){
+				console.log("Recu!");
+			}).
+			error(function(status, response){
+				console.log("Raté!");
+			});
+		};
 	}]);
 
 ubidControllers.controller('AccountBarCtrl', ['$scope',
 	function($scope) {
 	}]);
 
-ubidControllers.controller('UserAccountCtrl', ['$scope', 'UserService',
-	function($scope, User) {
+ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
+	function($scope, $http, User) {
 		$scope.editMode = false;
-		$scope.saveChanges = function() {
-			// envoyer donnees
-			console.log("Données sauvegardées !");
-			$scope.editMode = false;
-		}
+		// $scope.saveChanges = function() {
+		// 	// envoyer donnees
+		// 	console.log("Données sauvegardées !");
+		// 	$scope.editMode = false;
+		// }
+
+		$http.get('http://localhost:5000/user/1').
+		success(function(data, status){
+			console.log(status + ": " + data);
+		}).
+		error(function(data, status){
+			console.log(status + ": " + data);
+		});
 	}]);
 
 ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',

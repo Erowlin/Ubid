@@ -54,10 +54,10 @@ ubidApp.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-// ubidApp.config(['$httpProvider', function($httpProvider) {
-//   $httpProvider.defaults.useXDomain = true;
-//   delete $httpProvider.defaults.headers.common['X-Requested-With'];
-// }]);
+ubidApp.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+}]);
 
 ubidApp.run(['$rootScope', '$location', 'UserService', function($rootScope, $location, User) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
