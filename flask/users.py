@@ -1,6 +1,8 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, session
 import myjson
 
+import decorator
+
 import glob
 import base64
 import copy
@@ -13,6 +15,7 @@ usr = Blueprint('usr', __name__, '')
 users_path = 'files/users.json'
 
 @usr.route('/login', methods=['POST'])
+@decorator.crossdomain(origin='*')
 def login():
 	username = request.form['username']
 	password = request.form['password']
