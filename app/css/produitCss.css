@@ -1,0 +1,125 @@
+.boxProduit{
+    width: 230px;
+    margin: 20px auto;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+    position: relative;
+    padding-bottom: 55px;
+    border: 1px solid #eee;
+}
+.iconeProduit{
+    margin: 0 10px 0 -10px;
+}
+.containerImgProduit{
+    width: 100%;
+    background-color: rgba(20,100,50, 0.6);
+}
+.imgProduit{
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+.wrap_infoProduit{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+}
+.titreProduit{
+    width: 100%;
+    height: 25px;
+    position: relative;
+    background-color: rgba(255,255,255, 0.9);
+    padding: 0 4px;
+}
+.titreProduit h1{
+    text-transform: uppercase;
+    font-size: 15px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 5px 4px;
+    font-weight: 600;
+}
+.titreProduit h2{
+    font-size: 15px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 0px;
+    padding: 5px 4px;
+}
+.infoProduit{
+    width: 100%;
+    height: 0px;
+    background-color: rgba(255,255,255, 0.9);
+    position: relative;
+    padding: 0 4px;
+    overflow: hidden;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.boxProduit:hover .infoProduit{
+    height: 43px; 
+}
+.infoProduit p{
+    width: 100%;
+    font-size: 12px;
+    margin: 0;
+}
+.pdbProduit{
+    float: right;
+    margin-top: -2px;
+}
+.adjustPdb{
+    margin-top: 4px;
+}
+.nbrEnchereProduit{
+    position: absolute;
+    right: 0px;
+    top: 17px;
+    font-size: 12px;
+    padding: 0 4px 5px 0;
+}
+.actionProduit{
+    width: 100%;
+    height: 30px;
+    background-color: rgba(20,100,50, 0.3);
+}
+.btnProduit{
+    text-align: center;
+    background-color: #ddd;
+    float: left;
+}
+.btnInfoProduit{
+    width: 50%;
+    height: 30px;
+}
+.btnEncherirProduit{
+    width: 50%;
+    height: 30px;
+    font-weight: 600;
+    background-color: #2f4154;
+    cursor: pointer;
+}
+.btnEncherirProduit:hover{
+    background-color: rgba(47,65,84,0.9);
+}
+.btnEncherirProduit p{
+    font-weight: 400;
+    color: #fafafa;
+}
+.descriptifProduit{
+    width: 100%;
+    background-color: rgba(20,100,50, 0.2);
+}
+.descriptifProduit p{
+    font-size: 13px;
+    padding: 5px;
+}
