@@ -17,15 +17,17 @@ users_path = 'files/users.json'
 @usr.route('/login', methods=['POST'])
 @decorator.crossdomain(origin='*')
 def login():
-	username = request.form['username']
-	password = request.form['password']
-	usersMatch = filter(lambda u: u['username'] == username, glob.users)
-	if len(usersMatch) == 0:
-		return 'No such username', 401	
-	if password != base64.b64decode(usersMatch[0]['password']):
-		return 'Wrong password', 403
-	session['id'] = usersMatch[0]["id"]
-	return jsonify({'userId': usersMatch[0]["id"]}), 200
+    mandatory_fields = ["username", "password"]
+    helpers.verify_mandatory_field_form(mandatory_fields, request)
+    username = request.form['username']
+    password = request.form['password']
+    usersMatch = filter(lambda u: u['username'] == username, glob.users)
+    if len(usersMatch) == 0:
+        return 'No such username', 401	
+    if password != base64.b64decode(usersMatch[0]['password']):
+        return 'Wrong password', 403
+    session['id'] = usersMatch[0]["id"]
+    return jsonify({'userId': usersMatch[0]["id"]}), 200
 	
 @usr.route('/logout', methods=['POST'])
 def logout():
