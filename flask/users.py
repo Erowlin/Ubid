@@ -40,7 +40,7 @@ def login():
 @decorator.crossdomain(origin='*')
 def logout():
     resp = helpers.get_response(request)
-    has_right_abort(resp)
+    has_right_abort(resp, resp['user_id'])
     user = helpers.get_by(glob.users, resp['user_id'])
     destroy_token(user)
     return 'Logout successful', 201
@@ -64,7 +64,7 @@ def register():
 @decorator.crossdomain(origin='*')
 def update(user_id):
     resp = helpers.get_response(request)
-    has_right_abort(resp)
+    has_right_abort(resp, user_id)
     
     user = helpers.update_object(glob.users, user_id, resp, users_path, null_fields=['password'])
     u = copy.deepcopy(user)
@@ -95,8 +95,6 @@ def show(user_id):
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
 def has_right_abort(resp, user_id=None):
-    print resp
-    print user_id
     if not resp or not 'user_id' in resp or not 'token' in resp:
         abort(make_response('Missing Token or User Id',400))
     id = has_right(resp, user_id)
@@ -106,23 +104,19 @@ def has_right_abort(resp, user_id=None):
         abort(401)
 
 # Return true if same user, otherwise return false
-def has_right(resp, user_id=None):
+def has_right(resp, user_id):
     if  not resp or not 'user_id' in resp or not 'token' in resp:
         return 0
-    user_id = resp['user_id']
     token = resp['token']
     user = helpers.get_by(glob.users, user_id)
-    print ' Adaksdnsajldnslaljdsa'
-    print user
-    print user_id
-    if user_id is not None and int(user_id) != user['id']:
+    
+    if int(resp['user_id']) != int(user_id) or resp['token'] != user['token']:
         return 0
-    if 'token' in user  and token == user['token']:
-        return resp
     else:
-        return 0
+        return 1
 
 def generate_token(user):
+    user = helpers.get_by(glob.users, user['id'])
     user['token'] = base64.b64encode(str(user['id']) + str(os.urandom(5)) + str(glob.secret_key))
     myjson.save_json(glob.users, users_path)
 
