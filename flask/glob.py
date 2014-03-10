@@ -1,6 +1,8 @@
 
 import myjson
 
+secret_key = 'a43%@3'
+
 products_path = 'files/products.json'
 users_path = 'files/users.json'
 
