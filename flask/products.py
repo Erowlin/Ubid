@@ -1,31 +1,22 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, render_template, session
 import myjson
 
+import globals
+
 pdt = Blueprint('pdt', __name__, '')
 
 products_path = 'files/products.json'
-products = myjson.load_json(products_path)
 
 
 
 @pdt.route('/', methods= ['POST'])
 def add_product():
-    # if not 'current_price' in request.json or int(request.json['current_price']) < 0:
-    #     abort(400)
-    # if not 'shipping_cost' in request.json or int(request.json['shipping_cost']) < 0:
-    #     abort(400)
-    # if 'duration' in request.json and int(request.json['duration']) < 0:
-    #     abort(400)
-		
-	
 	## To complete
-    product = {
-        'id': len(products) + 1,
-        'name': request.json['name'],
-    }
-    products.append(product)
-    save_json(products, products_path)
-
+    
+    allowed_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice', 'buyoutPrice', 'reservePrice', 'imgUrl']
+    mandatory_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice']
+    
+    helpers.new_object(users, request, users_path, allowed_fields, mandatory_fields)
     return jsonify( { 'products' : products } ), 201
 
 @pdt.route('/')

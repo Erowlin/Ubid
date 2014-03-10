@@ -5,6 +5,8 @@ from datetime import timedelta
 import myjson
 import json
 
+import glob
+
 import users
 import products
 
@@ -49,6 +51,4 @@ def not_found(error):
     return make_response(jsonify( { 'error': 'Not Found' } ), 404)
 
 if __name__ == '__main__':
-	products = myjson.load_json(products_path)
-	users = myjson.load_json(users_path)
 	app.run(debug = True)
