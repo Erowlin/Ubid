@@ -62,8 +62,10 @@ def show(user_id):
                     del u['address1']
                     del u['address2']
                     del u['email']
+                    del u['firstname']
+                    del u['lastname']
                 return jsonify({'user': u})
-	return 'Username Not found', 401
+	return 'User Not found', 401
 
 @usr.route('/islogged', methods=['GET'])
 def loge():
