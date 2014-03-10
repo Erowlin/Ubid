@@ -5,6 +5,7 @@
 var ubidServices = angular.module('ubid.services', []);
 ubidServices.factory('UserService', [function () {
 	var usr = {
+		token: '',
 		isLogged: false,
 		username: '',
 		firstname: '',
@@ -15,7 +16,7 @@ ubidServices.factory('UserService', [function () {
 		city: '',
 		country: '',
 		postalcode: '',
-		userId: ''
+		id: ''
 	};
 	return usr;
 }]);
