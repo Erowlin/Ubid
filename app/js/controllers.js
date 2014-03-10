@@ -3,12 +3,20 @@
 /* Controllers */
 
 var ubidControllers = angular.module('ubid.controllers', []);
-ubidControllers.controller('HeaderCtrl', ['$scope', '$rootScope', 'UserService',
-	function($scope, $rootScope, User) {
+
+ubidControllers.controller('HeaderCtrl', ['$scope', '$rootScope', '$http', '$location', 'UserService',
+	function($scope, $rootScope, $http, $location, User) {
 		$rootScope.headerTemplate = User.isLogged ? 'partials/header.html' : 'partials/header-login.html';
 		$scope.logout = function() {
-			User.isLogged = false;
-			$rootScope.headerTemplate = 'partials/header-login.html';
+			$http({method:'POST', url:'http://localhost:5000/user/logout'}).
+			success(function(e){
+				User.isLogged = false;
+				$rootScope.headerTemplate = 'partials/header-login.html';
+				$location.path("/");
+			}).
+			error(function(status, response){
+				console.log("logout: Une erreur est survenue : [" + status + "] " + response);
+			});
 		};
 	}]);
 
@@ -30,15 +38,13 @@ ubidControllers.controller('LandingCtrl', ['$scope',
 
 ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$http', 'UserService',
 	function($scope, $rootScope, $location, $http, User) {
-		$scope.login = function() { //tmp
-			// User.username = username;
-			// User.isLogged = true;
-			// $rootScope.headerTemplate = 'partials/header.html';
-			// $location.path("/");
-			var data = $scope.info;
-			$http({method:'POST', url:'http://localhost:5000/user/login'}, data).
-			success(function(status, response){
-				console.log("Recu!");
+		$scope.login = function() {
+			$http({method:'POST', url:'http://localhost:5000/user/login', data: {"username" : $scope.uname, "password": $scope.passwd}}).
+			success(function(data){
+				User.userId = data.userId;
+				User.isLogged = true;
+				$rootScope.headerTemplate = 'partials/header.html';
+				$location.path("/");
 			}).
 			error(function(status, response){
 				console.log("Raté!");
@@ -50,12 +56,26 @@ ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
 		$scope.register = function() {
 			var data = $scope.user;
-			$http({method:'POST', url:'http://localhost:5000/user/'},data).
+			$http({ method:'POST',
+				url:'http://localhost:5000/user',
+				data: {
+					"username" : $scope.user.username,
+					"firstname" : $scope.user.firstname,
+					"lastname" : $scope.user.lastname,
+					"address1" : $scope.user.address1,
+					"address2" : $scope.user.address2,
+					"city" : $scope.user.city,
+					"postalcode" : $scope.user.postalcode,
+					"country" : $scope.user.country,
+					"email" : $scope.user.email,
+					"password" : $scope.user.password
+				}
+			}).
 			success(function(status, response){
-				console.log("Recu!");
+				console.log("Inscription réussie!");
 			}).
 			error(function(status, response){
-				console.log("Raté!");
+				console.log("L'inscription a échoué!");
 			});
 		};
 	}]);
@@ -73,9 +93,10 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 		// 	$scope.editMode = false;
 		// }
 
-		$http.get('http://localhost:5000/user/1').
+		$http.get('http://localhost:5000/user/' + User.userId).
 		success(function(data, status){
-			console.log(status + ": " + data);
+			User.username = data.user.username;
+			$scope.username = User.username;
 		}).
 		error(function(data, status){
 			console.log(status + ": " + data);
