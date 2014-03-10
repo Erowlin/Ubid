@@ -1,6 +1,7 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, session
 import myjson
 
+
 import json
 import decorator
 
@@ -10,6 +11,7 @@ import copy
 import pprint
 
 import helpers
+
 
 # We create Blueprint with name "usr"
 usr = Blueprint('usr', __name__, '')
@@ -29,7 +31,9 @@ def login():
         return 'No such username', 401	
     if password != base64.b64decode(usersMatch[0]['password']):
         return 'Wrong password', 403
+    print usersMatch[0]["id"]
     session['id'] = usersMatch[0]["id"]
+    print ("LOGIN : " + str(session['id']))
     return jsonify({'userId': usersMatch[0]["id"]}), 200
 	
 @usr.route('/logout', methods=['POST'])
@@ -83,16 +87,16 @@ def loge():
 		return str(session["id"])
 	return '0'
 
-@usr.route('/test', methods=['GET'])
-def testee():
-    public_fields = ['assoc_user_id']
-    helpers.test_regexp("assoc_user_id")
-    return '', 200
+# @usr.route('/test', methods=['GET'])
+# def testee():
+#     public_fields = ['assoc_user_id']
+#     helpers.test_regexp("assoc_user_id")
+#     return '', 200
 
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
 def has_right_abort(user_id):
-	if is_authenticated() and has_right(user_id):
+	if has_right(user_id):
 		return
 	else:
 		abort(401)

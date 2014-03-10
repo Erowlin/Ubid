@@ -22,15 +22,6 @@ def verify_mandatory_field_form(fields, resp):
 	if len(missing_fields):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
-def test_regexp(value):
-	print value
-	r = re.match('(assoc_)a-z(_)_(a-z)', value, )
-	print r
-	
-	if result:
-		print result
-
-
 def get_by(model, value_to_match, field_to_search="id", public_fields=None, test=""):
 	model_entry = filter(lambda u: u[field_to_search] == value_to_match, model)
 	if model_entry:
@@ -67,7 +58,6 @@ def update_object(model, value_model, resp, save_path, exclude_fields=None, null
 				can_set = 0
 			if can_set == 1 and param in model_entry:
 				new_model[param] = resp[param]
-	
 		for param in new_model:
 			if param in model_entry:
 				model_entry[param] = new_model[param]
@@ -99,9 +89,9 @@ def new_object(model, resp, save_path, allowed_fields, mandatory_fields=None, sp
 				new_model[param] = resp[param]
 			else: 
 				new_model[param] = ''
-	if association:
+	if associations:
 		for association in associations:
-			pass
+			new_model[association['association_name']] = association['association_field']
 	new_model['id'] = len(model) + 1
 	model.append(new_model)
 	myjson.save_json(model, save_path)

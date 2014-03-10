@@ -28,7 +28,6 @@ def crossdomain(origin=None, methods=None, headers=None,
                 resp = current_app.make_default_options_response()
             else:
                 resp = make_response(f(*args, **kwargs))
-            print "TROLOLOLO"
             if not attach_to_all and request.method != 'OPTIONS':
                 return resp
 

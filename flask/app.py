@@ -1,12 +1,16 @@
 from flask import Flask, jsonify, make_response, request, abort, render_template, session
 from datetime import timedelta
 
+from flask.ext import login
+
+
 import decorator
 
 import myjson
 import json
 
 import glob
+import helpers
 
 import users
 import products
@@ -22,10 +26,9 @@ app.register_blueprint(products.pdt, url_prefix="/products")
 app.register_blueprint(users.usr, url_prefix="/user")
 
  
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = '12345'
 app.permanent_session_lifetime = timedelta(minutes=60)
 
-users = []
 
 @app.after_request
 def after_request(data):
