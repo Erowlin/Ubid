@@ -18,7 +18,6 @@ users_path = 'files/users.json'
 @decorator.crossdomain(origin='*')
 def login():
     mandatory_fields = ["username", "password"]
-    print request.form['usernamee']
     helpers.verify_mandatory_field_form(mandatory_fields, request)
     username = request.form['username']
     password = request.form['password']
