@@ -42,7 +42,7 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 			$http({method:'POST', url:'http://localhost:5000/user/login', data: {"username" : $scope.uname, "password": $scope.passwd}}).
 			success(function(data){
 				User.token = data.token;
-				User.id = data.userId;
+				User.user_id = data.id;
 				User.isLogged = true;
 				$rootScope.headerTemplate = 'partials/header.html';
 				$location.path("/");
@@ -57,7 +57,7 @@ ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
 		$scope.register = function() {
 			$scope.user.token = User.token;
-			$scope.user.id = User.id;
+			$scope.user.user_id = User.user_id;
 			console.log($scope.user);
 			$http.post("http://localhost:5000/user/", $scope.user)
 			.success(function(status, response){
@@ -77,7 +77,7 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 	function($scope, $http, User) {
 		$scope.editMode = false;
 
-		$http.get('http://localhost:5000/user/' + User.id).
+		$http.get('http://localhost:5000/user/' + User.user_id + '?token=' + User.token + '&user_id=' + User.user_id).
 		success(function(data, status){
 			User = data.user;
 			$scope.info = data.user;
@@ -87,14 +87,18 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 		});
 
 		$scope.saveChanges = function() {
+			console.log($scope.info);
+			console.log(User);
 			$scope.info.token = User.token;
-			$scope.info.id = User.id;
-			$http.post('http://localhost:5000/user/' + User.id, $scope.info).
+			$scope.info.user_id = User.user_id;
+			console.log($scope.info);
+			$http.post('http://localhost:5000/user/' + User.user_id, $scope.info).
 			success(function(data, status){
 				User = $scope.info;
 				$scope.editMode = false;
 			}).
 			error(function(data, status){
+				console.log(data);
 			});
 		};
 	}]);

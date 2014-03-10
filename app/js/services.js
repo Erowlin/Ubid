@@ -16,7 +16,7 @@ ubidServices.factory('UserService', [function () {
 		city: '',
 		country: '',
 		postalcode: '',
-		id: ''
+		user_id: ''
 	};
 	return usr;
 }]);
