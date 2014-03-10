@@ -9,23 +9,24 @@ import re
 # If mandatory fields are missing or empty, abort with 400 and list all the missing fields
 # fields : List of mandatory fields ['field1', 'field2']
 # request : The original request
-def verify_mandatory_field_form(fields, request):
+def verify_mandatory_field_form(fields, resp):
 	missing_fields = ''
 	provided_fields = ''
 	value_fields = ''
-	print request.json
-	for param in request.json:
-		provided_fields += ' ' + param
-		value_fields += ' ' + request.json[param]
+	for param in resp:
+		provided_fields += " " + param
+		value_fields += " " + resp[param]
 	for param in fields:
-		if param not in request.json or request.json[param] == '':
+		if param not in resp or resp[param] == '':
 			missing_fields += (' ' + param)			
 	if len(missing_fields):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
 def test_regexp(value):
-	r = re.compile('(assoc_)a-z(_)_(a-z)')
-	result = r.search(value)
+	print value
+	r = re.match('(assoc_)a-z(_)_(a-z)', value, )
+	print r
+	
 	if result:
 		print result
 
@@ -84,18 +85,18 @@ def update_object(model, value_model, request, save_path, exclude_fields=None, n
 # mandatory_fields : Check if the mandatory fields are present and not empty
 # special fields : Special behaviour for special fields
 # Association : Allow association between 2 models. association = [{association_field : 'field_name', association_entry: entry, association_name: 'name'}]
-def new_object(model, request, save_path, allowed_fields, mandatory_fields=None, special_fields=None, associations=None):
+def new_object(model, resp, save_path, allowed_fields, mandatory_fields=None, special_fields=None, associations=None):
 	new_model = {}
 	if mandatory_fields:
-		verify_mandatory_field_form(mandatory_fields, request)
+		verify_mandatory_field_form(mandatory_fields, resp)
 
 	for param in allowed_fields:
-		if special_fields and param in special_fields and param in request.json:
+		if special_fields and param in special_fields and param in resp:
 			if param == 'password' :
-				new_model[param] = base64.b64encode(request.json[param])
+				new_model[param] = base64.b64encode(resp[param])
 		else:
-			if param in request.json:
-				new_model[param] = request.json[param]
+			if param in resp:
+				new_model[param] = resp[param]
 			else: 
 				new_model[param] = ''
 	if association:
@@ -112,4 +113,10 @@ def delete_object(model, request, save_path):
 	model.delete(model_entry)
 	myjson.save(model, save_path)
 
-
+def get_response(request):
+	if len(request.form) > 0:
+        		resp = request.form
+    	else:
+        		resp = request.json
+	print resp
+    	return resp
