@@ -16,7 +16,7 @@ users = myjson.load_json(users_path)
 def login():
 	username = request.form['username']
 	password = request.form['password']
-	usersMatch = filter(lambda u: u['name'] == username, users)
+	usersMatch = filter(lambda u: u['username'] == username, users)
 	if len(usersMatch) == 0:
 		return 'No such username', 401	
 	if password != base64.b64decode(usersMatch[0]['password']):
