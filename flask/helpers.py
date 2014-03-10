@@ -53,6 +53,7 @@ def update_object(model, value_model, request, save_path, exclude_fields=None, n
 		myjson.save_json(model, save_path)
 	else: # If the model_entry does not exist
 		abort(make_response('Object not found', 400))
+	return model_entry
 
 
 # Create a new object for the given model

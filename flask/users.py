@@ -46,8 +46,10 @@ def register():
 def update(user_id):
     has_right(user_id)
     form_entry = ["email", "address1", "address2"]
-    helpers.update_object(users, user_id, request, users_path, mandatory_fields=form_entry, null_fields=['password']) 
-    return 'ok', 200
+    user = helpers.update_object(users, user_id, request, users_path, mandatory_fields=form_entry, null_fields=['password'])
+    u = copy.deepcopy(user)
+    del u['password']
+    return jsonify({"user": u}), 200
 
 @usr.route('/<int:user_id>', methods=['GET'])
 def show(user_id):
