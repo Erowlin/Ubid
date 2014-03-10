@@ -88,20 +88,24 @@ ubidControllers.controller('AccountBarCtrl', ['$scope',
 ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 	function($scope, $http, User) {
 		$scope.editMode = false;
+
+		$http.get('http://localhost:5000/user/' + User.userId).
+		success(function(data, status){
+			User = data.user;
+			console.log(data.user);
+			console.log($scope.info);
+			$scope.info = data.user;
+			console.log($scope.info);
+		}).
+		error(function(data, status){
+			console.log(status + ": " + data);
+		});
+
 		// $scope.saveChanges = function() {
 		// 	// envoyer donnees
 		// 	console.log("Données sauvegardées !");
 		// 	$scope.editMode = false;
 		// }
-
-		$http.get('http://localhost:5000/user/' + User.userId).
-		success(function(data, status){
-			User.username = data.user.username;
-			$scope.username = User.username;
-		}).
-		error(function(data, status){
-			console.log(status + ": " + data);
-		});
 	}]);
 
 ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',

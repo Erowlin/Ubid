@@ -7,6 +7,14 @@ ubidServices.factory('UserService', [function () {
 	var usr = {
 		isLogged: false,
 		username: '',
+		firstname: '',
+		lastname: '',
+		email: '',
+		address1: '',
+		address2: '',
+		city: '',
+		country: '',
+		postalcode: '',
 		userId: ''
 	};
 	return usr;
