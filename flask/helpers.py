@@ -12,12 +12,16 @@ import re
 def verify_mandatory_field_form(fields, request):
 	missing_fields = ''
 	provided_fields = ''
-	for param in fields:
+	value_fields = ''
+
+	for param in request.form:
 		provided_fields += ' ' + param
+		value_fields += ' ' + request.form[param]
+	for param in fields:
 		if param not in request.form or request.form[param] == '':
 			missing_fields += (' ' + param)			
 	if len(missing_fields):
-		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields + "]", 400))
+		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
 def get_by(model, value_to_match, field_to_search="id", public_fields=None, test=""):
 	model_entry = filter(lambda u: u[field_to_search] == value_to_match, model)
