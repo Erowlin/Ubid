@@ -19,12 +19,11 @@ users_path = 'files/users.json'
 @usr.route('/login', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def login():
+    resp = helpers.get_response(request)
     mandatory_fields = ["username", "password"]
-    print base64.b64encode('tata')
-    helpers.verify_mandatory_field_form(mandatory_fields, request)
-    username = request.json['username']
-    print username
-    password = request.json['password']
+    helpers.verify_mandatory_field_form(mandatory_fields, resp)
+    username = resp['username']
+    password = resp['password']
     usersMatch = filter(lambda u: u['username'] == username, glob.users)
     if len(usersMatch) == 0:
         return 'No such username', 401	
@@ -41,15 +40,16 @@ def logout():
 @usr.route('/', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def register():
-    if len(request.json['password']) < 6:
+    resp = helpers.get_response(request)
+    if len(resp['password']) < 6:
     	return 'password too short', 406
-    usersMatch = filter(lambda u: u['username'] == request.json['username'], glob.users)
+    usersMatch = filter(lambda u: u['username'] == resp['username'], glob.users)
     if len(usersMatch) != 0 :
     	return 'Username already taken', 409
     allowed_fields = ['username', 'password', 'email', 'address1', 'address2', 'city', 'firstname', 'lastname', 'postalcode', 'country']
     mandatory_fields = ['username', 'password', 'email', 'address1', 'city', 'firstname', 'lastname', 'postalcode', 'country']
     special_fields = ['password']
-    helpers.new_object(glob.users, request, users_path, allowed_fields, mandatory_fields, special_fields)
+    helpers.new_object(glob.users, resp, users_path, allowed_fields, mandatory_fields, special_fields)
     return 'Register successful', 201
 
 @usr.route('/<int:user_id>', methods=['POST'])
