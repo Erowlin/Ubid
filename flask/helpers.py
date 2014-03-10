@@ -3,9 +3,12 @@ from flask import abort, make_response
 import base64
 import myjson
 import copy
+import re
 
 # Verify the presence of mandatory fields.
-# If mandatory fields are missing, abort with 400 and list all the missing fields
+# If mandatory fields are missing or empty, abort with 400 and list all the missing fields
+# fields : List of mandatory fields ['field1', 'field2']
+# request : The original request
 def verify_mandatory_field_form(fields, request):
 	missing_fields = ''
 	for param in fields:
@@ -14,9 +17,16 @@ def verify_mandatory_field_form(fields, request):
 	if len(missing_fields):
 		abort(make_response('Missing fields :'+  missing_fields, 400))
 
-def get_by(model, value_to_match, field_to_search="id", test=""):
+def get_by(model, value_to_match, field_to_search="id", public_fields=None, test=""):
 	model_entry = filter(lambda u: u[field_to_search] == value_to_match, model)
 	if model_entry:
+		if public_fields:
+			model_copy_entry = copy.deepcopy(model_entry)
+			for public_field in public_fields:
+				r = re.search('(assoc_)a-z(_)_(a-z)')
+				if r:
+					print r
+				model_copy_entry[public_field] = model_entry[0][public_field]
 		return model_entry[0]
 	print "Return None from " + test
 	return None
@@ -63,7 +73,8 @@ def update_object(model, value_model, request, save_path, exclude_fields=None, n
 # allowed_fields : The allowed fields for the model
 # mandatory_fields : Check if the mandatory fields are present and not empty
 # special fields : Special behaviour for special fields
-def new_object(model, request, save_path, allowed_fields, mandatory_fields=None, special_fields=None):
+# Association : Allow association between 2 models. association = [{association_field : 'field_name', association_entry: entry, association_name: 'name'}]
+def new_object(model, request, save_path, allowed_fields, mandatory_fields=None, special_fields=None, associations=None):
 	new_model = {}
 	if mandatory_fields:
 		verify_mandatory_field_form(mandatory_fields, request)
@@ -77,6 +88,9 @@ def new_object(model, request, save_path, allowed_fields, mandatory_fields=None,
 				new_model[param] = request.form[param]
 			else: 
 				new_model[param] = ''
+	if association:
+		for association in associations:
+			pass
 	new_model['id'] = len(model) + 1
 	model.append(new_model)
 	myjson.save_json(model, save_path)

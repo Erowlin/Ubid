@@ -73,7 +73,6 @@ def loge():
 		return str(session["id"])
 	return '0'
 
-
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
 def has_right_abort(user_id):

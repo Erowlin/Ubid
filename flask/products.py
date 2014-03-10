@@ -1,8 +1,6 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, render_template, session
 import myjson
 
-import globals
-
 pdt = Blueprint('pdt', __name__, '')
 
 products_path = 'files/products.json'
