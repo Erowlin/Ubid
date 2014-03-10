@@ -33,7 +33,7 @@ def after_request(data):
 	response.headers['Content-Type'] = 'application/json'
 	response.headers['Access-Control-Allow-Origin'] = '*'
 	response.headers['Access-Control-Allow-Headers'] = "Origin, X-Requested-With, Content-Type, Accept"
-	response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
+	response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
 	return response
 
 @app.errorhandler(400)
