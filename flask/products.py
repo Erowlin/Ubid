@@ -1,5 +1,4 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, render_template, session
-from flask.ext import login
 import myjson
 
 import helpers

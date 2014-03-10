@@ -1,9 +1,6 @@
 from flask import Flask, jsonify, make_response, request, abort, render_template, session
 from datetime import timedelta
 
-from flask.ext import login
-
-
 import decorator
 
 import myjson
