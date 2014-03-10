@@ -34,7 +34,7 @@ def login():
     if password != base64.b64decode(user[0]['password']):
         return 'Wrong password', 403
     generate_token(user[0])
-    return jsonify({'userId': user[0]["id"], 'token': user[0]['token']}), 200
+    return jsonify({'user_id': user[0]["id"], 'token': user[0]['token']}), 200
 	
 @usr.route('/logout', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
@@ -94,22 +94,29 @@ def show(user_id):
 
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
-def has_right_abort(resp):
+def has_right_abort(resp, user_id=None):
+    print resp
+    print user_id
     if not resp or not 'user_id' in resp or not 'token' in resp:
         abort(make_response('Missing Token or User Id',400))
-    id = has_right(resp)
+    id = has_right(resp, user_id)
     if id != 0:
         return id
     else:
         abort(401)
 
 # Return true if same user, otherwise return false
-def has_right(resp):
+def has_right(resp, user_id=None):
     if  not resp or not 'user_id' in resp or not 'token' in resp:
         return 0
     user_id = resp['user_id']
     token = resp['token']
     user = helpers.get_by(glob.users, user_id)
+    print ' Adaksdnsajldnslaljdsa'
+    print user
+    print user_id
+    if user_id is not None and int(user_id) != user['id']:
+        return 0
     if 'token' in user  and token == user['token']:
         return resp
     else:
@@ -123,18 +130,18 @@ def destroy_token(user):
     user['token'] = ''
     myjson.save_json(glob.users, users_path)
 
-    def get_user_by_ip(user_id, token=None):
-        user = get_by(glob.users, user_id)
-        if user is None:
-            abort(make_response("User not found",400))
-        u = copy.deepcopy(user)
-        del u['password']
-        if  id != u['id'] or 'token' is None or u['token'] != token: # Public profil
-            del u['address1']
-            del u['address2']
-            del u['email']
-            del u['firstname']
-            del u['lastname']
-            del u['token']
-        return u
+def get_user_by_id(user_id, token=None):
+    user = helpers.get_by(glob.users, user_id)
+    if user is None:
+        abort(make_response("User not found",400))
+    u = copy.deepcopy(user)
+    del u['password']
+    if  user_id != u['id'] or 'token' is None or u['token'] != token: # Public profil
+        del u['address1']
+        del u['address2']
+        del u['email']
+        del u['firstname']
+        del u['lastname']
+        del u['token']
+    return u
 
