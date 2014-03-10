@@ -13,10 +13,6 @@ def verify_mandatory_field_form(fields, request):
 	missing_fields = ''
 	provided_fields = ''
 	value_fields = ''
-	print request.json
-	for param in request.json:
-		provided_fields += ' ' + param
-		value_fields += ' ' + request.json[param]
 	for param in fields:
 		if param not in request.json or request.json[param] == '':
 			missing_fields += (' ' + param)			
@@ -24,8 +20,10 @@ def verify_mandatory_field_form(fields, request):
 		abort(make_response('Missing fields :'+  missing_fields + ". Provided fields : [" + provided_fields +"]" + " value vields : [" + value_fields + "]." ,400))
 
 def test_regexp(value):
-	r = re.compile('(assoc_)a-z(_)_(a-z)')
-	result = r.search(value)
+	print value
+	r = re.match('(assoc_)a-z(_)_(a-z)', value, )
+	print r
+	
 	if result:
 		print result
 
@@ -111,5 +109,3 @@ def delete_object(model, request, save_path):
 		abort(make_response('Object not found', 400))
 	model.delete(model_entry)
 	myjson.save(model, save_path)
-
-

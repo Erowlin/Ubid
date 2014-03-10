@@ -19,8 +19,6 @@ users_path = 'files/users.json'
 @usr.route('/login', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def login():
-    print 'toto'
-    # return jsonify(toto=' tamere')
     mandatory_fields = ["username", "password"]
     print base64.b64encode('tata')
     helpers.verify_mandatory_field_form(mandatory_fields, request)
@@ -40,7 +38,7 @@ def logout():
 	session.pop('id', None)
 	return 'Logout successful', 201
 
-@usr.route('/', methods=['POST'])
+@usr.route('/', methods=['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def register():
     if len(request.json['password']) < 6:
