@@ -25,14 +25,9 @@ def search_products():
     print prods
     for prod in prods:
         match = re.search(regex, prod['title'])
-        if match:
+        match2 = re.search(regex, prod['description'])
+        if match or match2:
             products.append(prod)
-            print 'found' , match.group()
-        else:
-            print 'did not find'
-            match = re.search(regex, prod['description'])
-            if match:
-                products.append(prod)
     return jsonify({'products' : products}), 200
 
 
