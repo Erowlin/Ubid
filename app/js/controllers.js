@@ -105,11 +105,17 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 		};
 	}]);
 
-ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',
-	function($scope, $routeParams) {
+ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams', '$http', 'UserService',
+	function($scope, $routeParams, $http, User) {
 		$scope.userId = $routeParams.userId;
-		$scope.test = { user: { username: "Kiki", city: "Le Mans",  firstname: "Jean-Michel"} };
-		$scope.user = $scope.test.user;
+		$http.get('http://localhost:5000/user/' + $scope.userId + '?token=' + User.token + '&user_id=' + User.id).
+		success(function(data, status){
+			$scope.user = data.user;
+			console.log($scope.user);
+		}).
+		error(function(data, status){
+			console.log(status + ": " + data);
+		});
 	}]);
 
 ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams', '$http', 'UserService', 
@@ -138,6 +144,7 @@ ubidControllers.controller('ProductListCtrl', ['$scope', '$http', '$location', '
 		});
 
 		$scope.goToProductPage = function(id) {
+			console.log(User.isLogged);
 			$location.path("/product/" + id);
 		}
 	}]);
