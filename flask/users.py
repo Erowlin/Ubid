@@ -94,7 +94,6 @@ def show(user_id):
 @decorator.crossdomain(origin='*')
 def is_logged():
     resp = helpers.get_response(request)
-    print resp
     if has_right(resp, resp['user_id']):
         return 'Ok', 200
     return 'Ko', 403
