@@ -43,6 +43,9 @@ def get_by(model, value_to_match, field_to_search="id", public_fields=None, test
 # mandatory_fields : Check if all fields are presents
 def update_object(model, value_model, resp, save_path, exclude_fields=None, null_fields=None, mandatory_fields=None):
 	model_entry = get_by(model, value_model, test="update_object")
+	print 'grospd'
+	print model_entry
+	print 'saloep'
 	if model_entry: # If the model_entry exist
 		new_model = {}
 		if mandatory_fields:
@@ -54,6 +57,8 @@ def update_object(model, value_model, resp, save_path, exclude_fields=None, null
 			if null_fields and param in null_fields and resp[param] is not None:
 				if param == 'password' :
 					new_model[param] = base64.b64encode(resp[param])
+				else:
+					new_model[param] = resp[param]
 				can_set = 0
 			if can_set == 1 and param in model_entry:
 				new_model[param] = resp[param]
@@ -96,12 +101,17 @@ def new_object(model, resp, save_path, allowed_fields, mandatory_fields=None, sp
 	myjson.save_json(model, save_path)
 	return new_model
 
-def delete_object(model, request, save_path):
-	model_entry = get_by(model, request.json['id'])
+def delete_object(model, id, save_path):
+	model_entry = get_by(model, id)
 	if model_entry is None:
 		abort(make_response('Object not found', 400))
-	model.delete(model_entry)
-	myjson.save(model, save_path)
+	print 'TODELETE:'
+	print id
+	for i in xrange(len(model)):
+		if model[i]['id'] == id:
+			model.pop(i)
+			break
+	myjson.save_json(model, save_path)
 
 def get_response(request):
 	if len(request.form) > 0:

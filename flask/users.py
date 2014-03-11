@@ -80,7 +80,6 @@ def show(user_id):
     if u is None:
         abort(make_response("User not found",400))
     del u['password']
-    print resp
     if not 'user_id' in resp or int(resp['user_id']) != user_id or not 'token' in resp or u['token'] != resp['token']: # Public profil
         del u['address1']
         del u['address2']

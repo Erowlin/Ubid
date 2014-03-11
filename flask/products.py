@@ -35,7 +35,6 @@ def show(product_id):
             p = copy.deepcopy(product)
             iduser = p['user_id']
             user = users.get_user_by_id(int(iduser))
-            print user
             p['user'] = user
             if not p:
                 return 'Product Not found', 401
@@ -46,20 +45,23 @@ def show(product_id):
 def update(product_id):
     resp = helpers.get_response(request) 
     product = helpers.get_by(glob.products, product_id)
-    users.has_right_abort(resp)
+    users.has_right_abort(resp, product['user_id'])
     resp = helpers.get_response(request)
     exclude_field = ['reservePrice', 'startPrice', 'id', 'user_id', 'user']
     null_fields = ['title', 'description', 'buyoutPrice', 'dateLength', 'dateStart']
-    product = helpers.update_object(glob.products, product_id, resp, glob.products_path, null_fields=null_fields)
+    product = helpers.update_object(glob.products, product_id, resp, glob.products_path, null_fields=null_fields, exclude_fields=exclude_field)
     return show(product_id)
 
 @pdt.route('/<int:product_id>', methods=['DELETE', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def destroy(product_id):
+    resp = helpers.get_response(request) 
     product = helpers.get_by(glob.products, product_id)
-    users.has_right_abort(product['user_id'])
+    if product is None:
+        return 'No such product', 400
+    users.has_right_abort(resp, product['user_id'])
     helpers.delete_object(glob.products, product_id, products_path)
-    reto
+    return 'Delete ok', 200
 
 @pdt.route('/products/<int:product_id>')
 @decorator.crossdomain(origin='*')
