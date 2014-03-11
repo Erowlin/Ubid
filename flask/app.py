@@ -1,29 +1,19 @@
 from flask import Flask, jsonify, make_response, request, abort, render_template, session
 from datetime import timedelta
 
-import decorator
-
-import myjson
-import json
-
-import glob
-import helpers
-
-import users
-import products
-
 
 products_path = 'files/products.json'
 users_path = 'files/users.json'
 
 app = Flask(__name__)
 
+import products
+import users
+
 # Blueprint allow to do "multi-file", by registering collections
 app.register_blueprint(products.pdt, url_prefix="/products")
 app.register_blueprint(users.usr, url_prefix="/user")
 
- 
-app.secret_key = '12345'
 app.permanent_session_lifetime = timedelta(minutes=60)
 
 

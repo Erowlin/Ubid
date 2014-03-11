@@ -43,9 +43,6 @@ def get_by(model, value_to_match, field_to_search="id", public_fields=None, test
 # mandatory_fields : Check if all fields are presents
 def update_object(model, value_model, resp, save_path, exclude_fields=None, null_fields=None, mandatory_fields=None):
 	model_entry = get_by(model, value_model, test="update_object")
-	print 'grospd'
-	print model_entry
-	print 'saloep'
 	if model_entry: # If the model_entry exist
 		new_model = {}
 		if mandatory_fields:
@@ -101,24 +98,30 @@ def new_object(model, resp, save_path, allowed_fields, mandatory_fields=None, sp
 	myjson.save_json(model, save_path)
 	return new_model
 
+
+# Delete an object from the database
+###
+# model : The global model to modify
+# id : The entry to delete
+# save_path : The file path for the json model
 def delete_object(model, id, save_path):
 	model_entry = get_by(model, id)
 	if model_entry is None:
 		abort(make_response('Object not found', 400))
-	print 'TODELETE:'
-	print id
 	for i in xrange(len(model)):
 		if model[i]['id'] == id:
 			model.pop(i)
 			break
 	myjson.save_json(model, save_path)
 
+
+# Helper to format the response from a request. 
+# Easy to use, whatever if the data is sent in GET, POST, OPTIONS ...
 def get_response(request):
-	if len(request.form) > 0:
+	if len(request.form) > 0: # If POST from WEb Browser
         		resp = request.form
-    	elif request.json is not None and len(request.json) > 0:
-        		resp = request.json
+    	elif request.json is not None and len(request.json) > 0: # If POST from Angular
+          		resp = request.json
 	else:
-		print 'rentre la'
-		resp = request.args
+		resp = request.args # If GET Values
     	return resp
