@@ -9,19 +9,19 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="productName">Nom de l'objet</label>  
               <div class="col-md-4">
-                <input id="productName" name="productName" type="text" placeholder="Nom de l'objet" class="form-control input-md" required ng-model="item.title">
+                <input id="productName" name="productName" type="text" placeholder="Nom de l'objet" class="form-control input-md" required ng-model="newproduct.title">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-4 control-label" for="productImg">Url de l'image</label>  
               <div class="col-md-8">
-                <input id="productImg" name="productImg" type="text" placeholder="url de l'image" class="form-control input-md" required ng-model="item.imgUrl">
+                <input id="productImg" name="productImg" type="text" placeholder="url de l'image" class="form-control input-md" required ng-model="newproduct.imgUrl">
               </div>
             </div>
             <div class="form-group">
               <label class="col-md-4 control-label" for="productDescription">Description</label>
               <div class="col-md-8">                     
-                <textarea class="form-control" id="productDescription" rows="7" name="productDescription" ng-model="item.description">Décrivez l'objet...</textarea>
+                <textarea class="form-control" id="productDescription" rows="7" name="productDescription" ng-model="newproduct.description">Décrivez l'objet...</textarea>
               </div>
             </div>
           </form>
@@ -30,7 +30,7 @@
               <label class="col-md-4 control-label" for="startPrice">Prix de départ</label>
               <div class="col-md-4">
                 <div class="input-group">
-                  <input id="startPrice" name="startPrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.startPrice">
+                  <input id="startPrice" name="startPrice" class="form-control" placeholder="0,00" type="text" required ng-model="newproduct.startPrice">
                   <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
@@ -39,7 +39,7 @@
               <label class="col-md-4 control-label" for="reservePrice">Prix de réserve</label>
               <div class="col-md-4">
                 <div class="input-group">
-                  <input id="reservePrice" name="reservePrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.reservePrice">
+                  <input id="reservePrice" name="reservePrice" class="form-control" placeholder="0,00" type="text" required ng-model="newproduct.reservePrice">
                   <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
@@ -48,7 +48,7 @@
               <label class="col-md-4 control-label" for="buyoutPrice">Vente direct</label>
               <div class="col-md-4">
                 <div class="input-group">
-                  <input id="buyoutPrice" name="buyoutPrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.buyoutPrice">
+                  <input id="buyoutPrice" name="buyoutPrice" class="form-control" placeholder="0,00" type="text" required ng-model="newproduct.buyoutPrice">
                   <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
@@ -56,7 +56,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="dateLength">Durée (en jours)</label>  
               <div class="col-md-4">
-                <input id="dateLength" name="dateLength" type="text" placeholder="0 jour(s)" class="form-control input-md" required ng-model="item.dateLength">
+                <input id="dateLength" name="dateLength" type="text" placeholder="0 jour(s)" class="form-control input-md" required ng-model="newproduct.dateLength">
               </div>
             </div>
             <button id="addButton" name="addButton" class="btn btn-primary col-md-8" ng-click="addItem()">Add</button>

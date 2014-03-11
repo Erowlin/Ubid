@@ -20,8 +20,17 @@ ubidControllers.controller('HeaderCtrl', ['$scope', '$rootScope', '$http', '$loc
 		};
 	}]);
 
-ubidControllers.controller('SearchCtrl', ['$scope',
-	function($scope) {
+ubidControllers.controller('SearchCtrl', ['$scope', '$rootScope', '$location', '$http', 'UserService',
+	function($scope, $rootScope, $location, $http, User) {
+		$scope.search = function() {
+			$http({method:'POST', url:'http://localhost:5000/products/search', data: {"query" : $scope.keyword}}).
+			success(function(data){
+				console.log(data);
+			}).
+			error(function(status, response){
+				console.log(status + response);
+			});
+		};
 	}]);
 
 ubidControllers.controller('SearchResultCtrl', ['$scope',
@@ -89,8 +98,6 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 		});
 
 		$scope.saveChanges = function() {
-			console.log($scope.info);
-			console.log(User);
 			$scope.info.token = User.token;
 			$scope.info.user_id = User.id;
 			console.log($scope.info);
@@ -151,10 +158,10 @@ ubidControllers.controller('ProductListCtrl', ['$scope', '$http', '$location', '
 
 ubidControllers.controller('SalesCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
-		$scope.item.token = User.token;
-		$scope.item.user_id = User.id;
+		$scope.newproduct.token = User.token;
+		$scope.newproduct.user_id = User.id;
 		$scope.addItem = function() {
-			$http({method:'POST', url:'http://localhost:5000/products/', data: $scope.item})
+			$http({method:'POST', url:'http://localhost:5000/products/', data: $scope.newproduct})
 			.success(function(data, status, response){
 				console.log("Item ajouté !");
 			})
