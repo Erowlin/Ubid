@@ -112,10 +112,10 @@ ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',
 		$scope.user = $scope.test.user;
 	}]);
 
-ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams', 'UserService', 
-	function($scope, $routeParams){
+ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams', '$http', 'UserService', 
+	function($scope, $routeParams, $http, User){
 		$scope.productId = $routeParams.productId;
-		$http.get('http://localhost:5000/product/' + $scope.productId + '?token=' + User.token + '&user_id=' + User.id).
+		$http.get('http://localhost:5000/products/' + $scope.productId + '?token=' + User.token + '&user_id=' + User.id).
 		success(function(data, status){
 			$scope.product = data.product;
 		}).
@@ -124,22 +124,38 @@ ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams', 'UserSe
 		});
 	}]);
 
-ubidControllers.controller('ProductListCtrl', ['$scope',
-	function($scope){
-		// $scope.products = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8']; // GET /products/
-		$scope.products = { product:  {value: 2,label: "Dubstep",value2: 3,label1: "BoysIIMen",value3: 4,label3:"Sylenth1"} };
+ubidControllers.controller('ProductListCtrl', ['$scope', '$http', '$location', 'UserService',
+	function($scope, $http, $location, User){
 
-		var tmp = [];
-		var keys = Object.keys($scope.products.product);
-		keys.forEach(function(key){
-			tmp.push($scope.products.product[key]);
+		$http.get('http://localhost:5000/products?token=' + User.token + '&user_id=' + User.id).
+		success(function(data, status){
+			$scope.products = data.products;
+			$scope.maxCols = 4;
+			$scope.rows = $scope.products.chunk($scope.maxCols);
+		}).
+		error(function(data, status){
+			console.log(status + ": " + data);
 		});
 
-		$scope.maxCols = 4;
-		$scope.rows = tmp.chunk($scope.maxCols);
+		$scope.goToProductPage = function(id) {
+			$location.path("/product/" + id);
+		}
 	}]);
 
-ubidControllers.controller('SalesCtrl', ['$scope',
-	function($scope) {
-		$scope.products = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8'];
+ubidControllers.controller('SalesCtrl', ['$scope', '$http', 'UserService',
+	function($scope, $http, User) {
+		console.log($scope.item);
+		$scope.item.token = User.token;
+		$scope.item.user_id = User.id;
+		console.log($scope.item);
+		$scope.addItem = function() {
+			$http({method:'POST', url:'http://localhost:5000/products/', data: $scope.item})
+			.success(function(data, status, response){
+				console.log("Item ajouté !");
+			})
+			.error(function(status, response){
+				console.log(status);
+			});
+
+		}
 	}]);

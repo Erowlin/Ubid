@@ -1,73 +1,69 @@
 <div ng-controller="SearchCtrl" ng-include src="'partials/searchbar.html'"></div>
 <div class="main-container">
   <br>
-  <div ng-controller="SalesCtrl">
-    <!--  -->
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="well well-sm">
-          <div class="row">
-            <form class="form-horizontal col-md-6">
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="productName">Nom de l'objet</label>  
-                <div class="col-md-4">
-                  <input id="productName" name="productName" type="text" placeholder="Nom de l'objet" class="form-control input-md">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div class="well well-sm">
+        <div class="row">
+          <form class="form-horizontal col-md-6" role="form">
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="productName">Nom de l'objet</label>  
+              <div class="col-md-4">
+                <input id="productName" name="productName" type="text" placeholder="Nom de l'objet" class="form-control input-md" required ng-model="item.title">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="productImg">Url de l'image</label>  
+              <div class="col-md-8">
+                <input id="productImg" name="productImg" type="text" placeholder="url de l'image" class="form-control input-md" required ng-model="item.imgUrl">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="productDescription">Description</label>
+              <div class="col-md-8">                     
+                <textarea class="form-control" id="productDescription" rows="7" name="productDescription" ng-model="item.description">Décrivez l'objet...</textarea>
+              </div>
+            </div>
+          </form>
+          <form class="form-horizontal col-md-6">
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="startPrice">Prix de départ</label>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input id="startPrice" name="startPrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.startPrice">
+                  <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="productImg">Url de l'image</label>  
-                <div class="col-md-8">
-                  <input id="productImg" name="productImg" type="text" placeholder="url de l'image" class="form-control input-md">
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="reservePrice">Prix de réserve</label>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input id="reservePrice" name="reservePrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.reservePrice">
+                  <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="productDescription">Description</label>
-                <div class="col-md-8">                     
-                  <textarea class="form-control" id="productDescription" rows="7" name="productDescription">Décrivez l'objet...</textarea>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="buyoutPrice">Vente direct</label>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input id="buyoutPrice" name="buyoutPrice" class="form-control" placeholder="0,00" type="text" required ng-model="item.buyoutPrice">
+                  <span class="input-group-addon">$CAD</span>
                 </div>
               </div>
-            </form>
-            <form class="form-horizontal col-md-6">
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="startPrice">Prix de départ</label>
-                <div class="col-md-4">
-                  <div class="input-group">
-                    <input id="startPrice" name="startPrice" class="form-control" placeholder="0,00" type="text">
-                    <span class="input-group-addon">$CAD</span>
-                  </div>
-                </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="dateLength">Durée (en jours)</label>  
+              <div class="col-md-4">
+                <input id="dateLength" name="dateLength" type="text" placeholder="0 jour(s)" class="form-control input-md" required ng-model="item.dateLength">
               </div>
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="reservePrice">Prix de réserve</label>
-                <div class="col-md-4">
-                  <div class="input-group">
-                    <input id="reservePrice" name="reservePrice" class="form-control" placeholder="0,00" type="text">
-                    <span class="input-group-addon">$CAD</span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="buyoutPrice">Vente direct</label>
-                <div class="col-md-4">
-                  <div class="input-group">
-                    <input id="buyoutPrice" name="buyoutPrice" class="form-control" placeholder="0,00" type="text">
-                    <span class="input-group-addon">$CAD</span>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="dateLength">Durée (en jours)</label>  
-                <div class="col-md-4">
-                  <input id="dateLength" name="dateLength" type="text" placeholder="0 jour(s)" class="form-control input-md">
-                </div>
-              </div>
-              <button id="addButton" name="addButton" class="btn btn-primary col-md-8">Add</button>
-              <form class="form-horizontal">
-              </div>
+            </div>
+            <button id="addButton" name="addButton" class="btn btn-primary col-md-8" ng-click="addItem()">Add</button>
+            <form class="form-horizontal">
             </div>
           </div>
         </div>
-        <!--  -->
         <!--  -->   
         <div class="row template">
           <div class="col-md-12">

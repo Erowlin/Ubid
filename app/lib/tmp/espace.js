@@ -160,59 +160,59 @@ $(document).ready(function(){
     });
 
     // definition du style pour la modification des variables
-    $.fn.editable.defaults.mode = 'inline';
+    // $.fn.editable.defaults.mode = 'inline';
 
     // Déclaration de différentes valeures modifiables
-    $('.infoPersoPseudo p').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoPersoPseudo p').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoPersoCouriel p').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoPersoCouriel p').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoPersoNumDomicile p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoPersoNumDomicile p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoPersoNumMobile p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoPersoNumMobile p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoAdresseRue p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoAdresseRue p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoAdresseVille p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoAdresseVille p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoAdresseCodePostal p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoAdresseCodePostal p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoAdressePays p:last-child').editable({
-        highlight:  'invisible'
-    });
+    // $('.infoAdressePays p:last-child').editable({
+    //     highlight:  'invisible'
+    // });
 
-    $('.infoPayementNumero p:last-child').editable({
-        highlight: 'invisible'
-    });
+    // $('.infoPayementNumero p:last-child').editable({
+    //     highlight: 'invisible'
+    // });
 
-    $('.infoPayementNom p:last-child').editable({
-        highlight: 'invisible'
-    });
+    // $('.infoPayementNom p:last-child').editable({
+    //     highlight: 'invisible'
+    // });
 
-    $('.infoPayementDateExpiration p:last-child').editable({
-        highlight: 'invisible',
-        combodate: {
-            minYear: 2014,
-            maxYear: 2020
-        }
-    });
+    // $('.infoPayementDateExpiration p:last-child').editable({
+    //     highlight: 'invisible',
+    //     combodate: {
+    //         minYear: 2014,
+    //         maxYear: 2020
+    //     }
+    // });
 
-    $('.infoPayementCrypto p:last-child').editable({
-        highlight: 'invisible'
-    });
+    // $('.infoPayementCrypto p:last-child').editable({
+    //     highlight: 'invisible'
+    // });
 
 });
