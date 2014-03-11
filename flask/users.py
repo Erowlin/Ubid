@@ -73,9 +73,9 @@ def update(user_id):
 def show(user_id):
     resp = helpers.get_response(request)
     user = helpers.get_by(glob.users, user_id)
-    u = copy.deepcopy(user)
-    if u is None:
+    if user is None
         abort(make_response("User not found",400))
+    u = copy.deepcopy(user)        
     del u['password']
     if not 'user_id' in resp or int(resp['user_id']) != user_id or not 'token' in resp or u['token'] != resp['token']: # Public profil
         del u['address1']
