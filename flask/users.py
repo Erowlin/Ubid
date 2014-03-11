@@ -52,7 +52,7 @@ def register():
     usersMatch = filter(lambda u: u['username'] == resp['username'], glob.users)
     if len(usersMatch) != 0 :
     	return 'Username already taken', 409
-    allowed_fields = ['username', 'password', 'email', 'address1', 'address2', 'city', 'firstname', 'lastname', 'postalcode', 'country']
+    allowed_fields = ['username', 'password', 'email', 'address1', 'address2', 'city', 'firstname', 'lastname', 'postalcode', 'country', 'token']
     mandatory_fields = ['username', 'password', 'email', 'address1', 'city', 'firstname', 'lastname', 'postalcode', 'country']
     special_fields = ['password', 'token']
     helpers.new_object(glob.users, resp, users_path, allowed_fields, mandatory_fields, special_fields)
