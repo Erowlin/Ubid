@@ -54,8 +54,8 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 		};
 	}]);
 
-ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
-	function($scope, $http, User) {
+ubidControllers.controller('RegisterCtrl', ['$scope', '$http', '$location', 'UserService',
+	function($scope, $http, $location, User) {
 		$scope.EMAIL_REGEXP = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
 		$scope.register = function() {
 			$scope.user.token = User.token;
