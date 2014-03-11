@@ -8,7 +8,7 @@ ubidControllers.controller('HeaderCtrl', ['$scope', '$rootScope', '$http', '$loc
 	function($scope, $rootScope, $http, $location, User) {
 		$rootScope.headerTemplate = User.isLogged ? 'partials/header.html' : 'partials/header-login.html';
 		$scope.logout = function() {
-			$http({method:'POST', url:'http://localhost:5000/user/logout'}).
+			$http({method:'POST', url:'http://localhost:5000/user/logout', data: {"token" : User.token, "user_id": User.id}}).
 			success(function(e){
 				User.isLogged = false;
 				$rootScope.headerTemplate = 'partials/header-login.html';
@@ -42,29 +42,31 @@ ubidControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$
 			$http({method:'POST', url:'http://localhost:5000/user/login', data: {"username" : $scope.uname, "password": $scope.passwd}}).
 			success(function(data){
 				User.token = data.token;
-				User.user_id = data.id;
+				User.id = data.user_id;
 				User.isLogged = true;
 				$rootScope.headerTemplate = 'partials/header.html';
 				$location.path("/");
 			}).
 			error(function(status, response){
-				console.log("Raté!");
+				$scope.err = true;
+				$scope.errorMsg = "Erreur d'authentification: Mauvais mot de passe et/ou username."
 			});
 		};
 	}]);
 
 ubidControllers.controller('RegisterCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
+		$scope.EMAIL_REGEXP = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i;
 		$scope.register = function() {
 			$scope.user.token = User.token;
-			$scope.user.user_id = User.user_id;
-			console.log($scope.user);
-			$http.post("http://localhost:5000/user/", $scope.user)
+			$scope.user.id = User.id;
+			$http({method:'POST', url:'http://localhost:5000/user/', data: $scope.user})
 			.success(function(status, response){
+				$location.path("/");
 				console.log("Inscription réussie!");
 			})
 			.error(function(status, response){
-				console.log("L'inscription a échoué!");
+				console.log(status);
 			});
 		};
 	}]);
@@ -77,7 +79,7 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 	function($scope, $http, User) {
 		$scope.editMode = false;
 
-		$http.get('http://localhost:5000/user/' + User.user_id + '?token=' + User.token + '&user_id=' + User.user_id).
+		$http.get('http://localhost:5000/user/' + User.id + '?token=' + User.token + '&user_id=' + User.id).
 		success(function(data, status){
 			User = data.user;
 			$scope.info = data.user;
@@ -90,9 +92,9 @@ ubidControllers.controller('UserAccountCtrl', ['$scope', '$http','UserService',
 			console.log($scope.info);
 			console.log(User);
 			$scope.info.token = User.token;
-			$scope.info.user_id = User.user_id;
+			$scope.info.user_id = User.id;
 			console.log($scope.info);
-			$http.post('http://localhost:5000/user/' + User.user_id, $scope.info).
+			$http.post('http://localhost:5000/user/' + User.id, $scope.info).
 			success(function(data, status){
 				User = $scope.info;
 				$scope.editMode = false;
