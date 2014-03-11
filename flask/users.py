@@ -68,14 +68,14 @@ def update(user_id):
     del u['password']
     return jsonify({"user": u}), 200
 
-@usr.route('/<int:user_id>', methods=['GET'])
+@usr.route('/<int:user_id>', methods=['GET', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def show(user_id):
     resp = helpers.get_response(request)
     user = helpers.get_by(glob.users, user_id)
-    u = copy.deepcopy(user)
-    if u is None:
+    if user is None
         abort(make_response("User not found",400))
+    u = copy.deepcopy(user)        
     del u['password']
     if not 'user_id' in resp or int(resp['user_id']) != user_id or not 'token' in resp or u['token'] != resp['token']: # Public profil
         del u['address1']
@@ -87,6 +87,17 @@ def show(user_id):
     if (len(u) != 0):
         return jsonify({'user': u})
     return 'User Not found', 401
+
+
+# Function to check if the token is expired or not.
+@usr.route('/islogged', methods=['POST'])
+@decorator.crossdomain(origin='*')
+def is_logged():
+    resp = helpers.get_response(request)
+    print resp
+    if has_right(resp, resp['user_id']):
+        return 'Ok', 200
+    return 'Ko', 403
 
 # Check if the user is authenticated and if he has the right to access ressource.
 # If it's not the same user, abort 400
