@@ -32,12 +32,12 @@ def list_products():
 @decorator.crossdomain(origin='*')
 def show(product_id):
             product = helpers.get_by(glob.products, product_id)
+            if product is None :
+                return 'No such product', 400
             p = copy.deepcopy(product)
             iduser = p['user_id']
             user = users.get_user_by_id(int(iduser))
             p['user'] = user
-            if not p:
-                return 'Product Not found', 401
             return jsonify( { 'product' : p } )
 
 @pdt.route('/<int:product_id>', methods=['POST', 'OPTIONS'])
