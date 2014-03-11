@@ -63,12 +63,7 @@ ubidApp.config(['$httpProvider', function($httpProvider) {
 ubidApp.run(['$rootScope', '$location', 'UserService', function($rootScope, $location, User) {
   $rootScope.$on('$routeChangeStart', function(event, next, current) {
     var publicAccess = next.publicAccess || false;
-    if (User.isLogged) { //promise
-      if (publicAccess)
-        $location.path('/').replace();
-    } else {
-      if (!publicAccess)
-        $location.path('/login').replace();
-    }
+    if (!User.isLogged && !publicAccess)
+      $location.path('/login').replace();
   });
 }]);
