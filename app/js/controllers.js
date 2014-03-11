@@ -151,10 +151,8 @@ ubidControllers.controller('ProductListCtrl', ['$scope', '$http', '$location', '
 
 ubidControllers.controller('SalesCtrl', ['$scope', '$http', 'UserService',
 	function($scope, $http, User) {
-		console.log($scope.item);
 		$scope.item.token = User.token;
 		$scope.item.user_id = User.id;
-		console.log($scope.item);
 		$scope.addItem = function() {
 			$http({method:'POST', url:'http://localhost:5000/products/', data: $scope.item})
 			.success(function(data, status, response){
