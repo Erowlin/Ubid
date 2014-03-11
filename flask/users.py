@@ -97,22 +97,21 @@ def has_right_abort(resp, user_id=None):
     if not resp or not 'user_id' in resp or not 'token' in resp:
         abort(make_response('Missing Token or User Id',400))
     id = has_right(resp, user_id)
-    if id != 0:
+    if id != False:
         return id
     else:
         abort(401)
 
-# Return true if same user, otherwise return false
+# Return true if same user and token, otherwise return false
 def has_right(resp, user_id):
     if  not resp or not 'user_id' in resp or not 'token' in resp:
         return 0
     token = resp['token']
     user = helpers.get_by(glob.users, user_id)
-    
     if int(resp['user_id']) != int(user_id) or resp['token'] != user['token']:
-        return 0
+        return False
     else:
-        return 1
+        return True
 
 def generate_token(user):
     user = helpers.get_by(glob.users, user['id'])
