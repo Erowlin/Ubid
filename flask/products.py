@@ -18,6 +18,8 @@ products_path = 'files/products.json'
 @decorator.crossdomain(origin='*')
 def search_products():
     resp = helpers.get_response(request)
+    if 'query' not in resp:
+        return 'You need to send a query param :(', 400
     regex = r""  + re.escape('seche')
     str = resp['query']
     products = []
