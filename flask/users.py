@@ -9,7 +9,6 @@ import os
 import glob
 import base64
 import copy
-import pprint
 
 import helpers
 
@@ -24,7 +23,6 @@ users_path = 'files/users.json'
 def login():
     resp = helpers.get_response(request)
     mandatory_fields = ["username", "password"]
-
     helpers.verify_mandatory_field_form(mandatory_fields, resp)
     username = resp['username']
     password = resp['password']
@@ -65,7 +63,6 @@ def register():
 def update(user_id):
     resp = helpers.get_response(request)
     has_right_abort(resp, user_id)
-    
     user = helpers.update_object(glob.users, user_id, resp, users_path, null_fields=['password'])
     u = copy.deepcopy(user)
     del u['password']

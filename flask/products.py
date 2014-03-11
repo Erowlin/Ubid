@@ -1,4 +1,5 @@
 from flask import Blueprint, Flask, jsonify, make_response, request, abort, render_template, session
+
 import myjson
 import decorator
 
@@ -14,7 +15,6 @@ products_path = 'files/products.json'
 @pdt.route('/', methods= ['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
 def add_product():
-	## To complete
     resp = helpers.get_response(request)
     allowed_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice', 'buyoutPrice', 'reservePrice', 'imgUrl']
     mandatory_fields = ['title', 'description', 'dateStart', 'dateLength', 'startPrice']
