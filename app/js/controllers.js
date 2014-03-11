@@ -112,12 +112,16 @@ ubidControllers.controller('UserProfileCtrl', ['$scope', '$routeParams',
 		$scope.user = $scope.test.user;
 	}]);
 
-ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams',
+ubidControllers.controller('ProductPageCtrl', ['$scope', '$routeParams', 'UserService', 
 	function($scope, $routeParams){
 		$scope.productId = $routeParams.productId;
-		$scope.test = { product: { buyoutPrice: "100", dateLength: 1, dateStart: 12345, description: 12345, id: 1, imgUrl: "http://placehold.it/350x400", reservePrice: "50",
-		startPrice: "14", title: "Bouteille de Jack Daniels 50cl", user: { city: "Quebec", country: "Canada", id: 1, postalcode: "G1V0A7", username: "Erowlin"}, user_id: 1}};
-		$scope.product = $scope.test.product;
+		$http.get('http://localhost:5000/product/' + $scope.productId + '?token=' + User.token + '&user_id=' + User.id).
+		success(function(data, status){
+			$scope.product = data.product;
+		}).
+		error(function(data, status){
+			console.log(status + ": " + data);
+		});
 	}]);
 
 ubidControllers.controller('ProductListCtrl', ['$scope',

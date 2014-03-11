@@ -36,7 +36,7 @@ ubidApp.config(['$routeProvider', function($routeProvider) {
     controller: 'UserProfileCtrl',
     publicAccess: true
   }).
-  when('/product/:productId?', {
+  when('/product/:productId', {
     templateUrl: './partials/product.html',
     controller: 'ProductPageCtrl',
     publicAccess: true
