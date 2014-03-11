@@ -22,7 +22,6 @@ def search_products():
     str = resp['query']
     products = []
     prods = glob.products
-    print prods
     for prod in prods:
         match = re.search(regex, prod['title'])
         match2 = re.search(regex, prod['description'])
