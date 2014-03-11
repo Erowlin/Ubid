@@ -3,6 +3,8 @@ from flask import Blueprint, Flask, jsonify, make_response, request, abort, rend
 import myjson
 import decorator
 
+import re
+
 import copy
 import helpers
 import glob
@@ -11,6 +13,28 @@ import users
 pdt = Blueprint('pdt', __name__, '')
 
 products_path = 'files/products.json'
+
+@pdt.route('/search', methods= ['POST', 'OPTIONS'])
+@decorator.crossdomain(origin='*')
+def search_products():
+    resp = helpers.get_response(request)
+    regex = r""  + re.escape('seche')
+    str = resp['query']
+    products = []
+    prods = glob.products
+    print prods
+    for prod in prods:
+        match = re.search(regex, prod['title'])
+        if match:
+            products.append(prod)
+            print 'found' , match.group()
+        else:
+            print 'did not find'
+            match = re.search(regex, prod['description'])
+            if match:
+                products.append(prod)
+    return jsonify({'products' : products}), 200
+
 
 @pdt.route('/', methods= ['POST', 'OPTIONS'])
 @decorator.crossdomain(origin='*')
