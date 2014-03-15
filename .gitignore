@@ -1,7 +1,10 @@
 *.py[cod]
 
 # C extensions
+
+*.DS_STORE
 *.so
+*~
 
 # Packages
 *.egg

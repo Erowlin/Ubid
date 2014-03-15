@@ -11,3 +11,4 @@ public_products_field = []
 
 products = myjson.load_json(products_path)
 users = myjson.load_json(users_path)
+
