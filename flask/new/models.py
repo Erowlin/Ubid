@@ -3,7 +3,7 @@ import glob
 
 class Models(object):
 	def __init__(self, json=None):
-		self.save_path = "files/" + str(self.__class__.__name__.lower()) + ".json"
+	self.save_path = "files/" + str(self.__class__.__name__.lower()) + ".json"
 		print self.save_path
 		self.__set_fields__(json)
 		print "Init Models"

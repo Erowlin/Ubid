@@ -118,20 +118,10 @@ def delete_object(model, id, save_path):
 # Helper to format the response from a request. 
 # Easy to use, whatever if the data is sent in GET, POST, OPTIONS ...
 def get_response(request):
-	# print 'ICIIIIII'
-	# print vars(request)
-	# print request.json
-	# print '#####'
-	# print len(request.form)
-	print request
-	print '####'
 	if len(request.form) > 0: # If POST from WEb Browser
         		resp = request.form
     	elif request.json is not None and len(request.json) > 0: # If POST from Angular
-          		print '#########ICI'
           		resp = request.json
 	else:
-		print 'LAAAAA'
 		resp = request.args # If GET Values
-	print 'OKKKKKK'
     	return resp
