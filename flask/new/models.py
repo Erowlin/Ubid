@@ -1,32 +1,21 @@
-import myjsonobject
-import glob
 
 class Models(object):
 	def __init__(self, json=None):
-	self.save_path = "files/" + str(self.__class__.__name__.lower()) + ".json"
-		print self.save_path
 		self.__set_fields__(json)
-		print "Init Models"
 
 	def new(self, attributes):
-		# Attributes is type of dict.
+		# Attributes var is type of dict.
 		for key in attributes:
 			setattr(self, key, attributes[key])
 		return self
 
 	def save(self):
-		print self.fields
 		for field in self.fields:
-			print field
 			print(eval("self."+field))
-
-	def json_to_object(self, json):
-		for json in jsons:
-			print json
-
+		print 'TAMERE'
+		print products[0].title
 
 	def __set_fields__(self, json=None):
-		print self.fields
 		if json is not None:
 			for field in json:
 				setattr(self, field, json[field]) # Set the  fields to default value

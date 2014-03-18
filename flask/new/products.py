@@ -1,9 +1,13 @@
 from models import Models
+import glob
+import myjson
 
 class Products(Models): 
-	def __init__(self):
+	def __init__(self, json=None):
 		self.fields = ['description']
 		self.unique = ['title']
-		Models.__init__(self)
-		print self.save_path
-		print self.title
+		Models.__init__(self, json)
+		if products_loaded == 0:
+			myjson.load_json()
+
+

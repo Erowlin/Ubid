@@ -3,8 +3,7 @@ from datetime import timedelta
 
 from products import Products
 
-products_path = 'files/products.json'
-users_path = 'files/users.json'
+import glob
 
 app = Flask(__name__)
 
