@@ -3,16 +3,16 @@ class Models(object):
 	def __init__(self, json=None):
 		self.__set_fields__(json)
 
-	def new(self, attributes):
+	def new(self, attributes = None):
 		# Attributes var is type of dict.
-		for key in attributes:
-			setattr(self, key, attributes[key])
+		if attributes is not None :
+			for key in attributes:
+				setattr(self, key, attributes[key])
 		return self
 
 	def save(self):
 		for field in self.fields:
 			print(eval("self."+field))
-		print 'TAMERE'
 		print products[0].title
 
 	def __set_fields__(self, json=None):

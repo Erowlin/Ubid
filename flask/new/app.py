@@ -1,12 +1,18 @@
+import sys
+import os
 from flask import Flask, jsonify, make_response, request, abort, render_template, session
 from datetime import timedelta
 
-from products import Products
-
 import glob
+
 
 app = Flask(__name__)
 
+sys.path.insert(0, os.getcwd() + '/models')
+
+
+
+import modelmanager
 
 # Blueprint allow to do "multi-file", by registering collections
 
@@ -43,4 +49,5 @@ def new_product():
 	return "ok", 200
 
 if __name__ == '__main__':
+	modelmanager.init_models()
 	app.run(debug = True)
