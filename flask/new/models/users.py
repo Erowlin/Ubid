@@ -27,9 +27,15 @@ class Users(Models):
 			abort(make_response('Password too short, should be 6 characters minimum', 400))
 		self.__password = base64.b64encode(password)
 
+	# Define the delete callback
 	def __del_password(self):
 		del self.__password
 
+	# We define the callback, and say :
+	# Hey password field, when I set you like "user.password = abcdef", I want you to call the method "__get_password()" for me !
+	password = property(__get_password, __set_password, __del_password, '')
+	
+	# Public profile
 	def public(self):
 		ret = copy.deepcopy(self)
 		del ret.password
@@ -37,11 +43,9 @@ class Users(Models):
 		del ret.name
 		return ret._to_json()
 
+	# Private profile, we remove password.
 	def secured(self):
 		ret = copy.deepcopy(self)
 		del ret.password
 		return ret._to_json()
-	# We define the callback, and say :
-	# Hey password field, when I set you like "user.password = abcdef", I want you to call the method "__get_password()" for me !
-	password = property(__get_password, __set_password, __del_password, '')
 
