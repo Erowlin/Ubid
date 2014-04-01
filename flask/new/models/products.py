@@ -2,8 +2,6 @@ from models import Models
 import glob
 import myjson
 
-print 'Products loaded'
-
 class Products(Models): 
 	def __init__(self, json=None):
 		self.fields = ['description']

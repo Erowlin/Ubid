@@ -3,10 +3,9 @@ from os.path import isfile, join
 from imp import load_source
 import importlib
 
+import copy
 import myjson
 from glob import Models
-
-
 
 # This function initialize the glob model with all the json data.
 def init_module_models(name, module):
@@ -28,11 +27,33 @@ def init_models():
 			files.append(f.split('.')[0])
 	files.remove('modelmanager')
 	files.remove('models')
+	print files
 	for f in files:
 		module = importlib.import_module(f)
 		if hasattr(module, f.title()):
  			init_module_models(f, module)
- 	#print products
- 	p = models['products'][0]
- 	#glob.Models("products")
-	print "Model Manager Loaded !"
+ 			print f + " Loaded"
+	print "Models successfully Loaded !"
+
+def model_size(model):
+	minimum = 0
+	models = Models().get(model)
+	if models is not None:
+		for m in models:
+			if m.id > minimum:
+				minimum = m.id
+	minimum += 1
+	return minimum
+
+def save(obj):
+	models = Models().get(obj.__class__.__name__)
+	model = filter(lambda u: u.id == int(obj.id), models)
+	
+	if len(model) is 0:
+		models.append(obj)
+	else:
+		model[0] = copy.deepcopy(obj)
+	final = []
+	for m in models:
+		final.append(m._to_json())
+	myjson.save_json(final, obj.__class__.__name__)
