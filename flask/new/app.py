@@ -18,6 +18,7 @@ import users_api
 
 app.register_blueprint(users_api.usr, url_prefix="/users")
 
+app.secret_key = 'tamere'
 
 
 
