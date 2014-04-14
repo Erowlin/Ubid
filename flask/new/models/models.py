@@ -1,4 +1,4 @@
-from flask import abort, make_response
+from flask import abort, make_response, session
 
 import modelmanager
 import json
@@ -50,6 +50,12 @@ class Models(object):
 			if hasattr(self, 'intern_fields'):
 				for intern_field in self.intern_fields: # Set the Unique field to default value
 					setattr(self, intern_field, '')
+			if hasattr(self, 'belongs_to'):
+				for relation in self.belongs_to:
+					if relation == "user":
+						setattr(self, relation + "_id", session['user_id'])
+					else:
+						setattr(self, relation + "_id", -1)
 		return self
 
 	def __edit_fields__(self, attributes):
@@ -72,15 +78,19 @@ class Models(object):
 				abort(make_response('Mandatory field : ' + key, 400))
 		elif status == -1 :
 			abort(make_response('Forbiden field : ' + key + ".\nAuthorized fields : " + self._authorized_fields(), 400))
+		elif status == -2:
+			return -2
 		return 0
 
 	def _attribute_exist_(self, attribute):
-		if hasattr(self, 'fields') and attribute in self.fields:
+		if (hasattr(self, 'fields') and attribute in self.fields):
 			return 1
 		elif hasattr(self, 'unique') and attribute in self.unique:
 			return 2
 		elif hasattr(self, 'mandatory') and attribute in self.mandatory:
 			return 3
+		elif attribute == 'token':
+			return -2
 		else:
 			return -1
 
@@ -108,7 +118,14 @@ class Models(object):
 	
 
 	def _to_json(self):
-		to_remove = ['fields', 'unique', 'mandatory', 'intern_fields', 'editable_fields']
+		to_remove = ['fields', 'unique', 'mandatory', 'intern_fields', 'editable_fields', 'belongs_to', 'has_many']
+		if hasattr(self, 'has_many'): # Remove the has many fields
+			for many in self.has_many:
+				print many
+				to_remove.append(many)
+		if hasattr(self, 'belongs_to'):  # Remove the belongs_to fields
+			for belongs in self.belongs_to:
+				to_remove.append(belongs)
 		obj_copy = copy.deepcopy(self) #We dont want to work directly on the object, but rather on a copy of it
 		for remove in to_remove:
 			if hasattr(obj_copy, remove):

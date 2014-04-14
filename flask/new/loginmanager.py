@@ -21,7 +21,7 @@ def verify_token(resp = None, token= None):
 	if 'token' not in session: 
 		abort(make_response('No session on server', 500))
 	if session['token'] == token:
-		u = Models().getBy('users', 'id', session['user_id']	)
+		u = Models().getBy('users', 'id', session['user_id'])
 		return u[0]
 	else:
 		abort(make_response('Bad token', 401))

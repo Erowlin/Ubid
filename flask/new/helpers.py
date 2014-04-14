@@ -6,3 +6,10 @@ def get_response(request):
 	else:
 		resp = request.args # If GET Values
     	return resp
+
+def list_to_json(liste):
+	json = []
+	for elem in liste:
+		print "toto"
+		json.append(elem.json())
+	return json

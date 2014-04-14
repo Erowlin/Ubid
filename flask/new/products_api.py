@@ -14,6 +14,7 @@ prod = Blueprint('prod', __name__, '')
 @prod.route('/', methods=['POST'])
 def new_product():
 	resp = helpers.get_response(request)
+	loginmanager.verify_token(resp)
 	product = Products().new(resp)
 	product.save()
 	return jsonify({'product' : product._to_json()})
@@ -21,6 +22,7 @@ def new_product():
 @prod.route('/<int:product_id>', methods=['POST'])
 def edit_product(product_id):
 	resp = helpers.get_response(request)
+	loginmanager.verify_token(resp)
 	product = Models().getBy('products', 'id', product_id) # Retourne une liste
 	if product is None:
 		return "Product not found", 404
@@ -31,6 +33,7 @@ def edit_product(product_id):
 @prod.route('/<int:product_id>', methods=['GET'])
 def get_product(product_id):
 	resp = helpers.get_response(request)
+
 	product = Models().getBy('products', 'id', product_id) # Retourne une liste
 	if product is None:
 		return "Product not found", 404
@@ -38,7 +41,8 @@ def get_product(product_id):
 
 @prod.route('/<int:product_id>', methods=['DELETE'])
 def delete_product(product_id):
-	resp = helpers.get_response(request) 
+	resp = helpers.get_response(request)
+	loginmanager.verify_token(resp)
 	ret = Models().delete('products', 'id', id=product_id) # Rajouter un paramètre pour vérifier le token de l'utilisateur et le droit qu'il a de delete.
 	if ret == False : 
 		return 'KO', 401

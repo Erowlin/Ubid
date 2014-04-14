@@ -16,6 +16,24 @@ def init_module_models(name, module):
 		p = eval(to_exec)
 		Models().insert(name, p)
 
+def set_has_many(modele, field):
+	setattr(modele, field, Models().getBy(field, modele.__class__.__name__.lower()[:-1] + "_id", modele.id))
+
+def set_belongs_to(modele, field):
+	setattr(modele, field, Models().getBy(field + "s", "id", eval("modele." + field + "_id")))
+
+# Define the references between 2 models, the 'belongs_to' and the 'has_many'.
+def init_references(models):
+	for model_name in models:
+		mods = Models().get(model_name)
+		for model in mods: # All models in "user"
+			if hasattr(model, 'has_many'): 
+				for field in model.has_many: # All fields in "has_many"
+					set_has_many(model, field)
+			if hasattr(model, 'belongs_to'):
+				for field in model.belongs_to : 
+					set_belongs_to(model, field)
+
 # This function initialize the models, load the class, prepare the 
 def init_models():
 	print "Loading Model Manager..."
@@ -33,6 +51,7 @@ def init_models():
 		if hasattr(module, f.title()):
  			init_module_models(f, module)
  			print f + " Loaded"
+ 	init_references(files)
 	print "Models successfully Loaded !"
 
 def model_size(model):

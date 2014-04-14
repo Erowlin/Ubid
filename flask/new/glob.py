@@ -18,10 +18,7 @@ class Models():
 	def getBy(self, modelName, field, fieldValue):
 		models = self.get(modelName)
 		model = []
-		print field
-		print fieldValue
-
-		if len(models) is not 0 and hasattr(models[0], field):
+		if models is not None and len(models) is not 0 and hasattr(models[0], field):
 			model = filter(lambda u: eval("u." + field) == fieldValue, models)
 		if len(model) is 0:
 			return None
@@ -29,7 +26,6 @@ class Models():
 
 	def delete(self, modelName, modele = None, id=None):
 		models = self.get(modelName)
-		print models
 		if id is not None:
 			model = filter(lambda u: u.id== id, models)
 			if len(model) is 0:

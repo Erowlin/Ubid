@@ -27,6 +27,7 @@ def login():
 	if not 'username' in resp or not 'password' in resp: # Si username et / ou password ne sont pas dans la requête, erreur
 		return "Bad request, missing username or password in request", 400 # Retourne au client le code d'erreur 400
 	user = loginmanager.check_credentials(resp['username'], resp['password']) # On vérifie les identifiants
+	print user.products
 	if user != False:  # Si identifiants OK
 		token = loginmanager.generate_token(user) # On génère le token de l'utilisateur, et on stock en session l'id et le token
 		return jsonify({'status': 'Logged in successfully', 'token':token}), 200 # On retourne au client le token
@@ -65,4 +66,10 @@ def edit_user(user_id):
 	user.edit(resp) #On édite l'utilisateur en passant la requête à la fonction edit
 	user.save() # On sauvegarde en BDD
 	return jsonify({'user' : user.secured()}), 200 # On retourne à l'utilisateur son profil secured.
+
+@usr.route('/<int:user_id>/products', methods=['GET']) # Liste des produits d'un utilisateur
+def get_user_products(user_id):
+	resp = helpers.get_response(request)
+	user = Models().getBy('users', 'id', user_id)
+	return jsonify({'user' : user[0].id, 'products' : helpers.list_to_json(user[0].products)}), 200
 
