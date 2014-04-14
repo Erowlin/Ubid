@@ -22,8 +22,9 @@ def new_product():
 @prod.route('/<int:product_id>', methods=['POST'])
 def edit_product(product_id):
 	resp = helpers.get_response(request)
-	loginmanager.verify_token(resp)
+	
 	product = Models().getBy('products', 'id', product_id) # Retourne une liste
+	loginmanager.has_right(product[0], resp = resp)
 	if product is None:
 		return "Product not found", 404
 	product[0].edit(resp)
