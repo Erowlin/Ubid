@@ -15,8 +15,10 @@ from products import Products
 from users import Users
 
 import users_api
+import products_api
 
 app.register_blueprint(users_api.usr, url_prefix="/users")
+app.register_blueprint(products_api.prod, url_prefix="/products")
 
 app.secret_key = 'tamere'
 
@@ -56,7 +58,7 @@ def bad_request(error):
 
 @app.errorhandler(404)
 def not_found(error):
-    return make_response(jsonify( { 'error': 'Not Found' } ), 404)
+	return make_response(jsonify( { 'error': 'Not Found' } ), 404)
 
 @app.route("/products", methods=['GET'])
 def new_product():

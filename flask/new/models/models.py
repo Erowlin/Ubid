@@ -19,8 +19,19 @@ class Models(object):
 		setattr(self, "id", modelmanager.model_size(self.__class__.__name__))
 		return self
 
+	def edit(self, attributes):
+		self.__edit_fields__(attributes)
+		return self
+
 	def save(self):
+		self._verify_mandatory_fields()
 		modelmanager.save(self)
+
+	def json(self):
+		return self._to_json()
+
+
+## Fonction privees en dessous, ne devraient jamais etre appele directement par l'API
 
 	def __set_fields__(self, json=None):
 		if json is not None:
@@ -41,6 +52,12 @@ class Models(object):
 					setattr(self, intern_field, '')
 		return self
 
+	def __edit_fields__(self, attributes):
+		for attribute in attributes:
+			if attribute in self.editable_fields:
+				print 'Setattr on : ' + attribute + '= ' + attributes[attribute]
+				setattr(self, attribute, attributes[attribute])
+
 	def verify_errors(self, key, value):
 		status = self._attribute_exist_(key)
 		if status == 1: #Normal field
@@ -53,6 +70,8 @@ class Models(object):
 		elif status == 3 : # Mandatory field
 			if value is '' or value is None or len(value) == 0:
 				abort(make_response('Mandatory field : ' + key, 400))
+		elif status == -1 :
+			abort(make_response('Forbiden field : ' + key + ".\nAuthorized fields : " + self._authorized_fields(), 400))
 		return 0
 
 	def _attribute_exist_(self, attribute):
@@ -63,7 +82,7 @@ class Models(object):
 		elif hasattr(self, 'mandatory') and attribute in self.mandatory:
 			return 3
 		else:
-			abort(make_response('Forbiden field : ' + attribute, 400))
+			return -1
 
 	def _verify_mandatory_fields(self):
 		if hasattr(self, 'mandatory'):
@@ -73,8 +92,23 @@ class Models(object):
 					abort(make_response('Mandatory field : ' + mandatory, 400))
 		return 0
 
+	def _authorized_fields(self):
+		authorized_fields = ""
+		if hasattr(self, 'fields'):
+			for f in self.fields:
+				authorized_fields += " " + f
+		if hasattr(self, 'unique'):
+			for f in self.unique:
+				authorized_fields += " " + f
+		if hasattr(self, 'mandatory'):
+			for f in self.mandatory:
+				authorized_fields += " " + f
+		return authorized_fields
+
+	
+
 	def _to_json(self):
-		to_remove = ['fields', 'unique', 'mandatory', 'intern_fields']
+		to_remove = ['fields', 'unique', 'mandatory', 'intern_fields', 'editable_fields']
 		obj_copy = copy.deepcopy(self) #We dont want to work directly on the object, but rather on a copy of it
 		for remove in to_remove:
 			if hasattr(obj_copy, remove):

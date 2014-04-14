@@ -12,6 +12,7 @@ class Users(Models):
 		self.unique = ['email', 'username'] #Unique fields are also mandatory
 		self.mandatory = ['password'] # Mandatory fields.
 		self.intern_fields = ['token']
+		self.editable_fields = ['name', 'password', 'email']
 		self.__password = None # Special field with a callback
 		Models.__init__(self, json)
 
