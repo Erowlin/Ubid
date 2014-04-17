@@ -14,7 +14,7 @@ class Users(Models):
 		self.mandatory = ['password'] # Mandatory fields.
 		self.intern_fields = ['token']
 		self.editable_fields = ['name', 'password', 'email']
-		self.has_many = ['products', 'bids', 'addresses']
+		self.has_many = ['products', 'bids', 'addresses', 'payments']
 		self.__password = None # Special field with a callback
 		Models.__init__(self, json)
 

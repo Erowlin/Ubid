@@ -79,8 +79,14 @@ def get_user_bids(user_id):
 	user = Models().getBy('users', 'id', user_id)
 	return jsonify({'user' : user[0].id, 'bids' : helpers.list_to_json(user[0].bids)}), 200
 
-@usr.route('/<int:user_id>/addresses', methods=['GET']) # Liste des enchères d'un utilisateur
+@usr.route('/<int:user_id>/addresses', methods=['GET']) # Liste des adresses d'un utilisateur
 def get_user_addresses(user_id):
 	resp = helpers.get_response(request)
 	user = Models().getBy('users', 'id', user_id)
 	return jsonify({'user' : user[0].id, 'addresses' : helpers.list_to_json(user[0].bids)}), 200
+
+@usr.route('/<int:user_id>/payments', methods=['GET']) # Liste des CB d'un utilisateur
+def get_user_payments(user_id):
+	resp = helpers.get_response(request)
+	user = Models().getBy('users', 'id', user_id)
+	return jsonify({'user' : user[0].id, 'payments' : helpers.list_to_json(user[0].payments)}), 200

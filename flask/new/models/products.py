@@ -9,6 +9,7 @@ class Products(Models):
 		self.fields = ['buyoutPrice', 'reservePrice', 'imgUrl']
 		self.unique = [] # Unique fields are also mandatory
 		self.mandatory = ['title', 'description', 'dateStart', 'dateLength', 'startPrice', 'status'] # Champs obligatoires // status : encherissable, en envoi, envoyé ?
-		self.editable_fields = ['title', 'description', 'imgUrl'] # Champs éditables par l'utilisateur 
-		self.belongs_to = ['user'] # Est rattaché à un utilisateur, crée un champ 'user_id'
+		self.editable_fields = ['title', 'description', 'imgUrl', 'lat', 'long'] # Champs éditables par l'utilisateur 
+		self.belongs_to = ['user', 'category'] # Est rattaché à un utilisateur, crée un champ 'user_id'
+		self.has_many = ['bids'] 
 		Models.__init__(self, json)
