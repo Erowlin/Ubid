@@ -1,3 +1,4 @@
+# -*-coding:UTF-8 -*
 # Permet de transformer n'importe quelle requête en entrée vers un format unique. Permet d'avoir un format standard, que ce soit du POST, PUT, DELETE, GET, et depuis ANgular ou Postman.
 def get_response(request):
 	if len(request.form) > 0: # If POST from WEb Browser

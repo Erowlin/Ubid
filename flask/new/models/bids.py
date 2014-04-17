@@ -1,3 +1,4 @@
+# -*-coding:UTF-8 -*
 from flask import session
 from models import Models
 import glob

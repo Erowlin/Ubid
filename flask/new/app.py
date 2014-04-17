@@ -13,14 +13,17 @@ sys.path.insert(0, os.getcwd() + '/models')
 import modelmanager
 from products import Products
 from users import Users
+from addresses import Addresses
 
 import users_api
 import products_api
 import bids_api
+import addresses_api
 
 app.register_blueprint(users_api.usr, url_prefix="/users")
 app.register_blueprint(products_api.prod, url_prefix="/products")
-app.register_blueprint(bids_api.prod, url_prefix="/bids")
+app.register_blueprint(bids_api.bid, url_prefix="/bids")
+app.register_blueprint(addresses_api.addr, url_prefix="/addresses")
 
 app.secret_key = 'tamere'
 
