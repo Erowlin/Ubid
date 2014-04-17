@@ -16,9 +16,11 @@ from users import Users
 
 import users_api
 import products_api
+import bids_api
 
 app.register_blueprint(users_api.usr, url_prefix="/users")
 app.register_blueprint(products_api.prod, url_prefix="/products")
+app.register_blueprint(bids_api.prod, url_prefix="/bids")
 
 app.secret_key = 'tamere'
 
