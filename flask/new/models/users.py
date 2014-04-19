@@ -1,3 +1,4 @@
+# -*-coding:UTF-8 -*
 from flask import abort, make_response, jsonify
 from models import Models
 import glob
@@ -9,11 +10,11 @@ import copy
 class Users(Models): 
 	def __init__(self, json=None):
 		self.fields = ['name'] #Default fields, can be blank in the request.
-		self.unique = ['email', 'username'] #Unique fields are also mandatory
+		self.unique = ['email', 'username', 'rate', 'rateNumber'] #Unique fields are also mandatory // Rate = note de l'utilisateur & rate_number = nombre de vote (pour le calcul coté client)
 		self.mandatory = ['password'] # Mandatory fields.
 		self.intern_fields = ['token']
 		self.editable_fields = ['name', 'password', 'email']
-		self.has_many = ['products']
+		self.has_many = ['products', 'bids', 'addresses', 'payments']
 		self.__password = None # Special field with a callback
 		Models.__init__(self, json)
 

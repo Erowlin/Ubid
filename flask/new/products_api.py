@@ -49,3 +49,8 @@ def delete_product(product_id):
 		return 'KO', 401
 	return 'OK', 200
 
+@prod.route('/<int:product_id>/bids', methods=['GET']) # Liste des enchères d'un objet
+def get_product_bids(product_id):
+	resp = helpers.get_response(request)
+	product = Models().getBy('products', 'id', product_id)
+	return jsonify({'product' : product[0].id, 'bids' : helpers.list_to_json(product[0].bids)}), 200

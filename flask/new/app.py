@@ -13,13 +13,24 @@ sys.path.insert(0, os.getcwd() + '/models')
 import modelmanager
 from products import Products
 from users import Users
+from addresses import Addresses
+from payments import Payments
+from categories import Categories
 
 import users_api
 import products_api
+import bids_api
+import addresses_api
+import payments_api
+import categories_api
 
 # Blueprint allow to do "multi-file", by registering collections
 app.register_blueprint(users_api.usr, url_prefix="/users")
 app.register_blueprint(products_api.prod, url_prefix="/products")
+app.register_blueprint(bids_api.bid, url_prefix="/bids")
+app.register_blueprint(addresses_api.addr, url_prefix="/addresses")
+app.register_blueprint(payments_api.pay, url_prefix="/payments")
+app.register_blueprint(categories_api.cat, url_prefix="/categories")
 
 app.secret_key = 'tamere'
 
