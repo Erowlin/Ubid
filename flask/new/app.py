@@ -17,6 +17,7 @@ from users import Users
 import users_api
 import products_api
 
+# Blueprint allow to do "multi-file", by registering collections
 app.register_blueprint(users_api.usr, url_prefix="/users")
 app.register_blueprint(products_api.prod, url_prefix="/products")
 
@@ -24,13 +25,10 @@ app.secret_key = 'tamere'
 
 
 
-# Blueprint allow to do "multi-file", by registering collections
 
 # All calls here are executed once, after the first request. 
 # This hack is made before of a bug in Flask that initialize 2 times the main application.
 # From : https://stackoverflow.com/questions/9449101/how-to-stop-flask-from-initialising-twice-in-debug-mode
-
-
 @app.before_first_request
 def initialize():
 	modelmanager.init_models()
@@ -59,21 +57,6 @@ def bad_request(error):
 @app.errorhandler(404)
 def not_found(error):
 	return make_response(jsonify( { 'error': 'Not Found' } ), 404)
-
-@app.route("/products", methods=['GET'])
-def new_product():
-	print "New Product"
-	product = Products().new()
-	product.save()
-	return "ok", 200
-
-@app.route("/users", methods=['GET'])
-def new_user():
-	print "New User"
-	user = Users().new()
-	user.save()
-	return "ok", 200
-
 
 if __name__ == '__main__':
 	# We don't do initializations here because of a bug in Flask : 
