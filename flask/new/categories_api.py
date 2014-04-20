@@ -14,7 +14,7 @@ cat = Blueprint('cat', __name__, '')
 def new_category():
 	resp = helpers.get_response(request)
 	loginmanager.verify_token(resp)
-	category = Category().new(resp)
+	category = Categories().new(resp)
 	category.save()
 	return jsonify({'category' : category._to_json()})
 

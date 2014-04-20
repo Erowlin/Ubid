@@ -8,6 +8,7 @@ import myjson
 class Bids(Models): 
 	def __init__(self, json=None):
 		self.mandatory = ['date']
+		self.fields = ['price']
 		self.belongs_to = ['user', 'product'] # Est rattaché à un utilisateur et un produit
 		self.editable_fields = ['price']
 		Models.__init__(self, json)

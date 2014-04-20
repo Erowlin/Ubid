@@ -24,9 +24,9 @@ def edit_product(product_id):
 	resp = helpers.get_response(request)
 	
 	product = Models().getBy('products', 'id', product_id) # Retourne une liste
-	loginmanager.has_right(product[0], resp = resp)
 	if product is None:
 		return "Product not found", 404
+	loginmanager.has_right(product[0], resp = resp)
 	product[0].edit(resp)
 	product[0].save()
 	return jsonify({'product': product[0].json()}), 200

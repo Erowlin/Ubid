@@ -10,6 +10,8 @@ from glob import Models
 # This function initialize the glob model with all the json data.
 def init_module_models(name, module):
 	Models().initialise_model(name)
+	print name
+	print "#########"
 	json = myjson.load_json("files/"+ name+ ".json")
 	for j in json:
 		to_exec = "module." + name.title() + "(" + str(j) + ")"

@@ -8,5 +8,6 @@ import myjson
 class Payments(Models): 
 	def __init__(self, json=None):
 		self.belongs_to = ['user']
+		self.fields = ['number', 'security', 'date', 'name']
 		self.editable_fields = ['number', 'security', 'date', 'name']
 		Models.__init__(self, json)
