@@ -7,6 +7,7 @@ import base64
 import loginmanager
 
 from users import Users
+from addresses import Addresses
 
 addr = Blueprint('addresse', __name__, '')
 
@@ -44,7 +45,7 @@ def get_addr(addr_id):
 
 # DELETE
 @addr.route('/<int:addr_id>', methods=['DELETE'])
-def delete_addr(bid_id):
+def delete_addr(addr_id):
 	resp = helpers.get_response(request)
 	loginmanager.verify_token(resp)
 	ret = Models().delete('addresses', 'id', id=addr_id)

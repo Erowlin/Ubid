@@ -27,7 +27,7 @@ def login():
 	if not 'username' in resp or not 'password' in resp: # Si username et / ou password ne sont pas dans la requête, erreur
 		return "Bad request, missing username or password in request", 400 # Retourne au client le code d'erreur 400
 	user = loginmanager.check_credentials(resp['username'], resp['password']) # On vérifie les identifiants
-	print user.products
+	# print user.products
 	if user != False:  # Si identifiants OK
 		token = loginmanager.generate_token(user) # On génère le token de l'utilisateur, et on stock en session l'id et le token
 		return jsonify({'status': 'Logged in successfully', 'token':token}), 200 # On retourne au client le token

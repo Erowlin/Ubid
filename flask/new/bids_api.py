@@ -32,7 +32,7 @@ def edit_bid(bid_id):
 		return "Bid not found", 404
 	editBid[0].edit(resp)
 	editBid[0].save()
-	return jsonify({'bid': product[0].json()}), 200
+	return jsonify({'bid': editBid[0].json()}), 200
 
 # GET
 @bid.route('/<int:bid_id>', methods=['GET'])

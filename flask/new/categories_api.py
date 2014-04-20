@@ -7,6 +7,7 @@ import base64
 import loginmanager
 
 from products import Products
+from categories import Categories
 
 cat = Blueprint('cat', __name__, '')
 
@@ -23,7 +24,6 @@ def edit_category(cat_id):
 	resp = helpers.get_response(request)
 	
 	categories = Models().getBy('categories', 'id', cat_id) # Retourne une liste
-	loginmanager.has_right(categories[0], resp = resp)
 	if categories is None:
 		return "Category not found", 404
 	categories[0].edit(resp)

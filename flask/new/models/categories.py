@@ -8,4 +8,5 @@ class Categories(Models):
 	def __init__(self, json=None):
 		self.fields = ['name']
 		self.has_many = ['products'] 
+		self.editable_fields = ['name']
 		Models.__init__(self, json)

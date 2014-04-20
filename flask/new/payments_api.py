@@ -7,6 +7,7 @@ import base64
 import loginmanager
 
 from users import Users
+from payments import Payments
 
 pay = Blueprint('pay', __name__, '')
 
