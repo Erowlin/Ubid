@@ -1,0 +1,229 @@
+<div ng-controller="SearchCtrl" ng-include src="'partials/searchbar.html'"></div>
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="well well-sm">
+				<div class="row">
+					<div class="col-sm-2 col-md-2">
+						<img src="http://placehold.it/420x500" alt="" class="img-rounded img-responsive" />
+						<button id="editButton" name="editButton" class="btn btn-primary top-offset form-control" ng-click="editMode = true" ng-disabled="editMode">Edit</button>
+					</div>
+					<div class="col-sm-5 col-md-5">
+						<div class="row">
+							<h4 class="col-md-12">Profil de {{info.username}}</h4>
+						</div>
+						<div class="row">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="lastname">Nom</label>  
+									<div class="col-md-6">
+										<input id="lastname" name="lastname" type="text" placeholder="Nom" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.lastname">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="firstname">Prénom</label>  
+									<div class="col-md-6">
+										<input id="firstname" name="firstname" type="text" placeholder="Prénom" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.firstname">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="address1">Adresse 1</label>  
+									<div class="col-md-6">
+										<input id="address1" name="address1" type="text" placeholder="Appt, Étage, ..." class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.address1">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="address2">Adresse 2</label>  
+									<div class="col-md-6">
+										<input id="address2" name="address2" type="text" placeholder="Rue, Quartier, ..." class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.address2">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="ville">Ville</label>  
+									<div class="col-md-4">
+										<input id="ville" name="ville" type="text" placeholder="Ville" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.city">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="codepostal">Code postal</label>  
+									<div class="col-md-4">
+										<input id="codepostal" name="codepostal" type="text" placeholder="Code postal" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.postalcode">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="country">Pays</label>  
+									<div class="col-md-4">
+										<input id="country" name="country" type="text" placeholder="Country" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.country">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="email">Email</label>  
+									<div class="col-md-5">
+										<input id="email" name="email" type="text" placeholder="mail@example.com" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.email">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-4 control-label" for="passwd1">Mot de passe</label>  
+									<div class="col-md-4">
+										<input id="passwd1" name="passwd1" type="text" placeholder="*******" class="form-control input-md" ng-disabled="!editMode" ng-init="editMode = false" ng-model="info.password">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-8 col-md-offset-4">
+										<button id="validBtn" name="validBtn" class="btn btn-success" ng-disabled="!editMode" ng-init="editMode = false" ng-show="editMode" ng-click="saveChanges()">Valider</button>
+										<button id="cancelBtn" name="cancelBtn" class="btn btn-danger" ng-disabled="!editMode" ng-init="editMode = false" ng-show="editMode" ng-click="editMode = false">Annuler</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-sm-4 col-md-4 col-md-offset-1">
+						<p></p>
+						<p>
+							<small>Note globale: </small><strong>4.5/5</strong><br>
+							<small>Nb de ventes en cours: </small><strong>3</strong><br>
+							<small>Enchères remportées: </small><strong>11</strong><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12">
+			<div class="well well-sm">
+				<!-- debut de c'est plus mon code-->
+				<div class="row template">
+					<div class="col-md-12">
+						<h4> Mes enchères </h4>
+						<div id="legende">+ Légende</div>
+						<div id="content_legende">
+							<p class="texteLegende"><span class="glyphicon glyphicon-ok btn-md"></span>Vous ête la meilleur enchère</p>
+							<p class="texteLegende"><span class="glyphicon glyphicon-exclamation-sign btn-md"></span>Vous n'etes pas la meilleur enchère</p>
+							<p class="texteLegende"><span class="glyphicon glyphicon-shopping-cart btn-md"></span>Enchère remporté, passez au paiement</p>
+							<p class="texteLegende"><span class="glyphicon glyphicon-star btn-md"></span>Le produit à été envoyé, notez le vendeur</p>
+						</div>
+						<section>
+							<article class="box_bid">
+								<div class="bid_challenged bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>Lot de 1000 cuillères</h5>
+											<p class="texteEnchere">3 jrs restants</p>
+										</div>
+										<a class="action_box">
+											<acronym title="Vous n'êtes pas le meilleur enchérisseur. Ajoutez 12€ pour passer en tête !">  <span class="glyphicon glyphicon-exclamation-sign btn-xs"></span>
+											</acronym>Enchérir
+										</a>
+									</div>
+									<div class="hover">
+										Une personne a misé 12€ de plus que vous :<br/>
+										<a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+									</div>
+								</div>
+							</article>
+							<article class="box_bid">
+								<div class="bid_challenged bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>Extreme Programming</h5>
+											<p class="texteEnchere">2 hrs restantes</p>
+										</div>
+										<a class="action_box">
+											<acronym title="Vous êtes le meilleur enchérisseur">
+												<span class="glyphicon glyphicon-ok btn-xs"></span>
+											</acronym> Enchérir
+										</a>
+									</div>
+									<div class="hover">
+										Vous êtes le meilleur enchérisseur :<br/>
+										<a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+									</div>
+								</div>
+							</article>
+							<article class="box_bid">
+								<div class="bid_won bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>$10K Trillion Zimbabwe</h5>
+											<p class="texteEnchere">Gagné le 15/01/14</p>
+										</div>
+										<a class="action_box">
+											<span class="glyphicon glyphicon-ok btn-xs"></span>
+											Valider l'objet
+										</a>
+									</div>
+									<div class="hover">
+										Objet envoyé à l'adresse : <i>"Hugo Adresse perso"</i><br/>Suivez votre colissimo avec le code : <i>A45JNEIK43C</i>
+									</div>
+								</div>
+							</article>
+							<article class="box_bid">
+								<div class="bid_won bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>Lot de 20 sacs de litière</h5>
+											<p class="texteEnchere">Gagné le 31/01/14</p>
+										</div>
+										<a class="action_box">
+											<span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
+											Valider l'objet
+										</a>
+									</div>
+									<div class="hover">
+										<a href="#" class="btn btn-inverse pull-right" style="margin-top:5px;" data-toggle="modal" data-target="#modalSendBid">Valider la livraison</a>
+										Payé avec : MasterCard <br/><img src="http://www.cartes-bancaires-gratuites.fr/wp-content/uploads/icons/credit-cards.png" alt="CB" style="margin-right:5px;"/>  <strong>****.****.**45</strong>
+									</div>
+								</div>
+							</article>
+							<article class="box_bid">
+								<div class="bid_paid bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>TV HD 50" Samsung</h5>
+											<p class="texteEnchere">Reçu le 20/01/14</p>
+										</div>
+										<a class="action_box">
+											<span class="glyphicon glyphicon-star btn-xs"></span>
+											Noter le vendeur
+										</a>
+									</div>
+									<div class="hover">
+										<!-- A retravailler avec un plugin js par exemple -->
+										<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;</span></span></span></span></span>
+									</div>
+								</div>
+							</article>
+							<article class="box_bid">
+								<div class="bid_paid bid_content">
+									<div class="main">
+										<img src="http://placehold.it/100x60"/>
+										<div>
+											<h5>Coque iPhone 4S</h5>
+											<p class="texteEnchere">Reçu le 27/01/14</p>
+										</div>
+										<a class="action_box">
+											<span class="glyphicon glyphicon-star btn-xs"></span>
+											Noter le vendeur
+										</a>
+									</div>
+									<div class="hover">
+										<span>Merci, votre vote (3/5) a été pris en compte !</span>
+									</div>
+								</div>
+							</article>
+						</section>
+					</div>
+				</div>
+
+				<!-- fin -->
+			</div>
+		</div>
+	</div>
+</div>

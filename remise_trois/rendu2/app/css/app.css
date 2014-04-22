@@ -1,0 +1,18 @@
+/* app css stylesheet */
+@media screen and (min-width: 900px) { 
+	.main-container {
+		width: 70%;
+		margin: 0 15% 0 15%;
+	}
+}
+.top-offset {
+	margin-top: 10px;
+}
+
+.top-offset-large {
+	margin-top: 100px;
+}
+
+label.fixed-size {
+	width: 100px;
+}

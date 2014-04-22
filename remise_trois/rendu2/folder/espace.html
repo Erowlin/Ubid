@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Ubid</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flat-ui.css" rel="stylesheet">
+  <link href="css/perso.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/espace.css">
+  <link href="css/bootstrap-editable.css" rel="stylesheet">
+  <link href="css/jquery.share.css" rel="stylesheet">
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    <body>
+      <header class="header">
+        <nav class="nav navbar-default navbar-inverse" role="navigation">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Ubid</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">Acheter</a></li>
+            <li><a href="sell.html">Vendre</a></li>
+            <li><a href="espace.html">Mon espace</a></li>
+            <li data-toggle="modal" data-target="#modalInscription">
+                <a href="#">S'inscrire</a>
+            </li>
+            <li data-toggle="modal" data-target="#modalNewsletter">
+                <a href="#">Newsletter</a>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+
+      <div id="voletAction" class="container">
+        <div class=" row rowEspacePerso">
+          <!-- <div class="col-md-1 col-md-offset-11 col-sm-offset-0 col-xs-offset-0">
+            <button id="btnOpenVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg">
+              <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <button id="btnCloseVoletEspacePerso" type="button" class="pull-right btn btn-default btn-openAction btn-lg init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </div> -->
+          <div class="col-md-4 col-md-offset-8 col-xs-12 adjustBtnOpenVolet">
+            <div id="btnOpenVolet">
+              <span class="glyphicon glyphicon-plus"></span>  <span class="hidden-xs-inline"> Gérer mon profil</span>
+            </div>
+            <div id="btnCloseVolet" class="init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span><span class="hidden-xs-inline"> Fermer la gestion du profil</span>
+            </div>
+          </div>
+        </div>
+          <div class="row">
+          <div class="col-md-4 boxAction alignCenter">
+            <h4 class="first-title"> Mes informations </h4>
+            <div class="infoPerso">
+              <div class=" row-infoPerso-right col-md-4 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+                <div id="photo_content">
+                 <img  class="infoPersoPhoto" src="http://placehold.it/120x120$text=MaPhoto">
+                 <span>Modifier</span>
+               </div>
+               <button class=" infoPersoPassword btn btn-inverse btn-wide">
+                Mot de passe&nbsp
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+              <button class=" infoPersoFavoris btn btn-inverse btn-wide">
+                Mes favoris&nbsp
+                <span class="glyphicon glyphicon-eye-open"></span>
+              </button>
+            </div>
+            <div class=" row-infoPerso-left col-md-8 col-md-offset-0 col-sm-offset-0 col-xs-offset-0">
+
+              <div class="infoPersoPseudo">
+                <p  data-type="text" data-pk="1" data-title="Entrez un nouveau pseudo" >
+                  Heisenberg
+                </p>
+              </div>
+              <div class="infoPersoCouriel">
+                <p data-type="email" data-pk="2" data-title="Entrez une nouvelle adresse">
+                 monadresse@gmail.com
+               </p>
+             </div>
+             <div class="infoPersoNote">
+              <p>Ma note: 4.2</p>
+              <span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733</span></span></span></span>
+            </div>
+            <div class="infoPersoComplementaire">
+              <div class="infoPersoNumDomicile ">
+                <p>
+                  N° domicile:
+                </p>
+                <p data-type="text" data-pk="3" data-title="Entrez un nouveau numero">
+                  470 xxx xxxx
+                </p>
+              </div>
+
+              <div class="infoPersoNumMobile">
+                <p>
+                  N° cellulaire:
+                </p>
+                <p data-type="text" data-pk="4" data-title="Entrez un nouveau numero de cellulaire">
+                  450 760 xxxx
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 boxAction alignCenter">
+        <h4> Mon adresse </h4>
+        <div class="infoAdresse">
+          <select name="adresselist" class="infoAdresseAjout btn-group select select-block">
+            <option value="0" disabled>Mes différentes adresses</option>
+            <option value="1" selected="selected">Adresse Hugo Perso</option>
+            <option value="2">Adresse Steve Perso</option>
+            <option value="3">Ajouter une nouvelle adresse</option>
+          </select>
+          <div id="donnees_adresse">
+           <div class="infoAdresseRue">
+             <p>Adresse :</p>
+             <p data-type="text" data-pk="5" data-title="Entrez une nouvelle rue">
+              54 rue de la gare
+            </p>
+          </div>
+          <div class="infoAdresseVille">
+           <p>Ville:</p>
+           <p data-type="text" data-pk="6" data-title="Entrer une nouvelle rue">
+            Strasbourg
+          </p>
+        </div>
+        <div class="infoAdresseCodePostal">
+         <P>Code Postal:</P>
+         <p data-type="text" data-pk="7" data-title="Entrer un nouveau code Postal">
+          67000
+        </p>
+      </div>
+      <div class="infoAdressePays">
+       <P>Pays:</P>
+       <p data-type="text" data-pk="8" data-title="Entrer un nouveau Pays">
+        France
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-md-4 boxAction alignCenter">
+  <h4> Méthodes de paiement </h4>
+  <div class="infoPayement">
+    <select name="payementlist" class=" infoPayementAjout btn-group select select-block">
+      <option value="0" disabled>Mes différents moyen de paiement</option>
+      <option selected="selected" value="1">Carte Visa 1</option>
+      <option value="2">Carte MasterCard 1</option>
+      <option value="3">Ajouter un moyen de payement</option>
+    </select>
+    <div id="donnees_bancaires">
+      <div class="infoPayementNumero">
+        <p>Numero carte: </p>
+        <p data-type="text" data-pk="9" data-title="Entrez un nouveau numero de carte">
+          ****.****.**45
+        </p>
+      </div>
+      <div class="infoPayementNom">
+        <p>Nom titulaire: </p>
+        <p data-type="text" data-pk="10" data-title="Entrer un nouveau nom">
+          Steve Benedick
+        </p>
+      </div>
+      <div class="infoPayementDateExpiration">
+        <p>Date d'expiration: </p>
+        <p data-template="MM / YY" data-viewformat="MM/YY" data-format="YY-MM" data-value="14-05" data-type="combodate" data-title="Entrer une nouvelle date d'expiration">
+        </p>
+      </div>
+      <div class="infoPayementCrypto">
+        <p>Cryptogramme: </p>
+        <p data-type="text" data-pk="12" data-title="Entrer un nouveau cryptogramme">
+          ***
+        </p>
+      </div>
+    </div>
+  </div>            
+</div>
+</div>
+</div>
+</header>
+
+
+<div class="wrap"> 
+  <div class="container"><!-- Main container -->
+
+    <div class="row template">
+      <div class="col-md-9">
+        <h4> Mes enchères </h4>
+        <div id="legende">+ Légende</div>
+        <div id="content_legende">
+           <p class="texteLegende"><span class="glyphicon glyphicon-ok btn-md"></span>Vous ête la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-exclamation-sign btn-md"></span>Vous n'etes pas la meilleur enchère</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-shopping-cart btn-md"></span>Enchère remporté, passez au paiement</p>
+          <p class="texteLegende"><span class="glyphicon glyphicon-star btn-md"></span>Le produit à été envoyé, notez le vendeur</p>
+        </div>
+        <section>
+         <article class="box_bid">
+          <div class="bid_challenged bid_content">
+           <div class="main">
+            <img src="http://cdn2.wmf.de/shop/media/catalog/product/cache/10/thumbnail/60x/9df78eab33525d08d6e5fb8d27136e95/TuK/WMF/jpg/12/12_88/12_8803_6046_100.jpg"/>
+            <div>
+              <h5>Lot de 1000 cuillères</h5>
+              <p class="texteEnchere">3 jrs restants</p>
+            </div>
+            <a class="action_box">
+             <acronym title="Vous n'êtes pas le meilleur enchérisseur. Ajoutez 12€ pour passer en tête !">  <span class="glyphicon glyphicon-exclamation-sign btn-xs"></span>
+             </acronym>Enchérir
+           </a>
+         </div>
+         <div class="hover">
+          Une personne a misé 12€ de plus que vous :<br/>
+          <a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+        </div>
+      </div>
+    </article>
+    <article class="box_bid">
+      <div class="bid_challenged bid_content">
+       <div class="main">
+        <img src="http://ecx.images-amazon.com/images/I/51RZXZKHKHL._AA60_.jpg"/>
+        <div>
+          <h5>Extreme Programming</h5>
+           <p class="texteEnchere">2 hrs restantes</p>
+        </div>
+        <a class="action_box">
+         <acronym title="Vous êtes le meilleur enchérisseur">
+            <span class="glyphicon glyphicon-ok btn-xs"></span>
+         </acronym> Enchérir
+       </a>
+     </div>
+     <div class="hover">
+      Vous êtes le meilleur enchérisseur :<br/>
+      <a href="#" class="btn btn-inverse" style="margin-top:5px;">Monter mon enchère</a> <a href="#" class="btn btn-danger deleteBid" style="margin-top:5px;">Annuler l'enchère</a>
+    </div>
+  </div>
+</article>
+<article class="box_bid">
+  <div class="bid_won bid_content">
+   <div class="main">
+    <img src="http://craigsyardsale.com/thumbs3/sbc25141352_weDollar.jpg"/>
+    <div>
+      <h5>$10K Trillion Zimbabwe</h5>
+       <p class="texteEnchere">Gagné le 15/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-ok btn-xs"></span>
+     Valider l'objet
+   </a>
+ </div>
+ <div class="hover">
+  Objet envoyé à l'adresse : <i>"Hugo Adresse perso"</i><br/>Suivez votre colissimo avec le code : <i>A45JNEIK43C</i>
+</div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_won bid_content">
+   <div class="main">
+    <img src="http://www.eurekamamaison.com/Data_Desamais/downloads/CatProduit/mini60_616565z.jpg"/>
+    <div>
+      <h5>Lot de 20 sacs de litière</h5>
+       <p class="texteEnchere">Gagné le 31/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-shopping-cart btn-xs"></span>
+     Valider l'objet
+    </a>
+ </div>
+ <div class="hover">
+  <a href="#" class="btn btn-inverse pull-right" style="margin-top:5px;" data-toggle="modal" data-target="#modalSendBid">Valider la livraison</a>
+  Payé avec : MasterCard <br/><img src="http://www.cartes-bancaires-gratuites.fr/wp-content/uploads/icons/credit-cards.png" alt="CB" style="margin-right:5px;"/>  <strong>****.****.**45</strong>
+</div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_paid bid_content">
+   <div class="main">
+    <img src="http://i.lbdn.com/IMGPRMIN/SAM03520.jpg"/>
+    <div>
+      <h5>TV HD 50" Samsung</h5>
+       <p class="texteEnchere">Reçu le 20/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
+     Noter le vendeur
+   </a>
+ </div>
+ <div class="hover">
+   <!-- A retravailler avec un plugin js par exemple -->
+   <span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;<span class="star">&#9733;</span></span></span></span></span>
+ </div>
+</div>
+</article>
+<article class="box_bid">
+  <div class="bid_paid bid_content">
+   <div class="main">
+    <img src="http://www.king-technologies.net/237-653-medium/housse-k7-vintage-silicone-iphone-4-et-4s.jpg"/>
+    <div>
+      <h5>Coque iPhone 4S</h5>
+       <p class="texteEnchere">Reçu le 27/01/14</p>
+    </div>
+    <a class="action_box">
+      <span class="glyphicon glyphicon-star btn-xs"></span>
+     Noter le vendeur
+    </a>
+ </div>
+ <div class="hover">
+  <span>Merci, votre vote (3/5) a été pris en compte !</span>
+</div>
+</div>
+</article>
+</section>
+</div>
+<div class="col-md-3  messagerie">
+  <h4><img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/settings-20.png" style="float:right; padding-top:5px;"/> Messagerie </h4>
+  <div class="new_message" data-toggle="modal" data-target="#modalWriteMessage">Nouveau message</div>
+  <article><span class="close_message">x</span>
+   <img src="img/online.png" class="avatar"/>
+   <div>
+    <h3>Ndeye Gueye</h3>
+    <span class="hidden-md"><span class="status_container"><img src="img/icons/online.png" class="status"/></span><strong> 3 messages non-lus</strong></span>
+  </div>
+</article>
+<article><span class="close_message">x</span>
+ <img src="img/online.png" class="avatar"/>
+ <div>
+  <h3>Steve Benedick</h3>
+  <span class="hidden-md"><span class="status_container"><img src="img/icons/online.png" class="status"/></span> 0 message non-lu</span>
+</div>
+</article>
+<article><span class="close_message">x</span>
+ <img src="img/offline.png" class="avatar"/>
+ <div>
+  <h3>Bryan Fruchart</h3>
+  <span class="hidden-md"><span class="status_container"><img src="img/icons/offline.png" class="status"/></span> 0 message non-lu</span>
+</div>
+</article>
+
+</div>
+</div>
+
+</div>
+</div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalWriteMessage" tabindex="-1" role="dialog" aria-labelledby="modalWriteMessageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title" id="modalWriteMessageLabel">Rédiger un nouveau message</h5>
+      </div>
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="exampleMessageTo">Identifiant du destinataire</label>
+            <input type="text" class="form-control" id="exampleMessageTo" placeholder="Destinataire">
+          </div>
+          <div class="form-group">
+            <label for="exampleMessageSubject">Sujet</label>
+            <input type="password" class="form-control" id="exampleMessageSubject" placeholder="Sujet">
+          </div>
+          <div class="form-group">
+            <label for="exampleMessageText">Message</label>
+            <textarea class="form-control" rows="10"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalSendBid" tabindex="-1" role="dialog" aria-labelledby="modalSendBid" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h5 class="modal-title" id="modaleSendBid">Valider l'envoi de l'objet</h5>
+      </div>
+      <div class="modal-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified" id="tabSendBid">
+          <li class="active"><a href="#valider_adresse" data-toggle="tab">Valider l'adresse</a></li>
+          <li><a href="#valider_resume" data-toggle="tab">Résumé</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane in active" id="valider_adresse">Adresse</div>
+          <div class="tab-pane" id="valider_resume">Resumé</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary">Suivant</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Newsletter -->
+      <div class="modal fade" id="modalNewsletter" tabindex="-1" role="dialog" aria-labelledby="modalNewsletterLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h5 class="modal-title" id="modalNewsletterLabel">S'inscrire à la newsletter</h5>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Votre email">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">S'abonner</button>
+            </div>
+          </div>
+        </div>
+      </div>
+<div id="footer" class="hidden-xs">
+  <a href="#"> Mentions légales </a>
+  <a href="#"> Partenaires </a>
+  <a href="#"> Plan du site </a>
+  <a href="#"> Contacts </a>
+  <a href="#"> Jobs </a>
+</div>
+  <!-- modal inscription -->
+  <div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="modalInscriptionLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h5 class="modal-title" id="modalInscriptionLabel">S'inscrire</h5>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputUsername3" placeholder="Username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                  <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress3" class="col-sm-3 control-label">Adresse 1</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputAddress3" placeholder="Adresse 1">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress4" class="col-sm-3 control-label">Adresse 2</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputAddress4" placeholder="Adresse 2">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputCode4" class="col-sm-3 control-label">Code postal</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" id="inputCode4" placeholder="Code postal">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputVille4" class="col-sm-3 control-label">Ville</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" id="inputVille4" placeholder="Ville">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+              <button type="submit" class="btn btn-primary">Terminer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script src="js/bootstrap-select.js"></script>
+<script src="js/bootstrap-switch.js"></script>
+<script src="js/flatui-checkbox.js"></script>
+<script src="js/flatui-radio.js"></script>
+<script src="js/jquery.tagsinput.js"></script>
+<script src="js/jquery.placeholder.js"></script>
+<script src="js/TweenMax.min.js"></script>
+<script src="js/bootstrap-editable.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/perso.js"></script>
+<script src="js/espace.js"></script>
+<script src="js/jquery.share.js"></script>
+</body>
+</html>

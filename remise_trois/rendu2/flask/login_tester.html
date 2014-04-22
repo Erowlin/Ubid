@@ -1,0 +1,24 @@
+<!doctype html>
+
+<!-- File used to demonstrate how to load templates in Flask -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>UBid</title>
+  <link rel="stylesheet" type="text/css" href="/static/app.css"/>
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<h1>Encode your password in base64 before sending it.</h1>
+		<form action="http://localhost:5000/login" method="post">
+            <p><input type=text name=username>
+            <p><input type=password name=password>
+            <p><input type=submit value=Login>
+        </form>
+</body>
+</html>

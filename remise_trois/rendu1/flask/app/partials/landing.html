@@ -1,0 +1,10 @@
+<div ng-controller="SearchCtrl" ng-include src="'partials/searchbar.html'"></div>
+<div class="main-container">
+	<div ng-controller="ProductListCtrl">
+		<div class="row" ng-repeat="row in rows">
+			<div ng-repeat="(id, value) in row">
+				<div class="col-md-3 col-lg-3" product-item></div>
+			</div>
+		</div>
+	</div>
+</div>

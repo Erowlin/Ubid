@@ -1,0 +1,34 @@
+<div class="boxProduit">
+	<div class="containerImgProduit"><!-- image du produit -->
+		<img class="imgProduit" src="http://placehold.it/230x230" alt="Photo produit" ng-click="goToProductPage(value.id)"/>
+	</div>
+	<div class="wrap_infoProduit"><!-- info sur le produit -->
+		<div class="titreProduit">
+			<h1> {{value.title}} </h1>
+			<h2> {{value.buyoutPrice}} $CAD </h2>
+		</div>
+		<div class="infoProduit">
+			<p class="ligneInfoProduit">
+				<span class="iconeProduit glyphicon glyphicon-user btn-xs"></span>
+				{{value.user_id}}
+				<span class="pdbProduit adjustPdb">
+					{{value.startPrice}} $CAD
+				</span>
+			</p>
+			<p>
+				Il y a {{value.dateStart}} jour(s)
+				<span class="pdbProduit">
+					7 enchères
+				</span>
+			</p>
+		</div>
+		<div class="actionProduit"><!-- bouton et minuteur du produit -->
+			<div class="btnProduit btnInfoProduit">
+				<p><span class="iconeProduit glyphicon glyphicon-time btn-xs"></span><small>{{value.dateLength}} heure(s)</small></p>
+			</div>
+			<div class="btnProduit btnEncherirProduit" ng-click="goToProductPage(value.id)"><!-- Action enchérir -->
+				<p> Enchérir </p>
+			</div>
+		</div>
+	</div>
+</div>

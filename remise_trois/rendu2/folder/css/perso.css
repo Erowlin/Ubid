@@ -1,0 +1,147 @@
+@media screen and (max-width: 768px) { 
+	.voletActionOpen, .voletAction:hover{
+		height: 100% !important;
+		position: absolute;
+		top: 50px;
+	}
+	header{
+		position: absolute !important;
+		top: 53px !important;
+		z-index: 98 !important;
+	}
+	.nav{
+		position: fixed !important;
+		top: 0px !important;
+		width: 100% !important;
+		z-index: 99 !important;
+	}
+}
+/*@media screen and (min-width: 741px) and (max-width: 977px) { 
+	.colonneProduit{
+		width: 33% !important;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 741px) { 
+	.colonneProduit{
+		width: 50% !important;
+	}
+}
+@media screen and (max-width: 500px) { 
+	.colonneProduit{
+		width: 100% !important;
+	}
+}*/
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@media (min-width: @screen-lg-min) { ... }
+html, body{
+
+}
+header{
+	width: 100%;
+	position: fl;
+	top: 0;
+	z-index: 99;
+}
+.header{
+	width: 100% !important;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+}
+.alignCenter{
+	text-align: center;
+}
+.init-displayNone{
+	display: none;
+}
+.wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 105px auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+  background-color: rgba(52,73,94,0.2);
+  text-align: center;
+}
+#footer a{
+	margin: 10px;
+	text-decoration: underline;
+	color: rgba(52,73,94,1);
+	font-size: 12px;
+}
+#voletAction{
+	width: 100% !important;
+	background-color: #1ABC9C;
+	height: 50px;
+	overflow: hidden;
+	z-index: 99 !important;
+}
+
+/* Trick for the hidden for inline elements, the default one only work with block on Bootstrap...*/
+@media (max-width: 768px) {
+	.hidden-xs-inline {
+		display: none;
+	}
+}
+
+#map {
+	height: 150px;
+	width: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+.boxMargin {
+	border-left: 1px solid;
+	border-right: 1px solid;
+    border-color: #c5c5c5;
+}
+
+#searchBar {
+	margin-top: 5px;
+}
+
+#searchButtonPrimary>.btn-default {
+	margin-top: 15px;
+	background-color: #005869;
+}
+
+.checkbox.checked .second-icon, .radio.checked .second-icon, .checkbox.checked, .radio.checked {
+	color: #005869;
+	31797D
+}
+
+.btn-openAction{
+	background-color: #1ABC9C !important;
+}
+.mainContainer2{
+	background-color: #ddd;
+	padding: 30px;
+	min-height: 500px;
+}
+.infoContainer{
+	padding: 30px;
+	background-color: #ccc;
+	min-height: 500px;
+}
+.boxProduit{
+	background-color: #eee;
+}
+.infoArchitecture{
+	font-style: italic;
+	font-size: 15px;
+}
+.template{
+	min-height: 700px;
+	margin-bottom: 30px;
+}
+.nav .glyphicon{
+	color: #fafafa;
+	font-size: 16px;
+}

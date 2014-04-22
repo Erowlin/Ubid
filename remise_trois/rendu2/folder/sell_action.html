@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Ubid</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/flat-ui.css" rel="stylesheet">
+  <link href="css/perso.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/sell.css">
+  <link href="css/jquery.share.css" rel="stylesheet">
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <!-- Fichier css d'override à laisser en dernière position -->
+  <link href="css/overrideStyle.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/sell.css">
+  </head>
+<body>
+
+<div id="voletAction" class="container">  
+        <div class="row">
+          <div class="col-md-12 adjustBtnOpenVolet">
+            <div id="btnOpenVolet">
+              <span class="glyphicon glyphicon-plus"></span>  <span class="hidden-xs-inline"> Vendre un produit</span>
+            </div>
+            <div id="btnCloseVolet" class="init-displayNone">
+              <span class="glyphicon glyphicon-minus"></span><span class="hidden-xs-inline"> Fermer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row contentAction">
+          <div class="col-xs-12">
+            <form class="form-horizontal" role="form">
+              <div class="row">
+                <div class="col-xs-12 col-md-4">
+                  <div class="form-group">
+                    <label for="inputTitre" class="col-sm-4 control-label">Titre</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="inputTitre" placeholder="Sèche cheveux Bosh Ak42">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPricingAuction" class="col-sm-4 control-label">Prix de départ</label>
+                    <div class="col-sm-8">
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <input type="text" class="form-control" id="pricing-min-auction" placeholder="39,99">
+                        </div>
+                        <div class="col-xs-1">$</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPricingAuction" class="col-sm-4 control-label">Achat immédiat</label>
+                    <div class="col-sm-8">
+                      <div class="row">
+                        <div class="col-xs-6">
+                          <input type="text" class="form-control" id="pricing-min-auction" placeholder="159,99">
+                        </div>
+                        <div class="col-xs-1">$</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-4 boxMargin">
+                  <div class="form-group">
+                    <label for="inputCatégorie" class="col-sm-4 control-label">Catégorie</label>
+                    <div class="col-sm-8">
+                      <div class="btn-group select select-block">
+                        <button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
+                          <span class="filter-option pull-left">Choose a category</span>
+                          &nbsp;
+                          <span class="caret"></span>
+                        </button>
+                        <span class="dropdown-arrow dropdown-arrow-inverse"></span>
+                        <ul class="dropdown-menu dropdown-inverse" role="menu" >
+                          <li rel="0" class="selected">
+                            <a tabindex="-1" href="#" class="">
+                              <span class="pull-left">Choose a category</span>
+                            </a>
+                          </li>
+                          <li rel="1"><a tabindex="-1" href="#"><span class="pull-left">Mode</span></a></li>
+                          <li rel="2"><a tabindex="-1" href="#"><span class="pull-left">Produits Électroniques</span></a></li>
+                          <li rel="3"><a tabindex="-1" href="#"><span class="pull-left">Maison, Bricolage, Jardin</span></a></li>
+                          <li rel="4"><a tabindex="-1" href="#"><span class="pull-left">Sport</span></a></li>
+                          <li rel="5"><a tabindex="-1" href="#"><span class="pull-left">Livres, Musiques, Vidéos</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="duration" class="col-sm-4 control-label">Durée</label>
+                    <div class="col-sm-8">
+                      <div class="row">
+                        <div class="col-xs-6 col-md-7">
+                          <input type="text" class="form-control" placeholder="mm/dd/yy">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                  <div class="form-group">
+                    <label for="description" class="col-sm-4 control-label">Description</label>
+                    <div class="col-sm-8">
+                      <textarea name="description" id="productDesctiption" class="form-control" cols="30" rows="3" placeholder="Grâce à ses 17 vitesses , vous pourrez chauffer l'eau de vos pates plus vite."></textarea>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="photo" class="col-sm-4 control-label">Photo</label>
+                    <div class="col-sm-8">
+                      <div class="row">
+                        <div class="col-xs-5">
+                          <button class="btn btn-primary">Envoyer une photo</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <button class="col-md-6 col-md-offset-3 sellButton btn">Mettre en vente mon objet !</button>
+        </div>
+        
+      </div>
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-switch.js"></script>
+    <script src="js/flatui-checkbox.js"></script>
+    <script src="js/flatui-radio.js"></script>
+    <script src="js/jquery.tagsinput.js"></script>
+    <script src="js/jquery.placeholder.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/perso.js"></script>
+    <script src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/jquery.share.js"></script>
+
+  </body>
+  </html>

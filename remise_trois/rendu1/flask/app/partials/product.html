@@ -1,0 +1,39 @@
+<div ng-controller="SearchCtrl" ng-include src="'partials/searchbar.html'"></div>
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-xs-8 col-sm-8 col-md-8 col-md-offset-2">
+			<div class="well well-sm col-md-12">
+				<div class="row">
+					<h4 class="col-md-6">{{ product.title }}</h4>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<img src="http://placehold.it/350x400" alt="Image produit">
+					</div>
+					<div class="col-md-6">
+						<strong>Prix actuel: {{ product.startPrice }} $CAD</strong><br>
+						<strong>Achat direct: {{ product.buyoutPrice }} $CAD</strong><br>
+						<strong>Prix de réserve: {{ product.reservePrice }} $CAD</strong><br>
+						<br>
+						<i>L'enchère a commençée le</i><time> {{ product.dateStart }} </time><br>
+						<i>L'enchère se termine le</i><time> {{ product.dateStart + product.dateLength }} </time><br>
+						<br>
+						<strong>Informations sur le vendeur:</strong><br>
+						<strong>Username: </strong> {{product.user.username}} <br>
+						<strong>Ville: </strong> {{product.user.city}} <br>
+						<strong>Code postal: </strong> {{product.user.postalcode}} <br>
+						<strong>Pays: </strong> {{product.user.country}} <br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-md-offset-6">
+						<div class="btnProduit btnEncherirProduit"><!-- Action enchérir -->
+							<p> Enchérir </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

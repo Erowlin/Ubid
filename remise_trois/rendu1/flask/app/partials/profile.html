@@ -1,0 +1,33 @@
+<div ng-controller="SearchCtrl" ng-include src="'partials/searchbar.html'"></div>
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-xs-8 col-sm-8 col-md-8 col-md-offset-2">
+			<div class="well well-sm col-md-12">
+				<div class="row">
+					<div class="col-sm-4 col-md-4">
+						<img src="http://placehold.it/420x500" alt="" class="img-rounded img-responsive" />
+					</div>
+					<div class="col-sm-6 col-md-6">
+						<div class="row">
+							<h4 class="col-md-12">Profil de {{user.username}}</h4>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<label class="fixed-size control-label">Nom:</label><strong>{{user.lastname}}</strong><br>  
+								<label class="fixed-size control-label">Prénom:</label><strong>{{user.firstname}}</strong><br>  
+								<label class="fixed-size control-label">Adresse 1:</label><strong>{{user.address1}}</strong><br>
+								<label class="fixed-size control-label">Adresse 2:</label><strong>{{user.address2}}</strong><br> 
+								<label class="fixed-size control-label">Ville:</label><strong>{{user.city}}</strong><br>
+								<label class="fixed-size control-label">Code postal:</label><strong>{{user.postalcode}}</strong><br>  
+								<label class="fixed-size control-label">Pays:</label><strong>{{user.country}}</strong><br>
+								<label class="fixed-size control-label">Email:</label><strong>{{user.email}}</strong><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
